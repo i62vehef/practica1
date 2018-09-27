@@ -48,7 +48,7 @@
 `git log` 
 
 
-### Comandos básicos II:
+## Comandos básicos II:
 
 ### Ayuda del listado anterior:
 
@@ -70,7 +70,7 @@
 
 `git status`
 
-## Comandos bàsicos III
+## Comandos básicos III
 
 ### Ver diferencia entre  ficheros en directorio y el repositorio de git:
 
@@ -90,5 +90,26 @@
 
 `git mv  antiguo  nuevo`
 
+## Comandos básicos IV
+
+### Deshacer cambios con git:
+
+`git checkout -- nombre_fichero`
+
+### Retirar archivos del *staging*:
+
+`git reset HEAD nombre_fichero`
+
+### Completar último commit:
+
+`git commit  --amend -m "Mensaje"`
+
+### Recuperar version de un fichero de commit antiguo:
+
+`git checkout   <id_commit > --nombre_archivo`
+
+### Revertir un commit:
+
+`git revert <id_commit>`
 `git  commit  -m "Mensaje"`
 
