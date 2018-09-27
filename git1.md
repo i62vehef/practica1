@@ -39,7 +39,7 @@
 
 `git commit -m "Mensaje"`
 
-### Hacer los dos cambios anteriores en uno:
+### Hacer los dos pasos anteriores en uno:
 
 `git commit -am "Mensaje"`
 
@@ -54,7 +54,7 @@
 
 `git help log`
 
-### Listar los 5 commits màs recientes:
+### Listar los 5 commits más recientes:
 
 `git log -n 5`
 
@@ -116,17 +116,19 @@
 
 ## Comandos básicos V
 
-## Deshacer multiples cambios en el repositorio:
+### Deshacer multiples cambios en el repositorio:
 
 `git reset  --soft  <id_commit>`
+
 `git reset  --mixed  <id_commit>`
+
 `git reset --hard  <id_commit>`
 
 ### Listar archivos que git no controla:
 
 `git clean -n`
 
-## Eliminar archivos que git no controla
+### Eliminar archivos que git no controla
 
 `git clean -f`
 
