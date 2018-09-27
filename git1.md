@@ -136,8 +136,6 @@
 
 
 
-######[Markdown](https://moodle.uco.es/m1819/pluginfile.php/110517/mod_resource/content/2/P1_IngenieriaSoftware_Presentacion.pdf#Navigation4)
-
 ## Comandos básicos VI
 
 ### Listar el contenido del repositorio de git:
