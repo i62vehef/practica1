@@ -269,3 +269,27 @@
 ## GitHub no es Git
 
 !(http://1.bp.blogspot.com/-WY2YpNr3W6g/UY6tZAc-H3I/AAAAAAAABLY/xJ9x3wIY8V8/s1600/Github2.png)
+
+
+
+## Comandos GitHub I
+
+### Añadir repositorios remoto:
+
+`git remote add origin url`
+
+### Ver repositorios remotos:
+
+`git remote -v`
+
+### Eliminar repositorios remotos:
+
+`git remote rm origin`
+
+### Añadir cambios del repositorio local al remoto:
+
+`git push -u origin master`
+
+### Añadir cambios del repositorio remoto al local:
+
+`git pull`
