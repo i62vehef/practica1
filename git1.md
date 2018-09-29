@@ -360,6 +360,6 @@
 
 `git checkout -b local remoto`
 
-### *Eliminación:
+### * Eliminación:
 
 `git push origin --delete branch_remoto`
