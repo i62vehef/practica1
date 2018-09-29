@@ -324,7 +324,7 @@
 
 3. Añadir cambios a repositorio remoto:
 
-`git push`
+* `git push`
 
 ### REMOTO -> LOCAL
 
@@ -353,7 +353,7 @@
 
 4. Copiar el branch al repositorio remoto:
 
-`git push -u origin branch_remoto`
+* `git push -u origin branch_remoto`
 
 
 ### Copia:
