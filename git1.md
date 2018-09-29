@@ -21,9 +21,12 @@
 `git config --list`
 
 
+
 ## Los tres estados Git
 
-![texto alternativo](https://git-scm.com/figures/18333fig0106-tn.png)
+!(https://git-scm.com/figures/18333fig0106-tn.png)
+
+
 
 ## Comandos básicos I
 
@@ -48,6 +51,7 @@
 `git log` 
 
 
+
 ## Comandos básicos II:
 
 ### Ayuda del listado anterior:
@@ -69,6 +73,8 @@
 ### Ver cambios en el directorio:
 
 `git status`
+
+
 
 ## Comandos básicos III
 
@@ -92,6 +98,8 @@
 
 `git  commit  -m "Mensaje"`
 
+
+
 ## Comandos básicos IV
 
 ### Deshacer cambios con git:
@@ -113,6 +121,8 @@
 ### Revertir un commit:
 
 `git revert <id_commit>`
+
+
 
 ## Comandos básicos V
 
@@ -171,3 +181,11 @@
 ### Comparar dos commits:
 
 `git diff id...id nombre_archivo`
+
+
+
+## Ramas o Branches
+
+### Es la forma para separar la línea actual de desarrollo con respecto a la principal. Normalmente representan versiones del software que posteriormente son integradas a la línea principal.
+
+!(https://uialberto.files.wordpress.com/2016/11/gitflowui.png)
