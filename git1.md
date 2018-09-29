@@ -24,7 +24,7 @@
 
 ## Los tres estados Git
 
-!(https://git-scm.com/figures/18333fig0106-tn.png)
+![texto alternativo](https://git-scm.com/figures/18333fig0106-tn.png)
 
 
 
