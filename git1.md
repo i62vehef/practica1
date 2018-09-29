@@ -263,3 +263,9 @@
 
 `git stash apply nombre_stash`
 `git stash pop nombre_stash`
+
+
+
+## GitHub no es Git
+
+!(http://1.bp.blogspot.com/-WY2YpNr3W6g/UY6tZAc-H3I/AAAAAAAABLY/xJ9x3wIY8V8/s1600/Github2.png)
