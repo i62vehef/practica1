@@ -157,6 +157,9 @@
 #### Para más opciones consultar documentacion de git.
 
 
+
+##Comandos básicos VII
+
 ### Examinar el contenido de un commit:
 
 `git show <id>`
