@@ -168,7 +168,7 @@
 
 
 
-##Comandos básicos VII
+## Comandos básicos VII
 
 ### Examinar el contenido de un commit:
 
@@ -188,7 +188,7 @@
 
 ### Es la forma para separar la línea actual de desarrollo con respecto a la principal. Normalmente representan versiones del software que posteriormente son integradas a la línea principal.
 
-!(https://uialberto.files.wordpress.com/2016/11/gitflowui.png)
+![texto alternativo](https://uialberto.files.wordpress.com/2016/11/gitflowui.png)
 
 
 
@@ -270,7 +270,7 @@
 
 ## GitHub no es Git
 
-!(http://1.bp.blogspot.com/-WY2YpNr3W6g/UY6tZAc-H3I/AAAAAAAABLY/xJ9x3wIY8V8/s1600/Github2.png)
+![texto alternativo](http://1.bp.blogspot.com/-WY2YpNr3W6g/UY6tZAc-H3I/AAAAAAAABLY/xJ9x3wIY8V8/s1600/Github2.png)
 
 
 
