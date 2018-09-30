@@ -328,13 +328,13 @@
 
 ### REMOTO -> LOCAL
 
-#### * Sincronización y unión:
+* #### Sincronización y unión:
 
 `git fetch origin`
 
 `git merge origin/master`
 
-#### * En un solo paso:
+* #### En un solo paso:
 
 `git pull`
 
@@ -343,7 +343,7 @@
 
 ## Operaciones con branches remotos
 
-### * Creación:
+* ### Creación:
 
 #### 1. Crear branch local.
 
@@ -356,10 +356,10 @@
 `git push -u origin branch_remoto`
 
 
-### * Copia:
+* ### Copia:
 
 `git checkout -b local remoto`
 
-### * Eliminación:
+*### Eliminación:
 
 `git push origin --delete branch_remoto`
