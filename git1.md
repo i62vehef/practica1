@@ -316,7 +316,7 @@
 
 ## Dar seguimiento a *branches* remotos
 
-### LOCAL -> REMOTO
++ ### LOCAL -> REMOTO
 
 1. Cambios en el repositorio local
 
