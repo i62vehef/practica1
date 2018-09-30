@@ -218,7 +218,7 @@
 
 ### Ver ramas idénticas a la actual:
 
-    git branch --merged`
+    git branch --merged
 
 ### Renombrar ramas:
 
@@ -276,7 +276,7 @@
 
 ### Añadir repositorios remoto:
 
-    git remote add origin ur`
+    git remote add origin url
 
 ### Ver repositorios remotos:
 
