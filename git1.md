@@ -369,13 +369,13 @@
 ### Creación:
 >>>>>>> tutorial
 
-1. Crear branch local.
+#### 1. Crear branch local.
 
-2. Hacer cambios en dicho branch.
+#### 2. Hacer cambios en dicho branch.
 
-3. Hacer commit.
+#### 3. Hacer commit.
 
-4. Copiar el branch al repositorio remoto:
+#### 4. Copiar el branch al repositorio remoto:
 
 * `git push -u origin branch_remoto`
 
