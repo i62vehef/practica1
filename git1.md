@@ -184,7 +184,7 @@
 
 
 
-## Ramas o Branches
+## Ramas o *Branches*
 
 ### Es la forma para separar la línea actual de desarrollo con respecto a la principal. Normalmente representan versiones del software que posteriormente son integradas a la línea principal.
 
@@ -260,7 +260,7 @@
 
 `git stash drop nombre_stash`
 
-### Aplicar cambio del stash:
+### Aplicar cambio del *stash*:
 
 `git stash apply nombre_stash`
 
@@ -300,11 +300,11 @@
 
 ## Comandos GitHub II
 
-### Ver branches remotos:
+### Ver *branches* remotos:
 
 `git branch -r`
 
-### Ver todos los branches:
+### Ver todos los *branches*:
 
 `git branch -a`
 
@@ -314,7 +314,7 @@
 
 
 
-## Dar seguimiento a branches remotos
+## Dar seguimiento a *branches* remotos
 
 ### LOCAL -> REMOTO
 
@@ -328,13 +328,21 @@
 
 ### REMOTO -> LOCAL
 
+<<<<<<< HEAD
 ###### Sincronización y unión:
+=======
+* #### Sincronización y unión:
+>>>>>>> tutorial
 
 `git fetch origin`
 
 `git merge origin/master`
 
+<<<<<<< HEAD
 ###### En un solo paso:
+=======
+* #### En un solo paso:
+>>>>>>> tutorial
 
 `git pull`
 
@@ -343,7 +351,11 @@
 
 ## Operaciones con branches remotos
 
+<<<<<<< HEAD
 ### Creación:
+=======
+* ### Creación:
+>>>>>>> tutorial
 
 1. Crear branch local.
 
@@ -356,10 +368,18 @@
 * `git push -u origin branch_remoto`
 
 
+<<<<<<< HEAD
 ### Copia:
 
 `git checkout -b local remoto`
 
 ### Eliminación:
+=======
+* ### Copia:
+
+`git checkout -b local remoto`
+
+*### Eliminación:
+>>>>>>> tutorial
 
 `git push origin --delete branch_remoto`
