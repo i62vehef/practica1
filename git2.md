@@ -343,7 +343,7 @@
 
 + ### Creación:
 
-   1.-Crear branch local.
+   1  Crear branch local.
 
    2.-Hacer cambios en dicho branch.
 
