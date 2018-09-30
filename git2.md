@@ -351,15 +351,15 @@
 
    4. Copiar el branch al repositorio remoto:
 
-         git push -u origin branch_remoto
+        git push -u origin branch_remoto
 
 
 + ### Copia:
 
-         git checkout -b local remoto
+        git checkout -b local remoto
 
 
 + ### Eliminación:
 
-         git push origin --delete branch_remoto
+        git push origin --delete branch_remoto
 
