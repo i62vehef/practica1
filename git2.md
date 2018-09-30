@@ -321,7 +321,7 @@
 
    3. Añadir cambios a repositorio remoto:
 
-         git push
+           git push
 
 + ### REMOTO -> LOCAL
 
