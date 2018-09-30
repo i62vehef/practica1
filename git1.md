@@ -324,20 +324,20 @@
 
 3. Añadir cambios a repositorio remoto:
 
-`git push`
+   `git push`
 
 + ### REMOTO -> LOCAL
 
 + #### Sincronización y unión:
 
-`git fetch origin`
+    `git fetch origin`
 
-`git merge origin/master`
+    `git merge origin/master`
 
 
 + #### En un solo paso:
 
-`git pull`
+    `git pull`
 
 
 
@@ -354,14 +354,14 @@
 
 4. Copiar el branch al repositorio remoto:
 
-`git push -u origin branch_remoto`
+   `git push -u origin branch_remoto`
 
 
 + ### Copia:
 
-`git checkout -b local remoto`
+    `git checkout -b local remoto`
 
 
 + ### Eliminación:
 
- `git push origin --delete branch_remoto`
+    `git push origin --delete branch_remoto`
