@@ -329,9 +329,13 @@
 ### REMOTO -> LOCAL
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ###### Sincronización y unión:
 =======
 * #### Sincronización y unión:
+>>>>>>> tutorial
+=======
+#### Sincronización y unión:
 >>>>>>> tutorial
 
 `git fetch origin`
@@ -339,9 +343,13 @@
 `git merge origin/master`
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ###### En un solo paso:
 =======
 * #### En un solo paso:
+>>>>>>> tutorial
+=======
+#### En un solo paso:
 >>>>>>> tutorial
 
 `git pull`
@@ -352,9 +360,13 @@
 ## Operaciones con branches remotos
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ### Creación:
 =======
 * ### Creación:
+>>>>>>> tutorial
+=======
+### Creación:
 >>>>>>> tutorial
 
 1. Crear branch local.
@@ -369,6 +381,7 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ### Copia:
 
 `git checkout -b local remoto`
@@ -380,6 +393,13 @@
 `git checkout -b local remoto`
 
 *### Eliminación:
+>>>>>>> tutorial
+=======
+### Copia:
+
+`git checkout -b local remoto`
+
+### Eliminación:
 >>>>>>> tutorial
 
 `git push origin --delete branch_remoto`
