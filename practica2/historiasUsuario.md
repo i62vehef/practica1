@@ -1,6 +1,5 @@
 # Historia de usuario
 
-##
 
 ## (**Anverso**)
 
