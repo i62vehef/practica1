@@ -10,4 +10,3 @@ Como usuario quiero poder introducir un nuevo  alumno.
 
 + Como usuario quiero poder introducir todos los datos del alumno a excepción del grupo y su lider.
 
-## (**Anverso**)
