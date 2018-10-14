@@ -4,7 +4,7 @@
 
 ## (**Anverso**)
 
-**ID:**001 **Buscar alumno**
+**ID:** 001 **Buscar alumno**
 
 Como usuario quiero poder buscar un alumno.
 
@@ -18,7 +18,7 @@ Como usuario quiero poder buscar un alumno.
 
 ## (**Anverso**)
 
-**ID:**002 **Introducir un nuevo  alumno**
+**ID:** 002 **Introducir un nuevo  alumno**
 
 Como usuario quiero poder introducir un nuevo  alumno.
 
@@ -28,7 +28,7 @@ Como usuario quiero poder introducir un nuevo  alumno.
 
 ## (**Anverso**)
 
-**ID:**003 **Cargar datos**
+**ID:** 003 **Cargar datos**
 
 Como usuario quiero poder cargar una lista de alumnos.
 
