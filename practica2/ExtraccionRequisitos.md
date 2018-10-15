@@ -59,3 +59,21 @@ RNF-5 El número máximo de alumnos que soportará el sistema será de 150 alumn
 RNF-6 El sistema será operativo en SOs Linux.
 
 RNF-7 A la hora de mostrar un alumno se mostrará tanto mediante la interfaz como a través de una aplicación web facilitada mediante lenguaje html.
+
+## Prioridad de los requisitos
+
+RF-1 -> Prioridad 1
+
+RF-2 -> Prioridad 2
+
+RF-3 -> Prioridad 3
+
+RF-4 -> Prioridad 3
+
+RF-5 -> Prioridad 4
+
+RF-6 -> Prioridad 5
+
+RF-7 -> Prioridad 5
+
+RF-8 -> Prioridad 5
