@@ -8,5 +8,5 @@ Como usuario quiero poder crear una copia de seguridad en cualquier momento sin 
 
 ## (**Reverso**)
 
-+ Como usuario el sistema me preguntara cuando salgad del programa si quiero realizar la copia de seguridad.
++ Se debe preguntar cuando se salga del programa si hacer una copia de seguridad y si se quiere sobreescribir la anterior.
                                                
