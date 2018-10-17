@@ -8,7 +8,8 @@ Como usuario quiero poder crear una copia de seguridad.
 
 ## (**Reverso**)
 
-+ Como usuario quiero hacer una copia de seguridad sin sobreescribir la anterior.
++ Como usuario quiero hacer una copia de seguridad en cualquier momento.
 
 + Se debe preguntar cuando se salga del programa si hacer una copia de seguridad. 
                                                
++ Se debe crear una nueva copia de seguridad sin necesidad de sobreescribir la anterior.
