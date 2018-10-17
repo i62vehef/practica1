@@ -4,7 +4,7 @@
 
 **Breve descripción**: El sistema debe poder buscar un alumno
 
-**Actores princpiales**: Usuario
+**Actores principales**: Usuario
 
 **Actores secundarios**: Alumno
 
