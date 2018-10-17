@@ -24,4 +24,4 @@
 
  **Flujos alternativos:**
  
-  3a. Si el alumno no se encuentra registrado, se muestra un mensaje de error.
+  3a. Si el alumno no se encuentra, se muestra un mensaje de error.
