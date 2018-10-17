@@ -9,6 +9,8 @@ Como usuario quiero poder buscar un alumno.
 
 ## (**Reverso**)
 
-+ Quiero poder buscar al alumno por su DNI,apellido y grupo. 
++ Quiero poder buscar al alumno por su DNI,apellido o grupo. 
+
+
 
 
