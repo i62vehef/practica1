@@ -16,12 +16,12 @@
 
   1. El sistema comprobara si el alumno esta registrado
   2. Se necesita un criterio de búsqueda: DNI, apellidos o grupo
-  3. Se filtra en la lista de alumnos para encontrarlo.
+  3. Se filtra en la lista de alumnos para comprobar si el alumno esta registrado.
   4. El sistema recoge los datos del alumno a excepción del grupo y su lider.
 
  **Postcondiciones:**
 
-  1. El sistema introduce los datos de un nuevo alumno a excepcion del grupo y su lider.
+  1. El sistema guarda los datos del nuevo alumno a excepcion del grupo y su lider.
 
  **Flujos alternativos:**
  
