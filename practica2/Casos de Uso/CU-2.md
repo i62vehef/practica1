@@ -25,4 +25,4 @@
 
  **Flujos alternativos:**
  
-  3a. Si el alumno se encuentra registrado, se muestra un mensaje de que el alumno ya esta en el sisitema.
+  3a. Si el alumno se encuentra registrado, se muestra un mensaje de que el alumno ya esta en el sistema.
