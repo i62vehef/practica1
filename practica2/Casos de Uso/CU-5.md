@@ -16,8 +16,9 @@
 
   1. El sistema debe comprobar que el alumno esta registrado.
   2. Se filtra en la lista de alumnos para encontrarlo. 
-  3. El sistema al borrar los datos de un alumno se comprueba que este es el lider se le asignará a su compañero.
-  4. El sistema mostrará un mensaje de que el alumno ha sido borrado.
+  3. El sistema comprobará si el alumno a borrar es el lider.
+  4. El sistema asignará la condición de lider al compañero en caso de que el alumno a borrar sea el lider.
+  5. El sistema mostrará un mensaje de que el alumno ha sido borrado.
   
 
 **Postcondiciones:**
