@@ -28,4 +28,4 @@
 
  **Flujo alternativo:**
 
-  1a. El sistema mostrará un mensaje si el alumno no se encuentra registrado.
+  1a. El sistema mostrará un mensaje si el alumno a borrar no se encuentra registrado.
