@@ -10,13 +10,13 @@
 
 **Precondiciones**
 
- 1. El sistema debe generar una nueva copia de seguridad.
+ 1. El sistema debe tener datos de alumnos guardados.
 
  **Flujo principal:**
 
-  1. El sistema podrá crear una copia de seguridad en cualquier momento.
-  2. El sistema preguntará si se quiere hacer copia de seguridad al salir del programa.
-  3. El sistema creara una copia de seguridad sin sobrescribir la anterior.
+  1. El sistema necesita crear una copia de seguridad.
+  2. El sistema creara una copia de seguridad sin sobrescribir la anterior.
+  3. Se muestra un mensaje de que ha grabado el fichero correctamente.
 
 **Postcondiciones:**
 
@@ -24,4 +24,4 @@
 
  **Flujo alternativo:**
 
- 3a. El sistema mostrará un mensaje de "Error" si no se creo la copia de seguridad. 
+ 2a. El sistema mostrará un mensaje de "Error" si no se creo la copia de seguridad. 

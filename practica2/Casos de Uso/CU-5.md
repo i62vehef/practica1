@@ -14,11 +14,11 @@
 
  **Flujo principal:**
 
-  1. El sistema debe comprobar que el alumno esta registrado.
-  2. Se filtra en la lista de alumnos para encontrarlo. 
-  3. El sistema comprobará si el alumno a borrar es el lider.
-  4. El sistema asignará la condición de lider al compañero en caso de que el alumno a borrar sea el lider.
-  5. El sistema mostrará un mensaje de que el alumno ha sido borrado.
+  1. El sistema necesita borrar un alumno.
+  2. El sistema debe comprobar que el alumno esta registrado.
+  3. El sistema comprobará si el alumno a borrar es el líder.
+  4. El sistema asignará la condición de líder al compañero en caso de que el alumno a borrar sea el líder.
+  5. El sistema mostrará un mensaje confirmando que el alumno ha sido borrado.
   
 
 **Postcondiciones:**
@@ -28,4 +28,4 @@
 
  **Flujo alternativo:**
 
-  1a. El sistema mostrará un mensaje si el alumno a borrar no se encuentra registrado.
+  5a. El sistema mostrará un mensaje si el alumno a borrar no se encuentra registrado.

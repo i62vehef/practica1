@@ -14,10 +14,11 @@
 
 **Flujo principal:**
 
-  1. El sistema pide los datos del nuevo alumno.
-  2. El sistema recibe los datos del nuevo alumno a excepción del grupo y su lider.
-  3. Se comprueba si el alumno no está ya registrado.
-  4. Se guardan los datos del alumno.
+  1. El sistema necesita introducir un nuevo alumno.
+  2. El sistema pide los datos del nuevo alumno.
+  3. El sistema recibe los datos del nuevo alumno a excepción del grupo y su lider.
+  4. Se comprueba si el alumno no está ya registrado.
+  5. Se guardan los datos del alumno.
 
 **Postcondiciones:**
 
@@ -25,6 +26,6 @@
 
 **Flujos alternativos:**
  
-  2a. Si los datos introducidos no son válidos se muestra un mensaje de error.
+  3a. Si los datos introducidos no son válidos se muestra un mensaje de error.
 
-  3a. Si el alumno ya está registrado se muestra un mensaje de error.
+  4a. Si el alumno ya está registrado se muestra un mensaje de error.
