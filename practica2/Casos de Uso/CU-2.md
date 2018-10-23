@@ -2,11 +2,11 @@
 
 **ID:** 002
 
-**Breve descripción**: El sistema debe poder introducir un nuevo alumno
+**Breve descripción:** El sistema debe poder introducir un nuevo alumno
 
-**Actores principales**: Usuario
+**Actores principales:** Usuario
 
-**Actores secundarios**: Alumno
+**Actores secundarios:** Alumno
 
 **Precondiciones:**
 
@@ -25,4 +25,4 @@
 
  **Flujos alternativos:**
  
-  3a. Si el alumno se encuentra registrado, se muestra un mensaje de que el alumno ya esta registrado.
+  3a. Si el alumno se encuentra registrado, se muestra un mensaje de que el alumno ya esta en el sisitema.
