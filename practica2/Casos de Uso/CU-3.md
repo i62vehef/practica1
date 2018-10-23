@@ -9,11 +9,11 @@
 **Actores secundarios:** Alumno
 
 
-**Precondiciones**
+**Precondiciones:**
 
  1. El sistema debe cargar la lista de alumnos de un fichero o copia de seguridad.
   
- **Flujo principal**
+ **Flujo principal:**
 
   1. El sistema carga la lista de alumnos desde un fichero o copia de seguridad.
   2. Se carga la lista de alumnos en el sistema.
