@@ -11,7 +11,7 @@
 
 **Precondiciones:**
 
- 1. El sistema debe cargar la lista de alumnos de un fichero o copia de seguridad.
+ 1. El sistema debe tener una lista de alumnos en un fichero o copia de seguridad.
   
  **Flujo principal:**
 
