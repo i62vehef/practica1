@@ -2,7 +2,7 @@
 
 **ID:** 003
 
-**Breve descripción:** El sistema debe poder cargar una lista de alumnos
+**Breve descripción:** El sistema debe poder cargar una lista de alumnos.
 
 **Actores principales:** Usuario
 
@@ -13,16 +13,17 @@
 
  1. El sistema debe tener una lista de alumnos en un fichero o copia de seguridad.
   
- **Flujo principal:**
+**Flujo principal:**
 
-  1. El sistema carga la lista de alumnos desde un fichero o copia de seguridad.
-  2. Se carga la lista de alumnos en el sistema.
-  3. El sistema mostrará un mensaje de que la lista se cargo correctamente.
+  1. El sistema necesita cargar de un fichero datos sobre alumnos.
+  2. El sistema pide el nombre del fichero.
+  3. Se carga la lista de alumnos en el sistema desde el fichero indicado.
+  4. El sistema mostrará un mensaje de que la lista se cargo correctamente.
 
 **Postcondiciones:**
 
- 1. El sistema carga los datos de la lista de alumnos.
+ 1. El sistema debe tener guardados todos los datos de la lista de alumnos que hubiese en la copia de seguridad.
 
  **Flujo alternativo:**
  
- 2a. El sistema mostrará un mensaje de "Error" si la lista no se cargo correctamente.
+ 3a. El sistema mostrará un mensaje de "Error" si la lista no se cargo correctamente.

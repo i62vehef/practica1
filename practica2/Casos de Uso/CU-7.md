@@ -1,6 +1,6 @@
 ### **Mostrar grupo**
 
-**ID**: 001
+**ID**: 007
 
 **Breve descripción**: El sistema debe poder mostrar los alumnos que forman un grupo de trabajo.
 
@@ -26,4 +26,5 @@
  **Flujos alternativos:**
  
   2a. Si se introduce un ID que no es válido, se muestra un mensaje de error.
+
   3a. Si no se encuentra ningún alumno con dicho grupo asignado se muestra un mensaje de error.
