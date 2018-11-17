@@ -18,7 +18,8 @@
   2. El sistema debe comprobar que el alumno esta registrado.
   3. El sistema comprobará si el alumno a borrar es el líder.
   4. El sistema asignará la condición de líder al compañero en caso de que el alumno a borrar sea el líder.
-  5. El sistema mostrará un mensaje confirmando que el alumno ha sido borrado.
+  5. El sistema preguntará al usuario si esta seguro de borrar al alumno.
+  6. El sistema mostrará un mensaje confirmando que el alumno ha sido borrado.
   
 
 **Postcondiciones:**
