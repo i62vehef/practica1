@@ -1,7 +1,7 @@
 
 ### (**Anverso**)
 
-**ID:** 00?  **Modificar Alumno**
+**ID:** 00?  **Modificar datos de un Alumno**
 
 Como usuario quiero modificar los datos de un Alumno
 
