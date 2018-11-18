@@ -3,7 +3,7 @@
 
 **ID:** 00?  **login**
 
-Como usuario se accedera al sistema mediante id y contraseña.
+Como usuario se podra acceder al sistema mediante id y contraseña.
 
 **Prioridad:** ?
 
