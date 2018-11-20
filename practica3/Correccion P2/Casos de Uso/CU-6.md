@@ -2,7 +2,7 @@
 
 **ID:** 006
 
-**Breve descripción:** El sistema puede modificar los datos de un Alumno.
+**Breve descripción:** El sistema puede modificar los datos de un alumno.
 
 **Actores principales:** Profesor
 

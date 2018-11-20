@@ -32,4 +32,7 @@
 
   3a. Si no encuentra el alumno, muestra un mensaje de error y vuelve al paso anterior (pedir datos).
 
+  3b. Si, al buscar por apellidos, se encuentran varios alumnos, se mostrarán sus datos (apellidos, nombre y DNI).
+      Después se volverá a pedir los datos para que se introduzca el DNI del alumno a borrar.
+
   7a. Si no se eliminan correctamente los datos, se muestra un mensaje de error y vuelve al menú principal.
