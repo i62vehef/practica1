@@ -1,12 +1,12 @@
 ### **Modificar Alumno**
 
-**ID**: 006
+**ID:** 006
 
-**Breve descripción**: El sistema puede modificar los datos de un Alumno.
+**Breve descripción:** El sistema puede modificar los datos de un Alumno.
 
-**Actores principales**: Usuario
+**Actores principales:** Usuario
 
-**Actores secundarios**: Alumno
+**Actores secundarios:** Alumno
 
 **Precondiciones:**
 

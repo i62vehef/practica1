@@ -1,12 +1,12 @@
 ### **Listar alumnado completo**
 
-**ID**: 009
+**ID:** 009
 
-**Breve descripción**: El sistema debe poder mostrar una lista de todos los alumnos registrados.
+**Breve descripción:** El sistema debe poder mostrar una lista de todos los alumnos registrados.
 
-**Actores principales**: Usuario
+**Actores principales:** Usuario
 
-**Actores secundarios**: Alumno
+**Actores secundarios:** Alumno
 
 **Precondiciones:**
 

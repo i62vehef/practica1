@@ -1,12 +1,12 @@
 ### **Buscar alumno**
 
-**ID**: 001
+**ID:** 001
 
-**Breve descripción**: El sistema debe poder buscar un alumno
+**Breve descripción:** El sistema debe poder buscar un alumno
 
-**Actores principales**: Usuario
+**Actores principales:** Profesor
 
-**Actores secundarios**: Alumno
+**Actores secundarios:** Alumno
 
 **Precondiciones:**
 

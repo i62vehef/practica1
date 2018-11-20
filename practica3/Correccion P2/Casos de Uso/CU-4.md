@@ -8,7 +8,7 @@
 
 **Actores secundarios:** Alumno
 
-**Precondiciones**
+**Precondiciones:**
 
  1. El sistema debe tener datos de alumnos guardados.
 
@@ -24,6 +24,4 @@
 
  **Flujo alternativo:**
 
- 2a. El sistema mostrará un mensaje de error si no se creó la copia de seguridad. 
-
- 2b. Se vuelve al menú principal.
+ 2a. El sistema mostrará un mensaje de error si no se creó la copia de seguridad y vuelve al menú principal.

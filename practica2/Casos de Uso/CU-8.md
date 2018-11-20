@@ -1,12 +1,12 @@
 ### **Mostrar grupo**
 
-**ID**: 008
+**ID:** 008
 
-**Breve descripción**: El sistema debe poder mostrar los alumnos que forman un grupo de trabajo.
+**Breve descripción:** El sistema debe poder mostrar los alumnos que forman un grupo de trabajo.
 
-**Actores principales**: Usuario
+**Actores principales:** Usuario
 
-**Actores secundarios**: Alumno
+**Actores secundarios:** Alumno
 
 **Precondiciones:**
 
