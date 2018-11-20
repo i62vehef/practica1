@@ -4,7 +4,7 @@
 
 **Breve descripción:** El sistema debe poder introducir un nuevo alumno
 
-**Actores principales:** Usuario
+**Actores principales:** Profesor
 
 **Actores secundarios:** Alumno
 
@@ -26,6 +26,10 @@
 
 **Flujos alternativos:**
  
-  3a. Si los datos introducidos no son válidos se muestra un mensaje de error.
+  3a. Si los datos introducidos no son válidos, se muestra un mensaje de error.
+
+  3b. El sistema permite volver a introducir todos los datos del nuevo alumno.
 
   4a. Si el alumno ya está registrado se muestra un mensaje de error.
+
+  4b. Se vuelve al menú principal.

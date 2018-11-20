@@ -4,7 +4,7 @@
 
 **Breve descripción:** El sistema debe poder cargar una lista de alumnos.
 
-**Actores principales:** Usuario
+**Actores principales:** Profesor Coordinador
 
 **Actores secundarios:** Alumno
 
@@ -26,4 +26,10 @@
 
  **Flujo alternativo:**
  
- 3a. El sistema mostrará un mensaje de "Error" si la lista no se cargo correctamente.
+ 2a. Si no se encuentra el fichero, se muestra un mensaje de error.
+
+ 2b. Se vuelve al menú principal.
+
+ 3a. El sistema mostrará un mensaje de error si la lista no se cargo correctamente.
+
+ 3b. Se vuelve al menú principal.

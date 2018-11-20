@@ -4,7 +4,7 @@
 
 **Breve descripción:** El sistema debe crear una copia de seguridad
 
-**Actores principales:** Usuario
+**Actores principales:** Profesor Coordinador
 
 **Actores secundarios:** Alumno
 
@@ -24,4 +24,6 @@
 
  **Flujo alternativo:**
 
- 2a. El sistema mostrará un mensaje de "Error" si no se creo la copia de seguridad. 
+ 2a. El sistema mostrará un mensaje de error si no se creó la copia de seguridad. 
+
+ 2b. Se vuelve al menú principal.

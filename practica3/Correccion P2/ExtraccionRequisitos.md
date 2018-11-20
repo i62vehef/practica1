@@ -64,6 +64,8 @@ RNF-6 El sistema será operativo en SOs Linux.
 
 RNF-7 A la hora de mostrar un alumno se mostrará tanto mediante la interfaz como a través de una aplicación web facilitada mediante lenguaje html.
 
+RNF-8 Los profesores tener un rol de entre dos: coordinador y ayudante.
+
 ## Prioridad de los requisitos
 
 RF-1 -> Prioridad 1
@@ -81,3 +83,7 @@ RF-6 -> Prioridad 5
 RF-7 -> Prioridad 5
 
 RF-8 -> Prioridad 5
+
+RF-9 -> Prioridad 5
+
+RF-10 -> Prioridad 5
