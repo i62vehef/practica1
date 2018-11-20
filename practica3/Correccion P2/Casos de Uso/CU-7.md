@@ -25,5 +25,6 @@
 
  **Flujos alternativos:**
  
-  2a. En caso de que se introduzca un DNI, si no es correcto, se muestra un mensaje de error.
-  3. Si el alumno no existe muestra un mensaje de error.
+  2a. En caso de que se introduzca un DNI, si no es correcto, se muestra un mensaje de error y da la opción de introducir un nuevo criterio de búsqueda.
+  
+  3. Si el alumno no existe muestra un mensaje de error y vuelve al menú principal.
