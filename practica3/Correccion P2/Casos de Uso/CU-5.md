@@ -23,7 +23,6 @@
   7. Se borran los datos del alumno.
   8. El sistema mostrará un mensaje confirmando que el alumno ha sido borrado.
   
-
 **Postcondiciones:**
 
   1. El sistema borrará todos los datos del alumno.
