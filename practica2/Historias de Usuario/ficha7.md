@@ -1,15 +1,13 @@
 ## (**Anverso**)
 
-**ID:** 007 **Mostrar grupo**                              
+**ID:** 007 **Mostrar alumno**                              
 
-El sistema debe poder mostrar los alumnos que forman un grupo de trabajo.
+El sistema debe poder mostrar los datos de un alumno.
 
 **Prioridad: 5**
 
 ## (**Reverso**)
 
-+ El sistema mostrará los nombres y apellidos de los componentes del grupo.
++ Se deben mostrar todos los datos de un alumno en concreto.
 
-+ Para encontrar el grupo y sus alumnos se usará el ID del grupo.
-
-+ Se debe comprobar que el grupo existe.
++ El sistema debe comprobar que el alumno existe.

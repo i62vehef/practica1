@@ -1,12 +1,14 @@
+## (**Anverso**)
 
-### (**Anverso**)
+**ID:** 009 **Listar alumnado completo**                              
 
-**ID:** 00?  **Modificar datos de un Alumno**
+El sistema debe poder mostrar una lista de todos los alumnos registrados.
 
-Como usuario quiero modificar los datos de un Alumno
+**Prioridad: 5**
 
-**Prioridad:** ?
+## (**Reverso**)
 
-### (**Reverso**)
++ Se mostrarán de forma ordenada creciente o decrecientemente.
 
-+ Quiero poder modificar cualquier dato del alumno. 
++ El orden será por apellidos.
+

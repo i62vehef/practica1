@@ -38,11 +38,15 @@ RF-4 El sistema contará con una opción para generar una nueva copia de segurid
 
 RF-5 Borrar un alumno.
 
-RF-6 El sistema podrá mostrar un alumno en concreto.
+RF-6 Modificar los datos de un alumno.
 
-RF-7 El sistema tendrá la opción de mostrar los alumnos de un único grupo en concreto.
+RF-7 El sistema podrá mostrar un alumno en concreto.
 
-RF-8 El sistema contará con la opción de mostrar de forma ordenada ascendente o descendentemente el conjunto de todos los alumnos registrados.
+RF-8 El sistema tendrá la opción de mostrar los alumnos de un único grupo en concreto.
+
+RF-9 El sistema contará con la opción de mostrar de forma ordenada ascendente o descendentemente el conjunto de todos los alumnos registrados.
+
+RF-10 Los usuarios podrán acceder al sistema iniciando sesión con su identificador y contraseña únicos.
 
 ## Requisitos no funcionales
 

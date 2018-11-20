@@ -1,8 +1,8 @@
-### **Mostrar grupo**
+### **Mostrar alumno**
 
 **ID**: 007
 
-**Breve descripción**: El sistema debe poder mostrar los alumnos que forman un grupo de trabajo.
+**Breve descripción**: El sistema debe poder mostrar los datos de un alumno.
 
 **Actores principales**: Usuario
 
@@ -10,21 +10,20 @@
 
 **Precondiciones:**
 
- 1. El grupo debe estar registrado
+ 1. El alumno debe estar registrado en el sistema.
 
  **Flujo principal:**
 
-  1. El sistema necesitar mostrar los alumnos de un grupo.
-  2. El sistema pide al usuario el ID del grupo.
-  3. El sistema busca los alumnos por la ID de su grupo.
-  4. Se recogen los nombres y apellidos de los componentes.
+  1. El sistema necesita mostrar un alumno.
+  2. El sistema pide el criterio de búsqueda al usuario, que debe ser DNI o apellidos.
+  3. El sistema busca el alumno.
+  4. Se recogen los datos del alumno.
 
  **Postcondiciones:**
 
-  1. Se muestran los nombres y apellidos de los componentes del grupo.
+  1. Se muestran los datos del alumno.
 
  **Flujos alternativos:**
  
-  2a. Si se introduce un ID que no es válido, se muestra un mensaje de error.
-
-  3a. Si no se encuentra ningún alumno con dicho grupo asignado se muestra un mensaje de error.
+  2a. En caso de que se introduzca un DNI, si no es correcto, se muestra un mensaje de error.
+  3. Si el alumno no existe muestra un mensaje de error.

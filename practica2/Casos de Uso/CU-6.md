@@ -1,8 +1,8 @@
-### **Mostrar alumno**
+### **Modificar Alumno**
 
 **ID**: 006
 
-**Breve descripción**: El sistema debe poder mostrar los datos de un alumno.
+**Breve descripción**: El sistema puede modificar los datos de un Alumno.
 
 **Actores principales**: Usuario
 
@@ -10,20 +10,20 @@
 
 **Precondiciones:**
 
- 1. El alumno debe estar registrado en el sistema.
+ 1. El alumno debe estar registrado
 
  **Flujo principal:**
 
-  1. El sistema necesita mostrar un alumno.
-  2. El sistema pide el criterio de búsqueda al usuario, que debe ser DNI o apellidos.
-  3. El sistema busca el alumno.
-  4. Se recogen los datos del alumno.
+  1. El sistema necesita buscar un alumno
+  2. Se necesita un criterio de búsqueda: DNI, apellidos o grupo
+  3. Se filtra en la lista de alumnos para encontrarlo.
+  4. El sistema podra modificar cualquier dato del Alumno.
 
  **Postcondiciones:**
 
-  1. Se muestran los datos del alumno.
+  1. El sistema recoge los datos modificados del Alumno.
 
  **Flujos alternativos:**
  
-  2a. En caso de que se introduzca un DNI, si no es correcto, se muestra un mensaje de error.
-  3. Si el alumno no existe muestra un mensaje de error.
+  3a. Si el alumno no se encuentra, se muestra un mensaje de error.
+

@@ -1,8 +1,8 @@
-### **Modificar Alumno**
+### **Listar alumnado completo**
 
-**ID**: 00?
+**ID**: 009
 
-**Breve descripción**: El sistema puede modificar los datos de un Alumno.
+**Breve descripción**: El sistema debe poder mostrar una lista de todos los alumnos registrados.
 
 **Actores principales**: Usuario
 
@@ -10,20 +10,18 @@
 
 **Precondiciones:**
 
- 1. El alumno debe estar registrado
+ 1. Debe haber alumnos registrados.
 
  **Flujo principal:**
 
-  1. El sistema necesita buscar un alumno
-  2. Se necesita un criterio de búsqueda: DNI, apellidos o grupo
-  3. Se filtra en la lista de alumnos para encontrarlo.
-  4. El sistema podra modificar cualquier dato del Alumno.
+  1. El sistema necesita listar los alumnos.
+  2. Se pide al usuario si desea listarlo de manera creciente o decreciente.
+  3. Se ordenan los alumnos internamente según su apellido.
 
  **Postcondiciones:**
 
-  1. El sistema recoge los datos modificados del Alumno.
+  1. El sistema muestra la lista de todos los alumnos ordenados alfabeticamente según su apellido.
 
  **Flujos alternativos:**
  
-  3a. Si el alumno no se encuentra, se muestra un mensaje de error.
-
+  2a. Solo se admite ordenación creciente o decreciente.

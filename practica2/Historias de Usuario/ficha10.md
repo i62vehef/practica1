@@ -1,13 +1,14 @@
 
 ## (**Anverso**)
 
-**ID:** 00?  **login**
+**ID:** 010  **Log in**
 
-Como usuario se podra acceder al sistema mediante id y contraseña.
+Los usuario podrán acceder al sistema iniciando sesión en el mismo.
 
-**Prioridad:** ?
+**Prioridad: 5**
 
 ## (**Reverso**)
 
-+ Quiero que ningun usuario acceda al sistema si  no esta registrado.
- 
++ Para el inicio de sesión será necesario el ID y la contraseña.
+
++ Ningún usuario tendrá acceso al sistema si no está registrado.
