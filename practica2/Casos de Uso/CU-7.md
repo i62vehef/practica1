@@ -1,12 +1,12 @@
 ### **Mostrar alumno**
 
-**ID**: 007
+**ID:** 007
 
-**Breve descripción**: El sistema debe poder mostrar los datos de un alumno.
+**Breve descripción:** El sistema debe poder mostrar los datos de un alumno.
 
-**Actores principales**: Usuario
+**Actores principales:** Usuario
 
-**Actores secundarios**: Alumno
+**Actores secundarios:** Alumno
 
 **Precondiciones:**
 

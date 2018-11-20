@@ -1,12 +1,12 @@
 ### **Buscar alumno**
 
-**ID**: 001
+**ID:** 001
 
-**Breve descripción**: El sistema debe poder buscar un alumno
+**Breve descripción:** El sistema debe poder buscar un alumno
 
-**Actores principales**: Profesor
+**Actores principales:** Profesor
 
-**Actores secundarios**: Alumno
+**Actores secundarios:** Alumno
 
 **Precondiciones:**
 
@@ -24,6 +24,6 @@
 
  **Flujos alternativos:**
  
-  3a. Si el alumno no se encuentra, se muestra un mensaje de error.
+  3a. Si el alumno no se encuentra, se muestra un mensaje de error y vuelve al menú principal.
 
-  3b. El sistema vuelve al menú principal
+  3b. Se recogerán los datos de todos los alumnos que coincidan con el criterio de búsqueda, en caso de que ocurra.

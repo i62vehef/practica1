@@ -8,7 +8,7 @@
 
 **Actores secundarios:** Alumno
 
-**Precondiciones**
+**Precondiciones:**
 
  1. El sistema debe tener datos de alumnos guardados.
 

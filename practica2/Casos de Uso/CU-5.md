@@ -2,7 +2,7 @@
 
 **ID:** 005
 
-**Breve Descripción:** El sistema borrará un alumno
+**Breve descripción:** El sistema borrará un alumno
 
 **Actores principales:** Usuario
 
