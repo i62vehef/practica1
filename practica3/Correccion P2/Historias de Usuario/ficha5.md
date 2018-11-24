@@ -4,7 +4,7 @@
 
 El sistema debe poder borrar un alumno.
 
-**Prioridad: 4**
+**Prioridad:** 4 
 
 ## (**Reverso**)
 
@@ -14,3 +14,4 @@ El sistema debe poder borrar un alumno.
 
 + Si el alumno a borrar era lider de su grupo, tras el borrado debe quedar su compañero como lider de dicho grupo.
 
++ Solo debe poder acceder a esta sección el coordinador.

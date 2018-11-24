@@ -4,7 +4,7 @@
 
 El sistema debe poder mostrar los alumnos que forman un grupo de trabajo.
 
-**Prioridad: 5**
+**Prioridad:** 5
 
 ## (**Reverso**)
 

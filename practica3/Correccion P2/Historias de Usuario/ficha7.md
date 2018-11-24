@@ -4,7 +4,7 @@
 
 El sistema debe poder mostrar los datos de un alumno.
 
-**Prioridad: 5**
+**Prioridad:** 5
 
 ## (**Reverso**)
 

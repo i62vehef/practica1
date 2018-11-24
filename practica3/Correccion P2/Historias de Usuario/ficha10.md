@@ -5,7 +5,7 @@
 
 Los usuario podrán acceder al sistema iniciando sesión en el mismo.
 
-**Prioridad: 5**
+**Prioridad:** 5
 
 ## (**Reverso**)
 
