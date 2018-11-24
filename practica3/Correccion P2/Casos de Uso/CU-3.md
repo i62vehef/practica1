@@ -12,7 +12,9 @@
 **Precondiciones:**
 
  1. El sistema debe tener una lista de alumnos en un fichero o copia de seguridad.
-  
+
+ 2. El usuario debe ser coordinador.
+
 **Flujo principal:**
 
   1. El sistema necesita cargar de un fichero datos sobre alumnos.
@@ -25,7 +27,7 @@
  1. El sistema debe tener guardados todos los datos de la lista de alumnos que hubiese en la copia de seguridad.
 
  **Flujo alternativo:**
- 
+
  2a. Si no se encuentra el fichero, se muestra un mensaje de error.
 
  2b. Se vuelve al menú principal.

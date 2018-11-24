@@ -4,7 +4,7 @@
 
 Profesor y Alumnos
 
-## Datos a guardar
+## Datos de alumnos a guardar
 
 * DNI
 
@@ -25,6 +25,22 @@ Profesor y Alumnos
 * Equipo
 
 * ¿Es líder del equipo?
+
+## Datos de profesores a guardar
+
+* Identificador (ID)
+
+* Nombre
+
+* Apellidos
+
+* Email corporativo
+
+* Rol
+
+* Teléfono
+
+* Dirección despacho
 
 ## Requisitos Funcionales
 
@@ -48,6 +64,8 @@ RF-9 El sistema contará con la opción de mostrar de forma ordenada ascendente 
 
 RF-10 Los usuarios podrán acceder al sistema iniciando sesión con su identificador y contraseña únicos.
 
+RF-11 El sistema permitirá al profesor coordinador que registre a nuevos profesores.
+
 ## Requisitos no funcionales
 
 RNF-1 La interfaz utilizada será la línea de comandos
@@ -64,7 +82,11 @@ RNF-6 El sistema será operativo en SOs Linux.
 
 RNF-7 A la hora de mostrar un alumno se mostrará tanto mediante la interfaz como a través de una aplicación web facilitada mediante lenguaje html.
 
-RNF-8 Los profesores tener un rol de entre dos: coordinador y ayudante.
+RNF-8 Los profesores tendrán un rol de entre dos: coordinador y ayudante.
+
+RNF-9 Los profesores ayudantes no podrán crear ni cargar copias de seguridad, así como registrar a nuevos profesores.
+
+RNF-11 Los nuevos profesores registrados serán ayudantes por defecto.
 
 ## Prioridad de los requisitos
 
@@ -87,3 +109,5 @@ RF-8 -> Prioridad 5
 RF-9 -> Prioridad 5
 
 RF-10 -> Prioridad 5
+
+RF-11 -> Prioridad 5

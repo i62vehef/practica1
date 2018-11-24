@@ -12,6 +12,8 @@
 
  1. El sistema debe tener datos de alumnos guardados.
 
+ 2. El usuario debe ser coordinador.
+
  **Flujo principal:**
 
   1. El sistema necesita crear una copia de seguridad.
