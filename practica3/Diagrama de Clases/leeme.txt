@@ -1,0 +1,4 @@
+
+## Información del Diagrama de Clases
+
+ Hemos considerado tres clases: Alumno, Profesor y ListaAlumnos, que están relacionadas de la forma de asociación, la cual es una relación estructural en la que podemos ver la conexión entre los objetos.

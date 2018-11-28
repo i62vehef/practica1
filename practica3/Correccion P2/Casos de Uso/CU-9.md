@@ -16,11 +16,13 @@
 
   1. El sistema necesita listar los alumnos.
   2. Se pide al usuario si desea listarlo de manera creciente o decreciente.
-  3. Se ordenan los alumnos internamente según su apellido.
+  3. El sistema pregunta el criterio de ordenación.
+  4. Se ordenan los alumnos internamente según el criterio indicado.
+  5. El sistema genera un fichero html con la lista de alumnos.
 
  **Postcondiciones:**
 
-  1. El sistema muestra la lista de todos los alumnos ordenados alfabeticamente según su apellido.
+  1. El sistema muestra la lista de todos los alumnos ordenados.
 
  **Flujos alternativos:**
  

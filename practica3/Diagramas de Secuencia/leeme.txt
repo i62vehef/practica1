@@ -1,0 +1,24 @@
+
+## Información de Diagramas de Secuencia
+
++ Diagrama de Secuencia BuscarAlumno corresponde con el Caso de Uso 1.
+
++ Diagrama de Secuencia AñadirAlumno corresponde al Caso de Uso 2.
+
++ Diagrama de Secuencia CargarCopia corresponde al Caso de Uso 3.
+
++ Diagrama de Secuencia CrearCopia corresponde con el Caso de Uso 4.
+
++ Diagrama de Secuencia BorrarAlumno corresponde al Caso de Uso 5.
+
++ Diagrama de Secuencia ModificarAlumno corresponde al Caso de Uso 6.
+
++ Diagrama de Secuencia MostrarAlumno corresponde con el Caso de Uso 7.
+
++ Diagrama de Secuencia MostrarGrupo corresponde al Caso de Uso 8.
+
++ Diagrama de Secuencia MostrarTodosAlumnos corresponde al Caso de Uso 9.
+
++ Diagrama de Secuencia Login corresponde con el Caso de Uso 10.
+
++ Diagrama de Secuencia RegistrarProfesor corresponde al Caso de Uso 11.
