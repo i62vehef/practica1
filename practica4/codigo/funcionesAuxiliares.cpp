@@ -23,19 +23,40 @@ int menu()
 	posicion++;
 
 	PLACE(posicion++,10);
-	std::cout << "[1] ";
-
-	//////////////////////////////////////////////////////////////////////////////
-	posicion++;
+	std::cout << BIYELLOW << "[1]" << RESET << " Cargar alumnos desde fichero";
 
 	PLACE(posicion++,10);
-	std::cout << "[2] ";
+	std::cout << BIYELLOW << "[2]" << RESET << " Guardar alumnos en un fichero";
 
 	//////////////////////////////////////////////////////////////////////////////
 	posicion++;
 
 	PLACE(posicion++,10);	
-	std::cout << "[3] ";
+	std::cout << BIBLUE << "[3]" << RESET << " Introducir nuevo alumno";
+
+	PLACE(posicion++,10);	
+	std::cout << BIBLUE << "[4]" << RESET << " Modificar datos de un alumno";
+
+	PLACE(posicion++,10);	
+	std::cout << BIBLUE << "[5]" << RESET << " Eliminar un alumno";
+
+	//////////////////////////////////////////////////////////////////////////////
+	posicion++;
+
+	PLACE(posicion++,10);	
+	std::cout << BIGREEN << "[6]" << RESET << " Mostrar datos de un alumno";
+
+	PLACE(posicion++,10);	
+	std::cout << BIGREEN << "[7]" << RESET << " Mostrar alumnos de un grupo";
+
+	PLACE(posicion++,10);
+	std::cout << BIGREEN << "[8]" << RESET << " Mostrar lista de alumnos";
+
+	//////////////////////////////////////////////////////////////////////////////
+	posicion++;
+
+	PLACE(posicion++,10);
+	std::cout << BICYAN << "[9]" << RESET << " Registrar nuevo profesor";
 
 	//////////////////////////////////////////////////////////////////////////////
 	posicion++;
