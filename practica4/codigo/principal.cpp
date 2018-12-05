@@ -6,6 +6,9 @@ int main(int argc, char ** argv)
 {
 	int opcion;
 
+	bool logged=false;
+	bool coordinador=false;
+
 	do
 	{
 		opcion=menu();
@@ -14,7 +17,7 @@ int main(int argc, char ** argv)
 			case 0:
 			break;
 			case 1://Cargar datos de un fichero
-				
+
 				std::cin.ignore();
 			break;
 			case 2://Guardar datos en un fichero
@@ -46,6 +49,14 @@ int main(int argc, char ** argv)
 				std::cin.ignore();
 			break;
 			case 9://Registrar nuevo profesor
+
+				std::cin.ignore();
+			break;
+			case 10://Cargar copia de seguridad
+
+				std::cin.ignore();
+			break;
+			case 11://Crear copia de seguridad
 
 				std::cin.ignore();
 			break;															

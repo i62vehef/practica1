@@ -62,6 +62,15 @@ int menu()
 	posicion++;
 
 	PLACE(posicion++,10);
+	std::cout << IGREEN << "[10]" << RESET << " Cargar copia de seguridad";
+
+	PLACE(posicion++,10);
+	std::cout << IGREEN << "[11]" << RESET << " Crear copia de seguridad";
+
+	//////////////////////////////////////////////////////////////////////////////
+	posicion++;
+
+	PLACE(posicion++,10);
 	std::cout << BIRED << "[0] Volver";
 
 	//////////////////////////////////////////////////////////////////////////////
