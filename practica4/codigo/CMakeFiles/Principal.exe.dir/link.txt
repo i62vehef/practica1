@@ -1,1 +1,0 @@
-/usr/bin/c++   -lrt -g   CMakeFiles/Principal.exe.dir/principal.cpp.o CMakeFiles/Principal.exe.dir/funcionesAuxiliares.cpp.o  -o Principal.exe -rdynamic 
