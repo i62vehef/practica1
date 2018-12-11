@@ -1,66 +1,21 @@
-#include <iostrema>
-#include <string>
-#include <cstdlib>
-#include <cstdio>
-#include "profesor.h"
+#include "profesor.hpp"
 
-
-
-Profesor::Profesor(string nombre,int Id)
+void GuardaFichero()
 {
-
-        nombre_ = nombre;
-
-       if(Id=="")
-       {
-           
-       }else 
-        {
-            
-            Id_ = Id;
-        }
-
-
+	return;
 }
 
-void Profesor::setNombre(string &nombre)
+void CargarFichero()
 {
-
-    if(nombre=="" || nombre!=nombre_)
-    {
-
-    }else
-    {
-        nombre_ = nombre;
-    }
-    
+	return;
 }
 
-void Profesor::setId(int Id)
+void GuardarCopia()
 {
-        if(Id=="" || Id!=Id_)
-        {
-
-        }else 
-            {
-                Id_ = Id;
-            }
+	return;
 }
 
-bool getRol(bool rol)
+void CrearCopia()
 {
-    if(rol=="")
-    {
-        return false;
-    }else
-        {
-            rol_ = rol;
-            return true;
-        }
-}
-void setRol(bool rol)
-{
-
-
-
+	return;
 }

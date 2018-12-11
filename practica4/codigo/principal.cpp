@@ -1,4 +1,6 @@
 #include "funcionesAuxiliares.hpp"
+#include "listaAlumnos.hpp"
+#include "profesor.hpp"
 #include "macros.hpp"
 
 
@@ -9,6 +11,8 @@ int main(int argc, char ** argv)
 	bool logged=false;
 	bool coordinador=false;
 
+	ListaAlumnos clase;
+
 	do
 	{
 		opcion=menu();
@@ -17,7 +21,7 @@ int main(int argc, char ** argv)
 			case 0:
 			break;
 			case 1://Cargar datos de un fichero
-
+				//cargarClasedeFichero(clase);
 				std::cin.ignore();
 			break;
 			case 2://Guardar datos en un fichero
