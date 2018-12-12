@@ -29,8 +29,9 @@ int main(int argc, char ** argv)
 				std::cin.ignore();
 			break;
 			case 3://Introducir alumno
-
-				//std::cin.ignore();
+				std::system("clear");
+				introducirAlumno();
+				std::cin.ignore();
 			break;
 			case 4://Modificar datos de un alumno
 
