@@ -4,9 +4,7 @@ void cargarClasedeFichero(ListaAlumnos &lista)
 {
 	std::ifstream fichero;
 
-	string nombreFichero; //Hay que ver como vamos a hacer lo del nombre del fichero
-
-	fichero.open(nombreFichero.c_str());
+	fichero.open("./ficheros/clase");
 
 	if((fichero.rdstate() & std::ofstream::failbit)!=0)	
       std::cout<<BIRED<<"Se ha producido un error al intentar abrir el fichero"<<RESET<<std::endl;
