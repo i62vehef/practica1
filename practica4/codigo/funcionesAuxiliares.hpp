@@ -6,7 +6,7 @@
 #include <fstream>
 #include "listaAlumnos.hpp"
 
-//void cargarClasedeFichero(ListaAlumnos &lista);
+void cargarClasedeFichero(ListaAlumnos &lista);
 
 int menu();
 

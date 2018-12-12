@@ -1,6 +1,6 @@
 #include "funcionesAuxiliares.hpp"
 
-/*void cargarClasedeFichero(ListaAlumnos &lista)
+void cargarClasedeFichero(ListaAlumnos &lista)
 {
 	std::ifstream fichero;
 
@@ -18,7 +18,7 @@
 	}
 	
 	fichero.close();
-}*/
+}
 
 int menu()
 {

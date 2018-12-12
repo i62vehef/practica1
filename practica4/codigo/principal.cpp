@@ -21,7 +21,7 @@ int main(int argc, char ** argv)
 			case 0:
 			break;
 			case 1://Cargar datos de un fichero
-				//cargarClasedeFichero(clase);
+				cargarClasedeFichero(clase);
 				std::cin.ignore();
 			break;
 			case 2://Guardar datos en un fichero

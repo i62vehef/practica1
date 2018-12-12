@@ -111,4 +111,10 @@ public:
 
 };
 
+   //Funciones externas de la clase Material: sobrecarga de los operadores de flujo
+
+ostream &operator<<(ostream &stream, Material const &material);
+
+istream &operator>>(istream &stream, Material &material);
+
 #endif
