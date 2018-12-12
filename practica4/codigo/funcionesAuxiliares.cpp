@@ -22,31 +22,31 @@ void cargarClasedeFichero(ListaAlumnos &lista)
 	quicksort(0,lista.size()-1,lista);
 }
 
-void quicksort(int primero, int ultimo, ListaAlumnos &vector)
+void quicksort(int primero, int ultimo, ListaAlumnos &lista)
 {
    if(primero < ultimo)
    {
-      	int pivote=partition(primero, ultimo, vector);
+      	int pivote=partition(primero, ultimo, lista);
 
-      	quicksort(primero, pivote - 1, vector);
-      	quicksort(pivote + 1, ultimo, vector);
+      	quicksort(primero, pivote - 1, lista);
+      	quicksort(pivote + 1, ultimo, lista);
    }
 }
 
-int partition(int primero, int ultimo, ListaAlumnos &vector)
+int partition(int primero, int ultimo, ListaAlumnos &lista)
 {
-   float pivote=vector.getAlumno(ultimo).getApellidos();
+   float pivote=lista.getAlumno(ultimo).getApellidos();
    int i=primero-1;
 
    for(int j=primero; j<=ultimo-1; j++)
    {
-   		if(strcmp(vector[j].getApellidos().c_str(),pivote.c_str())>=0)
+   		if(strcmp(lista.getAlumno(j).getApellidos().c_str(),pivote.c_str())>=0)
       	{
     		i++;
-         	std::swap(vector[i], vector[j]);
+         	std::swap(lista.getAlumno(i), lista.getAlumno(j));
       	}
    }
-   std::swap(vector[i+1], vector[ultimo]);
+   std::swap(lista.getAlumno(i+1), lista.getAlumno(ultimo));
    return i+1;
 }
 
