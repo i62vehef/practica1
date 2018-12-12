@@ -10,9 +10,9 @@ void introducirAlumno();
 
 void cargarClasedeFichero(ListaAlumnos &lista);
 
-void quicksort(int primero, int ultimo, std::vector<Material> &vector);
+void quicksort(int primero, int ultimo, ListaAlumnos &vector);
 
-int partition(int primero, int ultimo, std::vector<Material> &vector);
+int partition(int primero, int ultimo, ListaAlumnos &vector);
 
 int menu();
 

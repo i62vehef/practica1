@@ -14,7 +14,7 @@ private:
 
 	string nombre_;//Nombre del profesor
 	int Id_;//Identificador del profesor
-	//*ptr agenda_;//NPI
+	ListaAlumnos *agenda; //Lista de alumnos
 	bool rol_;//Rol del profesor
 
 public:
