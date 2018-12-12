@@ -2,6 +2,7 @@
 #define LISTAALUMNOS_H
 
 #include <vector>
+#include "macros.hpp"
 #include "alumno.hpp"
 
 class ListaAlumnos
@@ -14,6 +15,11 @@ private:
 	//Cada elemento es un objeto de la clase Alumno
 	//Representa la lista de alumnos de una clase
 	vector<Alumno> alumnos_;
+
+	//booleano que indica si esta ordenado en orden creciente o decreciente
+	//creciente=1
+	//decreciente=0
+	bool ordenado;
 
 
 public:
@@ -64,6 +70,14 @@ public:
 	void eliminar(Alumno c);
 	void MostrarAlumno();
 	void ListarAlumnos();
+
+	//busca alumnos segun su DNI, apellidos o equipo
+	//DNI -> criterio=1 
+	//Apellidos -> criterio=2
+	//equipo -> criterio=3
+	//valor indica el valor del criterio elegido
+	//Devuelve el alumno o grupo de alumnos seleccionado
+	std::vector<Alumno> buscarAlumno(int const &criterio, string &valor);
 
 	inline void swap(int const &a, int const &b)
 	{

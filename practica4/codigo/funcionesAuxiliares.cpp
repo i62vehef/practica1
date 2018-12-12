@@ -1,6 +1,6 @@
 #include "funcionesAuxiliares.hpp"
 
-void cargarClasedeFichero(ListaAlumnos &lista)
+void cargarClasedeFichero(Profesor &p)
 {
 	std::ifstream fichero;
 
@@ -11,13 +11,17 @@ void cargarClasedeFichero(ListaAlumnos &lista)
 	else 
 	{
 		Alumno aux;
-		while(fichero>>aux) lista.insertar(aux);		
+		while(fichero>>aux) p.getAgenda().insertar(aux);		
 		std::cout<<BIGREEN<<"Fichero cargado con exito"<<RESET<<std::endl;
 	}
 	
 	fichero.close();
 
-	quicksort(0,lista.tamClase()-1,lista);
+	ListaAlumnos aux;
+
+	aux=p.getAgenda();
+
+	quicksort(0,p.getAgenda().tamClase()-1,aux );
 }
 
 void quicksort(int primero, int ultimo, ListaAlumnos &lista)
@@ -44,7 +48,7 @@ int particion(int primero, int ultimo, ListaAlumnos &lista)
          	lista.swap(i, j);
       	}
    }
-   lista.	swap(i+1, ultimo);
+   lista.swap(i+1, ultimo);
    return i+1;
 }
 
