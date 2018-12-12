@@ -6,6 +6,8 @@
 #include <fstream>
 #include "listaAlumnos.hpp"
 
+void introducirAlumno();
+
 void cargarClasedeFichero(ListaAlumnos &lista);
 
 void quicksort(int primero, int ultimo, std::vector<Material> &vector);
