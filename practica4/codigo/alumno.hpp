@@ -109,6 +109,20 @@ public:
 
 	//Metodos de la clase Alumno
 
+	//Operadores
+	inline Alumno operator=(Alumno const &alumno)
+	{
+		setApellidos(alumno.getApellidos());
+		setNombre(alumno.getNombre());
+		setDNI(alumno.getDNI());
+		setTelefono(alumno.getTelefono());
+		setDomicilio(alumno.getDomicilio());
+		setCurso(alumno.getCurso());
+		setEmail(alumno.getEmail());
+		setEquipo(alumno.getEquipo());
+
+		return *this;
+	};
 };
 
    //Funciones externas de la clase Material: sobrecarga de los operadores de flujo
