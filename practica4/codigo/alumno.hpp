@@ -3,6 +3,11 @@
 #include <iostream>
 #include <cstring>
 #include <cassert>
+
+// Para la sobrecarga de los operadores de flujo: << y >>
+using std::istream;
+using std::ostream;
+
 using namespace std;
 
 class Alumno
@@ -125,10 +130,10 @@ public:
 	};
 };
 
-   //Funciones externas de la clase Material: sobrecarga de los operadores de flujo
+   //Funciones externas de la clase Alumno: sobrecarga de los operadores de flujo
 
-ostream &operator<<(ostream &stream, Material const &material);
+ostream &operator<<(ostream &stream, Alumno const &alumno);
 
-istream &operator>>(istream &stream, Material &material);
+istream &operator>>(istream &stream, Alumno &alumno);
 
 #endif
