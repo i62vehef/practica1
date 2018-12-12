@@ -5,14 +5,17 @@
 #include <iostream>
 #include <fstream>
 #include "listaAlumnos.hpp"
+#include "alumno.hpp"
+#include <cstdio>
+#include <cstdlib>
 
 void introducirAlumno();
 
 void cargarClasedeFichero(ListaAlumnos &lista);
 
-void quicksort(int primero, int ultimo, ListaAlumnos &vector);
+void quicksort(int primero, int ultimo, ListaAlumnos &lista);
 
-int partition(int primero, int ultimo, ListaAlumnos &vector);
+int particion(int primero, int ultimo, ListaAlumnos &lista);
 
 int menu();
 

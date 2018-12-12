@@ -65,6 +65,11 @@ public:
 	void MostrarAlumno();
 	void ListarAlumnos();
 
+	inline void swap(int const &a, int const &b)
+	{
+		std::swap(alumnos_[a],alumnos_[b]);
+	}
+
 
 
 

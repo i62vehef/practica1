@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstring>
 #include <cassert>
+#include "listaAlumnos.hpp"
 using namespace std;
 
 

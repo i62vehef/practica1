@@ -19,23 +19,23 @@ void cargarClasedeFichero(ListaAlumnos &lista)
 	
 	fichero.close();
 
-	quicksort(0,lista.size()-1,lista);
+	quicksort(0,lista.tamClase()-1,lista);
 }
 
 void quicksort(int primero, int ultimo, ListaAlumnos &lista)
 {
    if(primero < ultimo)
    {
-      	int pivote=partition(primero, ultimo, lista);
+      	int pivote=particion(primero, ultimo, lista);
 
       	quicksort(primero, pivote - 1, lista);
       	quicksort(pivote + 1, ultimo, lista);
    }
 }
 
-int partition(int primero, int ultimo, ListaAlumnos &lista)
+int particion(int primero, int ultimo, ListaAlumnos &lista)
 {
-   float pivote=lista.getAlumno(ultimo).getApellidos();
+   string pivote=lista.getAlumno(ultimo).getApellidos();
    int i=primero-1;
 
    for(int j=primero; j<=ultimo-1; j++)
@@ -43,10 +43,10 @@ int partition(int primero, int ultimo, ListaAlumnos &lista)
    		if(strcmp(lista.getAlumno(j).getApellidos().c_str(),pivote.c_str())>=0)
       	{
     		i++;
-         	std::swap(lista.getAlumno(i), lista.getAlumno(j));
+         	lista.swap(i, j);
       	}
    }
-   std::swap(lista.getAlumno(i+1), lista.getAlumno(ultimo));
+   lista.	swap(i+1, ultimo);
    return i+1;
 }
 

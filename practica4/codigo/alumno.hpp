@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cstring>
 #include <cassert>
+#include <cstdlib>
 
 // Para la sobrecarga de los operadores de flujo: << y >>
 using std::istream;
@@ -25,9 +26,22 @@ private:
 
 public:
 
-	//Constructor de la Clase Alumno
-	inline Alumno(string nombre,string apellidos,int telefono,string domicilio,string DNI,
-	int curso,string email, int equipo=0)
+	//Constructores de la Clase Alumno
+	//Constructor sin parametros
+	inline Alumno()
+	{
+		nombre_="";
+		apellidos_="";
+		telefono_=0;
+		domicilio_="";
+		DNI_="";
+		curso_=0;
+		email_="";
+		equipo_=0;
+	}
+
+	//Constructor parametrizado
+	inline Alumno(string nombre,string apellidos,int telefono,string domicilio,string DNI,int curso,string email, int equipo=0)
 	{
         nombre_ = nombre;
         apellidos_ = apellidos;
