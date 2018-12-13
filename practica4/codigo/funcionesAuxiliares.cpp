@@ -245,3 +245,25 @@ int menu()
     std::cin.ignore();
 	return opcion;
 }
+
+void introducirAlumno()
+{
+	string nombre,apellidos,domicilio,DNI,email;
+	int telefono,curso,equipo;
+cout<<"INTRODUCIR DATOS DEL ALUMNO\n\n";
+
+	cout<<"DNI:";
+	cin>>DNI;
+	cout<<"Nombre:";
+	cin>>nombre;
+	cout<<"Apellidos:";
+	cin>>apellidos;
+	cout<<"Domicilio:";
+	cin>>domicilio;
+	cout<<"Curso";
+	cin>>curso;
+	cout<<"Email";
+	cin>>email;
+	cout<<"Equipo";
+	cin>>equipo;
+}
