@@ -41,7 +41,7 @@ int main(int argc, char ** argv)
 				std::cin.ignore();
 			break;
 			case 6://Mostrar datos de un alumno
-
+				mostrarDatosdeAlumno(tutor);
 				std::cin.ignore();
 			break;
 			case 7://Mostrar grupo
