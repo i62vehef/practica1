@@ -3,7 +3,7 @@
 void Alumno::escribir()
 {
 	std::cout<<BIYELLOW<<"Datos del alumno"<<RESET<<std::endl;
-	std::cout<<getApellidos()<<","<<getNombre()<<std::endl;
+	std::cout<<getApellido()<<","<<getNombre()<<std::endl;
 	std::cout<<"DNI: "<<getDNI()<<std::endl;
 	std::cout<<"Grupo: "<<getEquipo()<<std::endl;
 	std::cout<<"Curso: "<<getCurso()<<std::endl;
@@ -19,7 +19,7 @@ void Alumno::escribir()
 ostream &operator<<(ostream &stream, Alumno const &alumno)
 {
 
-	stream<<alumno.getApellidos()<<","<<alumno.getNombre()<<" "<<alumno.getDNI()<<" "<<alumno.getTelefono()<<" "<<alumno.getDomicilio()<<" "<<alumno.getCurso()<<" "<<alumno.getEmail()<<" "<<alumno.getEquipo()<<std::endl;
+	stream<<alumno.getApellido()<<","<<alumno.getNombre()<<" "<<alumno.getDNI()<<" "<<alumno.getTelefono()<<" "<<alumno.getDomicilio()<<" "<<alumno.getCurso()<<" "<<alumno.getEmail()<<" "<<alumno.getEquipo()<<std::endl;
 
 	return stream;
 }
@@ -30,7 +30,7 @@ istream &operator>>(istream &stream, Alumno &alumno)
 	std::string str1;
 
 	getline(stream, str1, ' ');
-	alumno.setApellidos(str1);
+	alumno.setApellido(str1);
 	getline(stream, str1, ',');
 	alumno.setNombre(str1);
 	getline(stream, str1, ' ');

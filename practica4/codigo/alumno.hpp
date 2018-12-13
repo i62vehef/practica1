@@ -17,7 +17,7 @@ class Alumno
 private:
 
 	string nombre_; //Nombre del alumno
-	string apellidos_; //Apellidos del alumno
+	string apellido_; //Apellido del alumno
 	int telefono_; //telefono de contacto del alumno
 	string domicilio_; //domicilio de residencia del alumno durante el curso
 	string DNI_; //DNI del alumno
@@ -32,7 +32,7 @@ public:
 	inline Alumno()
 	{
 		nombre_="";
-		apellidos_="";
+		apellido_="";
 		telefono_=0;
 		domicilio_="";
 		DNI_="";
@@ -42,10 +42,10 @@ public:
 	}
 
 	//Constructor parametrizado
-	inline Alumno(string nombre,string apellidos,int telefono,string domicilio,string DNI,int curso,string email, int equipo=0)
+	inline Alumno(string nombre,string apellido,int telefono,string domicilio,string DNI,int curso,string email, int equipo=0)
 	{
         nombre_ = nombre;
-        apellidos_ = apellidos;
+        apellido_ = apellido;
         telefono_ = telefono;
         domicilio_ = domicilio;
         DNI_ = DNI;
@@ -54,13 +54,13 @@ public:
         equipo_ = equipo;
 
         #ifndef NDEBUG
-        	assert(strcmp(nombre_.c_str(),nombre.c_str())==0 && strcmp(apellidos_.c_str(),apellidos.c_str())==0 && telefono_==telefono && strcmp(domicilio_.c_str(),domicilio.c_str())==0 && strcmp(DNI_.c_str(),DNI.c_str())==0 && curso_==curso && strcmp(email_.c_str(),email.c_str())==0 && equipo_==equipo);
+        	assert(strcmp(nombre_.c_str(),nombre.c_str())==0 && strcmp(apellido_.c_str(),apellido.c_str())==0 && telefono_==telefono && strcmp(domicilio_.c_str(),domicilio.c_str())==0 && strcmp(DNI_.c_str(),DNI.c_str())==0 && curso_==curso && strcmp(email_.c_str(),email.c_str())==0 && equipo_==equipo);
         #endif
 	}
 
 	//Observadores
 	inline string getNombre() const{return nombre_;}
-	inline string getApellidos() const{return apellidos_;}
+	inline string getApellido() const{return apellido_;}
 	inline int getTelefono()const{return telefono_;}
 	inline string getDomicilio()const{return domicilio_;}
 	inline string getDNI()const{return DNI_;}
@@ -76,11 +76,11 @@ public:
 			assert(strcmp(getNombre().c_str(),nNombre.c_str())==0);
 		#endif
 	}
-	inline void setApellidos(string const &nApellidos)
+	inline void setApellido(string const &nApellido)
 	{
-		apellidos_=nApellidos;
+		apellido_=nApellido;
 		#ifndef NDEBUG
-			assert(strcmp(getApellidos().c_str(),nApellidos.c_str())==0);
+			assert(strcmp(getApellido().c_str(),nApellido.c_str())==0);
 		#endif
 	}
 	inline void setTelefono(int const &nTelefono)
@@ -133,7 +133,7 @@ public:
 	//Operadores
 	inline Alumno operator=(Alumno const &alumno)
 	{
-		setApellidos(alumno.getApellidos());
+		setApellido(alumno.getApellido());
 		setNombre(alumno.getNombre());
 		setDNI(alumno.getDNI());
 		setTelefono(alumno.getTelefono());

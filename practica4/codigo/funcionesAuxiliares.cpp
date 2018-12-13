@@ -99,7 +99,7 @@ void mostrarDatosdeAlumno(Profesor &p)
 
 					std::cout<<"Indique cual es que buscaba"<<std::endl;
 					for(int i=0;i<buscado.size();i++)
-						std::cout<<" ["<<i+1<<"] "<<p.getAgenda().getAlumno(buscado[i]).getApellidos()<<","<<p.getAgenda().getAlumno(buscado[i]).getNombre()<<std::endl;
+						std::cout<<" ["<<i+1<<"] "<<p.getAgenda().getAlumno(buscado[i]).getApellido()<<","<<p.getAgenda().getAlumno(buscado[i]).getNombre()<<std::endl;
 					
 					std::cin>>opcionapellido;
 
@@ -109,7 +109,7 @@ void mostrarDatosdeAlumno(Profesor &p)
 
 						std::cout<<"Indique cual es que buscaba"<<std::endl;
 						for(int i=0;i<buscado.size();i++)
-							std::cout<<" ["<<i+1<<"] "<<p.getAgenda().getAlumno(buscado[i]).getApellidos()<<","<<p.getAgenda().getAlumno(buscado[i]).getNombre()<<std::endl;
+							std::cout<<" ["<<i+1<<"] "<<p.getAgenda().getAlumno(buscado[i]).getApellido()<<","<<p.getAgenda().getAlumno(buscado[i]).getNombre()<<std::endl;
 					
 						std::cin>>opcionapellido;
 					}
@@ -140,12 +140,12 @@ void quicksort(int primero, int ultimo, ListaAlumnos &lista)
 
 int particion(int primero, int ultimo, ListaAlumnos &lista)
 {
-   string pivote=lista.getAlumno(ultimo).getApellidos();
+   string pivote=lista.getAlumno(ultimo).getApellido();
    int i=primero-1;
 
    for(int j=primero; j<=ultimo-1; j++)
    {
-   		if(strcmp(lista.getAlumno(j).getApellidos().c_str(),pivote.c_str())>=0)
+   		if(strcmp(lista.getAlumno(j).getApellido().c_str(),pivote.c_str())>=0)
       	{
     		i++;
          	lista.swap(i, j);

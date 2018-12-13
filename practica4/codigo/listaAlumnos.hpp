@@ -67,7 +67,12 @@ public:
 		alumnos_.push_back(nAlumno);
 	}
 
-	void eliminar(Alumno c);
+	inline void eliminar(int const &i)
+	{
+		#ifndef NDEBUG
+			assert(tamClase()>0);
+		#endif
+	}
 
 	//muestra el alumno de la posicion i de la lista
 	//i -> indice en la lista del alumno a imprimir
@@ -78,9 +83,9 @@ public:
 	
 	void listarAlumnos();
 
-	//busca alumnos segun su DNI, apellidos o equipo
+	//busca alumnos segun su DNI, apellido o equipo
 	//DNI -> criterio=1 
-	//Apellidos -> criterio=2
+	//Apellido -> criterio=2
 	//equipo -> criterio=3
 	//valor indica el valor del criterio elegido
 	//Devuelve el alumno o grupo de alumnos seleccionado

@@ -23,12 +23,12 @@ std::vector<int> ListaAlumnos::buscarAlumno(int criterio, string &valor)
 
 			return aux;
 		break;
-		case 2://Apellidos
+		case 2://Apellido
 
 			//Se busca el alumno
 			for(int i=0;i<tamClase();i++)
 			{
-				if(strcmp(getAlumno(i).getApellidos().c_str(),valor.c_str())==0)
+				if(strcmp(getAlumno(i).getApellido().c_str(),valor.c_str())==0)
 					aux.push_back(i);
 			}
 
