@@ -128,7 +128,7 @@ public:
 
 
 	//Metodos de la clase Alumno
-	void escribirAlumno();
+	void escribir();
 
 	//Operadores
 	inline Alumno operator=(Alumno const &alumno)

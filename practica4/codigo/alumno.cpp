@@ -1,6 +1,6 @@
 #include "alumno.hpp"
 
-void escribirAlumno()
+void Alumno::escribir()
 {
 	std::cout<<BIYELLOW<<"Datos del alumno"<<RESET<<std::endl;
 	std::cout<<getApellidos()<<","<<getNombre()<<std::endl;
