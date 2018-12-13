@@ -19,7 +19,7 @@ void cargarClasedeFichero(Profesor &p)
 	
 	fichero.close();
 
-	quicksort(0,lista.tamClase()-1,lista);
+	quicksort(0,p.getAgenda().tamClase()-1,p.getAgenda());
 }
 
 void mostrarDatosdeAlumno(Profesor &p)

@@ -143,7 +143,7 @@ public:
 		setEquipo(alumno.getEquipo());
 
 		return *this;
-	};
+	}
 };
 
    //Funciones externas de la clase Alumno: sobrecarga de los operadores de flujo
