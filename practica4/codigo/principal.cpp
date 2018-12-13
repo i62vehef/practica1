@@ -11,7 +11,7 @@ int main(int argc, char ** argv)
 	bool logged=false;
 	bool coordinador=false;
 
-	ListaAlumnos clase;
+	Profesor tutor;
 
 	do
 	{
@@ -21,7 +21,7 @@ int main(int argc, char ** argv)
 			case 0:
 			break;
 			case 1://Cargar datos de un fichero
-				cargarClasedeFichero(clase);
+				cargarClasedeFichero(tutor);
 				std::cin.ignore();
 			break;
 			case 2://Guardar datos en un fichero

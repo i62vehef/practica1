@@ -128,6 +128,7 @@ public:
 
 	//Metodos de la clase Alumno
 
+
 	//Operadores
 	inline Alumno operator=(Alumno const &alumno)
 	{

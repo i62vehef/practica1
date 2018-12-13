@@ -8,10 +8,11 @@
 #include "alumno.hpp"
 #include <cstdio>
 #include <cstdlib>
+#include "profesor.hpp"
 
-void introducirAlumno();
+//void introducirAlumno();
 
-void cargarClasedeFichero(ListaAlumnos &lista);
+void cargarClasedeFichero(Profesor &p);
 
 void quicksort(int primero, int ultimo, ListaAlumnos &lista);
 
