@@ -14,6 +14,8 @@ void introducirAlumno(Profesor &c);
 
 //void cargarClasedeFichero(Profesor &p);
 
+void mostrarDatosdeAlumno(Profesor &p);
+
 void quicksort(int primero, int ultimo, ListaAlumnos &lista);
 
 int particion(int primero, int ultimo, ListaAlumnos &lista);

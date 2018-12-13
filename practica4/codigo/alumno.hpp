@@ -4,6 +4,7 @@
 #include <cstring>
 #include <cassert>
 #include <cstdlib>
+#include "macros.hpp"
 
 // Para la sobrecarga de los operadores de flujo: << y >>
 using std::istream;
@@ -127,7 +128,7 @@ public:
 
 
 	//Metodos de la clase Alumno
-
+	void escribir();
 
 	//Operadores
 	inline Alumno operator=(Alumno const &alumno)

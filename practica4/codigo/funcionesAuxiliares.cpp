@@ -1,6 +1,6 @@
 #include "funcionesAuxiliares.hpp"
 
-/*void cargarClasedeFichero(Profesor &p)
+void cargarClasedeFichero(Profesor &p)
 {
 	std::ifstream fichero;
 
@@ -21,7 +21,112 @@
 
 	quicksort(0,lista.tamClase()-1,lista);
 }
-*/
+
+void mostrarDatosdeAlumno(Profesor &p)
+{
+	std::system("clear");
+	int opcion=0, opcionapellido;
+	string dato;
+
+	std::vector<int> buscado;
+
+	std::cout<<"Se mostraran todos los datos de un alumno"<<std::endl;
+
+	std::cout<<"Indique el dato por el que se identificara al alumno a mostrar"<<std::endl;
+	std::cout<<"[1] DNI"<<std::endl;
+	std::cout<<"[2] Apellido"<<std::endl;
+
+	std::cin>>opcion;
+
+	while(opcion!=1 && opcion!=2)
+	{
+		std::cout<<BIRED<<"ERROR introduzca una opcion valida"<<RESET<<std::endl<<std::endl;
+
+		std::cout<<"Indique el dato por el que se identificara al alumno a mostrar"<<std::endl;
+		std::cout<<"[1] DNI"<<std::endl;
+		std::cout<<"[2] Apellido"<<std::endl;
+		
+		std::cin>>opcion;
+	}
+
+	switch(opcion)
+	{
+		case 1://DNI
+			//pedir DNI
+			std::cout<<"Introduzca el DNI del alumno"<<std::endl;
+			std::cin>>dato;
+
+			//comprobar DNI
+			while(strlen(dato.c_str())!=9)
+			{
+				std::cout<<BIRED<<"ERROR DNI invalido"<<RESET<<std::endl<<std::endl;
+				
+				std::cout<<"Introduzca el DNI del alumno"<<std::endl;
+				std::cin>>dato;
+			}
+
+			//buscar alumno
+			buscado=p.getAgenda().buscarAlumno(opcion,dato);
+
+			//comprobar resultados de la busqueda
+			if(buscado.size()==1)//mostrar
+				p.getAgenda().mostrarAlumno(buscado[0]);
+			else//error
+			{
+				if(buscado.size()==0)
+					std::cout<<BIRED<<"No se ha encontrado ningun alumno con DNI "<<dato<<" registrado"<<RESET<<std::endl;
+				else
+					std::cout<<BIRED<<"ERROR se han encontrado varios alumnos con el mismo DNI"<<RESET<<std::endl;
+			}
+	
+		break;
+		case 2://Apellido
+			//pedir apellido
+			std::cout<<"Introduzca el apellido del alumno"<<std::endl;
+			std::cin>>dato;
+
+			//buscar alumno
+			buscado=p.getAgenda().buscarAlumno(opcion,dato);
+
+			//comprobar resultados busqueda
+			if(buscado.size()==1)//mostrar
+				p.getAgenda().mostrarAlumno(buscado[0]);
+			else//se han encontrado mas de uno o ninguno
+			{
+				if(buscado.size()>1)//+1 encontrados
+				{
+					std::cout<<"Se han encontrado varios alumnos con el apellido buscado"<<std::endl<<std::endl;
+
+					std::cout<<"Indique cual es que buscaba"<<std::endl;
+					for(int i=0;i<buscado.size();i++)
+						std::cout<<" ["<<i+1<<"] "<<p.getAgenda().getAlumno(buscado[i]).getApellidos()<<","<<p.getAgenda().getAlumno(buscado[i]).getNombre()<<std::endl;
+					
+					std::cin>>opcionapellido;
+
+					while(opcionapellido<1 || opcionapellido>buscado.size())
+					{
+						std::cout<<BIRED<<"ERROR opcion invalida"<<std::endl<<std::endl;
+
+						std::cout<<"Indique cual es que buscaba"<<std::endl;
+						for(int i=0;i<buscado.size();i++)
+							std::cout<<" ["<<i+1<<"] "<<p.getAgenda().getAlumno(buscado[i]).getApellidos()<<","<<p.getAgenda().getAlumno(buscado[i]).getNombre()<<std::endl;
+					
+						std::cin>>opcionapellido;
+					}
+
+					//ya sabemos el alumno buscado
+					p.getAgenda().mostrarAlumno(buscado[opcionapellido]);
+
+				}
+				else//0 encontrados
+					std::cout<<BIRED<<"No se ha encontrado ningun alumno con apellido "<<dato<<" registrado"<<RESET<<std::endl;
+			}
+		break;
+		default:
+			std::cout<<BIRED<<"ERROR opcion invalida"<<RESET<<std::endl;
+	}
+}
+
 void quicksort(int primero, int ultimo, ListaAlumnos &lista)
 {
    if(primero < ultimo)

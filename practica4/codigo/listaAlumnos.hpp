@@ -68,8 +68,15 @@ public:
 	}
 
 	void eliminar(Alumno c);
-	void MostrarAlumno();
-	void ListarAlumnos();
+
+	//muestra el alumno de la posicion i de la lista
+	//i -> indice en la lista del alumno a imprimir
+	inline void mostrarAlumno(int i)
+	{
+		getAlumno(i).escribir();
+	}
+	
+	void listarAlumnos();
 
 	//busca alumnos segun su DNI, apellidos o equipo
 	//DNI -> criterio=1 
