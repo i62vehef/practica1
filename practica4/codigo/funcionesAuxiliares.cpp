@@ -29,6 +29,9 @@ void mostrarDatosdeAlumno(Profesor &p)
 	std::system("clear");
 	int opcion=0;
 	string dato;
+
+	std::vector<Alumno> buscado;
+
 	std::cout<<"Se mostraran todos los datos de un alumno"<<std::endl;
 
 	std::cout<<"Indique el dato por el que se identificara al alumno a mostrar"<<std::endl;
@@ -65,13 +68,32 @@ void mostrarDatosdeAlumno(Profesor &p)
 			}
 
 			//buscar alumno
-			p.buscarAlumno(opcion,dato);
+			buscado=p.buscarAlumno(opcion,dato);
 
 			//mostrar
-
-
+			if(buscado.size()==1)
+				buscado.first().mostrarAlumno();
+			else
+				std::cout<<BIRED<<"No se ha encontrado ningun alumno con DNI "<<dato<<" registrado"<<RESET<<std::endl;
 		break;
 		case 2://Apellido
+			//pedir apellido
+			std::cout<<"Introduzca el apellido del alumno"<<std::endl;
+			std::cin>>dato;
+
+			//buscar alumno
+			buscado=p.buscarAlumno(opcion,dato);
+
+			//imprimir
+			if(buscado.size()==1)
+				buscado.first().mostrarAlumno();
+			else
+			{
+				if(buscado.size()>1)
+					std::cout<<BIRED<<"ERROR se han encontrado varios alumnos"<<RESET<<std::endl;
+				else
+					std::cout<<BIRED<<"No se ha encontrado ningun alumno con apellido "<<dato<<" registrado"<<RESET<<std::endl;
+			}
 		break;
 		default:
 			std::cout<<BIRED<<"ERROR opcion invalida"<<RESET<<std::endl;
