@@ -1,7 +1,8 @@
 #include "listaAlumnos.hpp"
 
-std::vector<int> ListaAlumnos::buscarAlumno(int const &criterio, string &valor)
+std::vector<int> ListaAlumnos::buscarAlumno(int criterio, string &valor)
 {
+	
 	//vector auxiliar para guardar los indices en el vector de los alumnos encontrados
 	//valdría con una variable si solo existe un alumno
 	std::vector<int> aux(0);

@@ -10,9 +10,9 @@
 #include <cstdlib>
 #include "profesor.hpp"
 
-//void introducirAlumno();
+void introducirAlumno(Profesor &c);
 
-void cargarClasedeFichero(Profesor &p);
+//void cargarClasedeFichero(Profesor &p);
 
 void quicksort(int primero, int ultimo, ListaAlumnos &lista);
 

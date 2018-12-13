@@ -21,7 +21,7 @@ int main(int argc, char ** argv)
 			case 0:
 			break;
 			case 1://Cargar datos de un fichero
-				cargarClasedeFichero(tutor);
+				//cargarClasedeFichero(tutor);
 				std::cin.ignore();
 			break;
 			case 2://Guardar datos en un fichero
@@ -30,7 +30,7 @@ int main(int argc, char ** argv)
 			break;
 			case 3://Introducir alumno
 				std::system("clear");
-				introducirAlumno();
+				introducirAlumno(tutor);
 				std::cin.ignore();
 			break;
 			case 4://Modificar datos de un alumno

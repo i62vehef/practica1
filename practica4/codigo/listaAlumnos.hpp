@@ -77,7 +77,7 @@ public:
 	//equipo -> criterio=3
 	//valor indica el valor del criterio elegido
 	//Devuelve el alumno o grupo de alumnos seleccionado
-	std::vector<int> buscarAlumno(int const &criterio, string &valor);
+	std::vector<int> buscarAlumno(int criterio, string &valor);
 
 	inline void swap(int const &a, int const &b)
 	{

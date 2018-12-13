@@ -15,7 +15,7 @@ private:
 
 	string nombre_;//Nombre del profesor
 	int Id_;//Identificador del profesor
-	ListaAlumnos *agenda_; //Lista de alumnos
+	ListaAlumnos agenda_; //Lista de alumnos
 	bool rol_;//Rol del profesor
 
 public:
@@ -25,7 +25,6 @@ public:
 	{
 		nombre_="";
 		Id_=-1;
-		agenda_=NULL;
 		rol_=false;
 	}
 	inline Profesor(string nombre,int Id)
@@ -42,7 +41,7 @@ public:
 	inline string getNombre()const{return nombre_;}
 	inline int getId()const{return Id_;}
 	inline bool getRol()const{return rol_;}
-	inline ListaAlumnos getAgenda()const{return *agenda_;}
+	inline ListaAlumnos getAgenda()const{return agenda_;}
 
 	//Modificadores
 	inline void setNombre(string const &nNombre)
