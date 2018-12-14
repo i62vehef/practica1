@@ -4,29 +4,92 @@ void cargarClasedeFichero(Profesor &p)
 {
 	std::ifstream fichero;
 
-	string nombreFichero; //Hay que ver como vamos a hacer lo del nombre del fichero
-
-	fichero.open(nombreFichero.c_str());
+	fichero.open("../ficheros/clase.txt");
 
 	if((fichero.rdstate() & std::ofstream::failbit)!=0)	
       std::cout<<BIRED<<"Se ha producido un error al intentar abrir el fichero"<<RESET<<std::endl;
 	else 
 	{
 		Alumno aux;
-		while(fichero>>aux) lista.insertar(aux);		
+		while(fichero>>aux) p.getAgenda().insertar(aux);		
 		std::cout<<BIGREEN<<"Fichero cargado con exito"<<RESET<<std::endl;
 	}
 	
 	fichero.close();
 
-	quicksort(0,p.getAgenda().tamClase()-1,p.getAgenda());
+	ListaAlumnos listaAux;
+
+	listaAux=p.getAgenda();
+
+	quicksort(0,listaAux.tamClase()-1,listaAux);
+
+	p.setAgenda(listaAux);
+}
+
+void introducirAlumno(Profesor &p)
+{
+	std::vector<int> v;
+	std::string nombre,apellido,domicilio,DNI,email;
+	int telefono,curso,equipo=0;
+
+	std::cout<<"Introduzca los datos del nuevo alumno\n\n";
+
+	std::cout<<"DNI:";
+	std::cin>>DNI;
+	while(strlen(DNI.c_str())!=9 && DNI.compare("0")!=0)
+	{
+		std::cout<<BIRED<<"ERROR DNI invalido\n"<<RESET;
+		std::cin.ignore();
+		
+		std::cout<<IYELLOW<<"(Si desea salir introduzca un cero)\n"<<RESET;
+		std::cout<<"DNI:";
+		std::cin>>DNI;
+	}
+	
+	if(p.getAgenda().tamClase()>0)
+	{
+		v = p.getAgenda().buscarAlumno(1,DNI);
+		if(v.size()>0)
+		{
+			std::cout<<BIRED<<"ERROR Ya existe un alumno con el DNI indicado\n"<<RESET;
+		}
+	}
+	std::cout<<"Nombre:";
+	std::cin>>nombre;
+	std::cout<<"Primer Apellido:";
+	std::cin>>apellido;
+	std::cout<<"Domicilio:";
+	getline(std::cin,domicilio);
+	std::cin.ignore();
+	while (getchar ( ) != '\n' );
+	std::cout<<"Curso:";
+	std::cin>>curso;
+	std::cout<<"Email:";
+	std::cin>>email;
+	std::cout<<"Equipo:\n (Si no desea introducirlo indique cero)\n";
+	std::cin>>equipo;
+	
+	Alumno aux(nombre,apellido,telefono,domicilio,DNI,curso,email,equipo);
+
+	p.nuevoAlumno(aux);
+	
+	std::cout << BIGREEN <<"Alumno registrado correctamente" <<RESET <<std::endl;
+	
+	std::cin.ignore();
+}
+
+void mostrarNumeroAlumnos(Profesor &p)
+{
+	std::cout<<"En este momento, se encuentran registrados "<<BICYAN<<p.getAgenda().tamClase()<<RESET<<" alumnos "<<std::endl;
+	std::cout<<p.getAgenda().tamClase()<<std::endl;
 }
 
 void mostrarDatosdeAlumno(Profesor &p)
 {
 	std::system("clear");
+	std::cout<<BIYELLOW<<p.getAgenda().tamClase()<<RESET<<std::endl;
 	int opcion=0, opcionapellido;
-	string dato;
+	std::string dato;
 
 	std::vector<int> buscado;
 
@@ -35,6 +98,7 @@ void mostrarDatosdeAlumno(Profesor &p)
 	std::cout<<"Indique el dato por el que se identificara al alumno a mostrar"<<std::endl;
 	std::cout<<"[1] DNI"<<std::endl;
 	std::cout<<"[2] Apellido"<<std::endl;
+	std::cout<<BIRED<<"\n\n [0] Volver"<<RESET<<std::endl;
 
 	std::cin>>opcion;
 
@@ -43,9 +107,10 @@ void mostrarDatosdeAlumno(Profesor &p)
 		std::cout<<BIRED<<"ERROR introduzca una opcion valida"<<RESET<<std::endl<<std::endl;
 
 		std::cout<<"Indique el dato por el que se identificara al alumno a mostrar"<<std::endl;
-		std::cout<<"[1] DNI"<<std::endl;
-		std::cout<<"[2] Apellido"<<std::endl;
-		
+		std::cout<<" [1] DNI"<<std::endl;
+		std::cout<<" [2] Apellido"<<std::endl;
+		std::cout<<BIRED<<"\n [0] Volver\n"<<RESET<<std::endl;
+
 		std::cin>>opcion;
 	}
 
@@ -66,11 +131,11 @@ void mostrarDatosdeAlumno(Profesor &p)
 			}
 
 			//buscar alumno
-			buscado=p.getAgenda().buscarAlumno(opcion,dato);
+			buscado=p.getAgenda().buscarAlumno(1,dato);
 
 			//comprobar resultados de la busqueda
 			if(buscado.size()==1)//mostrar
-				p.getAgenda().mostrarAlumno(buscado[0]);
+				p.getAgenda().mostrarAlumno(buscado.front());
 			else//error
 			{
 				if(buscado.size()==0)
@@ -86,11 +151,11 @@ void mostrarDatosdeAlumno(Profesor &p)
 			std::cin>>dato;
 
 			//buscar alumno
-			buscado=p.getAgenda().buscarAlumno(opcion,dato);
+			buscado=p.getAgenda().buscarAlumno(2,dato);
 
 			//comprobar resultados busqueda
 			if(buscado.size()==1)//mostrar
-				p.getAgenda().mostrarAlumno(buscado[0]);
+				p.getAgenda().mostrarAlumno(buscado.front());
 			else//se han encontrado mas de uno o ninguno
 			{
 				if(buscado.size()>1)//+1 encontrados
@@ -100,9 +165,11 @@ void mostrarDatosdeAlumno(Profesor &p)
 					std::cout<<"Indique cual es que buscaba"<<std::endl;
 					for(int i=0;i<buscado.size();i++)
 						std::cout<<" ["<<i+1<<"] "<<p.getAgenda().getAlumno(buscado[i]).getApellido()<<","<<p.getAgenda().getAlumno(buscado[i]).getNombre()<<std::endl;
-					
+					std::cout<<BIRED<<"\n\n [0] Volver"<<RESET<<std::endl;
+
 					std::cin>>opcionapellido;
 
+					if(opcionapellido==0) break;
 					while(opcionapellido<1 || opcionapellido>buscado.size())
 					{
 						std::cout<<BIRED<<"ERROR opcion invalida"<<std::endl<<std::endl;
@@ -110,7 +177,8 @@ void mostrarDatosdeAlumno(Profesor &p)
 						std::cout<<"Indique cual es que buscaba"<<std::endl;
 						for(int i=0;i<buscado.size();i++)
 							std::cout<<" ["<<i+1<<"] "<<p.getAgenda().getAlumno(buscado[i]).getApellido()<<","<<p.getAgenda().getAlumno(buscado[i]).getNombre()<<std::endl;
-					
+						std::cout<<BIRED<<"\n\n [0] Volver"<<RESET<<std::endl;
+
 						std::cin>>opcionapellido;
 					}
 
@@ -119,12 +187,13 @@ void mostrarDatosdeAlumno(Profesor &p)
 
 				}
 				else//0 encontrados
-					std::cout<<BIRED<<"No se ha encontrado ningun alumno con apellido "<<dato<<" registrado"<<RESET<<std::endl;
+					std::cout<<BIRED<<"No se ha encontrado ningun alumno con apellido '"<<dato<<"' registrado"<<RESET<<std::endl;
 			}
 		break;
 		default:
 			std::cout<<BIRED<<"ERROR opcion invalida"<<RESET<<std::endl;
 	}
+	std::cin.ignore();
 }
 
 void quicksort(int primero, int ultimo, ListaAlumnos &lista)
@@ -140,7 +209,7 @@ void quicksort(int primero, int ultimo, ListaAlumnos &lista)
 
 int particion(int primero, int ultimo, ListaAlumnos &lista)
 {
-   string pivote=lista.getAlumno(ultimo).getApellido();
+   std::string pivote=lista.getAlumno(ultimo).getApellido();
    int i=primero-1;
 
    for(int j=primero; j<=ultimo-1; j++)
@@ -199,28 +268,31 @@ int menu()
 	posicion++;
 
 	PLACE(posicion++,10);	
-	std::cout << BIGREEN << "[6]" << RESET << " Mostrar datos de un alumno";
+	std::cout << BIGREEN << "[6]" << RESET << " Mostrar numero de alumnos registrados";
 
 	PLACE(posicion++,10);	
-	std::cout << BIGREEN << "[7]" << RESET << " Mostrar alumnos de un grupo";
+	std::cout << BIGREEN << "[7]" << RESET << " Mostrar datos de un alumno";
 
 	PLACE(posicion++,10);
-	std::cout << BIGREEN << "[8]" << RESET << " Mostrar lista de alumnos";
+	std::cout << BIGREEN << "[8]" << RESET << " Mostrar alumnos de un grupo";
+
+	PLACE(posicion++,10);
+	std::cout << BIGREEN << "[9]" << RESET << " Mostrar lista de alumnos";
 
 	//////////////////////////////////////////////////////////////////////////////
 	posicion++;
 
 	PLACE(posicion++,10);
-	std::cout << BICYAN << "[9]" << RESET << " Registrar nuevo profesor";
+	std::cout << BICYAN << "[10]" << RESET << " Registrar nuevo profesor";
 
 	//////////////////////////////////////////////////////////////////////////////
 	posicion++;
 
 	PLACE(posicion++,10);
-	std::cout << IGREEN << "[10]" << RESET << " Cargar copia de seguridad";
+	std::cout << IGREEN << "[11]" << RESET << " Cargar copia de seguridad";
 
 	PLACE(posicion++,10);
-	std::cout << IGREEN << "[11]" << RESET << " Crear copia de seguridad";
+	std::cout << IGREEN << "[12]" << RESET << " Crear copia de seguridad";
 
 	//////////////////////////////////////////////////////////////////////////////
 	posicion++;
@@ -244,59 +316,17 @@ int menu()
 	return opcion;
 }
 
-void introducirAlumno(Profesor &c)
-{
-	
-	std::vector<int> v;
-	string nombre,apellido,domicilio,DNI,email;
-	int telefono,curso,equipo;
-cout<<"INTRODUCIR DATOS DEL ALUMNO\n\n";
-
-	cout<<"DNI:";
-	cin>>DNI;
-	if(strlen(DNI.c_str())!=9)
-	{
-		cout <<"Error dni invalido";
-		std::cin.ignore();
-		return;
-	}
-	
-	v = c.getAgenda().buscarAlumno(1,DNI);
-	if(v.size()>0)
-	{
-		std::cout <<"Ya exite el alumno con ese dni";
-	}
-	cout<<"Nombre:";
-	cin>>nombre;
-	cout<<"Apellido:";
-	getline(cin,apellido);
-	std::cin.ignore();
-	cout<<"Domicilio:";
-	getline(cin,domicilio);
-	std::cin.ignore();
-	while ( getchar ( ) != '\n' );
-	cout<<"Curso:";
-	cin>>curso;
-	cout<<"Email:";
-	cin>>email;
-	cout<<"Equipo:";
-	cin>>equipo;
-	c.getAgenda().insertar(Alumno(nombre,apellido,telefono,domicilio,DNI,curso,email,equipo));
-	std::cout << BIGREEN <<"Alumno ingresado correctamente" <<RESET <<std::endl;
-	std::cin.ignore();
-}
-
 void borrarAlumno(Profesor c)
 {
 	int opcion=0;
-	string dato;
+	std::string dato;
 
     std::cout <<BIRED <<"BORRAR ALUMNO\n\n" <<RESET;
 	
 	std::cout << BIGREEN <<"Elija opcion para borrar alumno\n\n" <<RESET;
 	std::cout << BIYELLOW << "1-apellido\n" << RESET;
 	std::cout << BIBLUE << "2-DNI\n" <<RESET;	
-	cin>>opcion;
+	std::cin>>opcion;
 	
 	while(opcion!=1 && opcion!=2)
 	{
@@ -305,34 +335,27 @@ void borrarAlumno(Profesor c)
 		std::cout << BIGREEN <<"\nElija opcion para borrar alumno\n\n" <<RESET;
 		std::cout << BIYELLOW << "1-apellido\n" << RESET;
 		std::cout << BIBLUE << "2-DNI\n" <<RESET;
-		cin>>opcion;
+		std::cin>>opcion;
 		
 		
 	}
 	std::system("clear");
 	switch(opcion)
 		{
-			case 1:
-					std::cout << BIYELLOW <<"Introduce el apellido:" <<RESET;
-					cin>>dato;
-					
-
-		break;
-			
-			case 2:		
-					std::cout << BIBLUE <<"Introduce el dni:" <<RESET;
-					cin>>dato;
-					if(strlen(dato.c_str())==9)
-					{
-						c.getAgenda().buscarAlumno(1,dato);
-					}else
-						{
-							cout<<"DNI invalido";
-						}
-
+			case 1://Apellido
+				std::cout << BIYELLOW <<"Introduce el apellido:" <<RESET;
+				std::cin>>dato;
+			break;
+			case 2://DNI
+				std::cout << BIBLUE <<"Introduce el dni:" <<RESET;
+				std::cin>>dato;
+				if(strlen(dato.c_str())==9)
+					c.getAgenda().buscarAlumno(1,dato);
+				else
+					std::cout<<"DNI invalido";
 			break;
 			default:
-					cout<<"opcion incorrecta\n";
+				std::cout<<"opcion incorrecta\n";
 		}
 		
 

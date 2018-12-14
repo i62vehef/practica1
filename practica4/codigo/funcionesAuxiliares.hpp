@@ -10,9 +10,11 @@
 #include <cstdlib>
 #include "profesor.hpp"
 
+//void cargarClasedeFichero(Profesor &p);
+
 void introducirAlumno(Profesor &c);
 
-//void cargarClasedeFichero(Profesor &p);
+void mostrarNumeroAlumnos(Profesor &p);
 
 void mostrarDatosdeAlumno(Profesor &p);
 

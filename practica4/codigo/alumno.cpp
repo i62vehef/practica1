@@ -3,12 +3,12 @@
 void Alumno::escribir()
 {
 	std::cout<<BIYELLOW<<"Datos del alumno"<<RESET<<std::endl;
-	std::cout<<getApellido()<<","<<getNombre()<<std::endl;
+	std::cout<<getApellido()<<", "<<getNombre()<<std::endl;
 	std::cout<<"DNI: "<<getDNI()<<std::endl;
 	std::cout<<"Grupo: "<<getEquipo()<<std::endl;
 	std::cout<<"Curso: "<<getCurso()<<std::endl;
 
-	std::cout<<BICYAN<<"Datos de contacto"<<RESET<<std::endl;
+	std::cout<<BICYAN<<"\nDatos de contacto"<<RESET<<std::endl;
 	std::cout<<"Correo: "<<getEmail()<<std::endl;
 	std::cout<<"Telefono: "<<getTelefono()<<std::endl;
 	std::cout<<"Domicilio: "<<getDomicilio()<<std::endl;

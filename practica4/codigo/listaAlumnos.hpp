@@ -1,6 +1,7 @@
 #ifndef LISTAALUMNOS_H
 #define LISTAALUMNOS_H
 
+#include <cstring>
 #include <vector>
 #include "macros.hpp"
 #include "alumno.hpp"
@@ -14,7 +15,7 @@ private:
 	//Vector con los alumnos
 	//Cada elemento es un objeto de la clase Alumno
 	//Representa la lista de alumnos de una clase
-	vector<Alumno> alumnos_;
+	std::vector<Alumno> alumnos_;
 
 	//booleano que indica si esta ordenado en orden creciente o decreciente
 	//creciente=1
@@ -27,6 +28,8 @@ public:
 	//Constructor de la clase
 	inline ListaAlumnos()
 	{
+		alumnos_.resize(0);
+
 		#ifndef NDEBUG
 			assert(!tamClase());
 		#endif
@@ -34,7 +37,7 @@ public:
 
 	//Observadores
 	//Devuelve el objeto Alumno que se encuentra en la posicion i de la lista
-	inline Alumno getAlumno(int &i)
+	inline Alumno getAlumno(int &i)const
 	{
 		#ifndef NDEBUG //precondiciones
 			assert(tamClase()>0 and i<tamClase());
@@ -42,7 +45,7 @@ public:
 		return alumnos_[i];
 	}
 	//Devuelve el numero de alumnos registrados
-	inline int tamClase(){return alumnos_.size();}
+	inline int tamClase()const{return alumnos_.size();}
 
 	//Modificadores
 	//setAlumno: asigna un nuevo valor a un alumno especifico
@@ -59,12 +62,18 @@ public:
 
 	//Métodos de la clase
 	//insertar: inserta un nuevo alumno en la lista
-	inline void insertar(Alumno nAlumno)
+	inline void insertar(Alumno &nAlumno)
 	{
 		#ifndef NDEBUG //precondiciones
 			assert(tamClase()<150);
 		#endif
 		alumnos_.push_back(nAlumno);
+		std::cout<<BIRED<<"INSERTADO\n";
+		std::cout<<BIGREEN<<alumnos_.size()<<RESET<<std::endl;
+		std::cout<<BIRED<<tamClase()<<RESET<<std::endl;
+		#ifndef NDEBUG //Postcondiciones
+			assert(tamClase()>0 and tamClase()<=150 and nAlumno==getAlumno(buscarAlumno(1,nAlumno.getDNI()).front()));
+		#endif
 	}
 
 	inline void eliminar(int const &i)
@@ -72,14 +81,12 @@ public:
 		#ifndef NDEBUG
 			assert(tamClase()>0);
 		#endif
+		alumnos_.erase(alumnos_.begin()+i);
 	}
 
 	//muestra el alumno de la posicion i de la lista
 	//i -> indice en la lista del alumno a imprimir
-	inline void mostrarAlumno(int i)
-	{
-		getAlumno(i).escribir();
-	}
+	inline void mostrarAlumno(int i){getAlumno(i).escribir();}
 	
 	void listarAlumnos();
 
@@ -89,16 +96,24 @@ public:
 	//equipo -> criterio=3
 	//valor indica el valor del criterio elegido
 	//Devuelve el alumno o grupo de alumnos seleccionado
-	std::vector<int> buscarAlumno(int criterio, string &valor);
+	std::vector<int> buscarAlumno(int const &criterio, std::string const &valor);
 
-	inline void swap(int const &a, int const &b)
+	inline void swap(int const &a, int const &b){std::swap(alumnos_[a],alumnos_[b]);}
+
+
+	//Operadores
+
+	inline ListaAlumnos operator=(ListaAlumnos const &lista)
 	{
-		std::swap(alumnos_[a],alumnos_[b]);
+		for(int i=0;tamClase();i++) eliminar(i);
+		Alumno aux;
+		for(int i=0;i<lista.tamClase();i++)
+		{
+			aux=lista.getAlumno(i);
+			insertar(aux);
+		}
+		return *this;
 	}
-
-
-
-
 
 };
 #endif

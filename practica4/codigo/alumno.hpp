@@ -10,19 +10,17 @@
 using std::istream;
 using std::ostream;
 
-using namespace std;
-
 class Alumno
 {
 private:
 
-	string nombre_; //Nombre del alumno
-	string apellido_; //Apellido del alumno
+	std::string nombre_; //Nombre del alumno
+	std::string apellido_; //Apellido del alumno
 	int telefono_; //telefono de contacto del alumno
-	string domicilio_; //domicilio de residencia del alumno durante el curso
-	string DNI_; //DNI del alumno
+	std::string domicilio_; //domicilio de residencia del alumno durante el curso
+	std::string DNI_; //DNI del alumno
 	int curso_; //curso actual del alumno
-	string email_; //email de contacto del alumno
+	std::string email_; //email de contacto del alumno
 	int equipo_; //Equipo de trabajo del alumno
 
 public:
@@ -42,7 +40,7 @@ public:
 	}
 
 	//Constructor parametrizado
-	inline Alumno(string nombre,string apellido,int telefono,string domicilio,string DNI,int curso,string email, int equipo=0)
+	inline Alumno(std::string nombre,std::string apellido,int telefono,std::string domicilio,std::string DNI,int curso,std::string email,int equipo=0)
 	{
         nombre_ = nombre;
         apellido_ = apellido;
@@ -59,24 +57,24 @@ public:
 	}
 
 	//Observadores
-	inline string getNombre() const{return nombre_;}
-	inline string getApellido() const{return apellido_;}
+	inline std::string getNombre() const{return nombre_;}
+	inline std::string getApellido() const{return apellido_;}
 	inline int getTelefono()const{return telefono_;}
-	inline string getDomicilio()const{return domicilio_;}
-	inline string getDNI()const{return DNI_;}
+	inline std::string getDomicilio()const{return domicilio_;}
+	inline std::string getDNI()const{return DNI_;}
 	inline int getCurso()const{return curso_;}
-	inline string getEmail()const{return email_;}
+	inline std::string getEmail()const{return email_;}
 	inline int getEquipo()const{return equipo_;}
 
 	//Modificadores
-	inline void setNombre(string const &nNombre)
+	inline void setNombre(std::string const &nNombre)
 	{
 		nombre_=nNombre;
 		#ifndef NDEBUG
 			assert(strcmp(getNombre().c_str(),nNombre.c_str())==0);
 		#endif
 	}
-	inline void setApellido(string const &nApellido)
+	inline void setApellido(std::string const &nApellido)
 	{
 		apellido_=nApellido;
 		#ifndef NDEBUG
@@ -90,14 +88,14 @@ public:
 			assert(getTelefono()==nTelefono);
 		#endif
 	}
-	inline void setDomicilio(string const &nDomicilio)
+	inline void setDomicilio(std::string const &nDomicilio)
 	{
 		domicilio_=nDomicilio;
 		#ifndef NDEBUG
 			assert(strcmp(getDomicilio().c_str(),nDomicilio.c_str())==0);
 		#endif
 	}
-	inline void setDNI(string const &nDNI)
+	inline void setDNI(std::string const &nDNI)
 	{
 		DNI_=nDNI;
 		#ifndef NDEBUG
@@ -111,7 +109,7 @@ public:
 			assert(getCurso()==nCurso);
 		#endif		
 	}
-	inline void setEmail(string const &nEmail)
+	inline void setEmail(std::string const &nEmail)
 	{
 		email_=nEmail;
 		#ifndef NDEBUG
@@ -143,6 +141,26 @@ public:
 		setEquipo(alumno.getEquipo());
 
 		return *this;
+	}
+
+	inline bool operator==(Alumno const &alumno)
+	{
+		if(strcmp(getApellido().c_str(),alumno.getApellido().c_str())!=0)
+			return false;
+		if(strcmp(getNombre().c_str(),alumno.getNombre().c_str())!=0)
+			return false;
+		if(strcmp(getDNI().c_str(),alumno.getDNI().c_str())!=0)
+			return false;
+		if(getTelefono()!=alumno.getTelefono())
+			return false;
+		if(strcmp(getDomicilio().c_str(),alumno.getDomicilio().c_str())!=0)
+			return false;
+		if(getCurso()!=alumno.getCurso())
+			return false;
+		if(strcmp(getEmail().c_str(),alumno.getEmail().c_str())!=0)
+			return false;
+
+		return true;
 	}
 };
 
