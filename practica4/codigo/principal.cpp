@@ -29,39 +29,42 @@ int main(int argc, char ** argv)
 				std::cin.ignore();
 			break;
 			case 3://Introducir alumno
-				std::system("clear");
 				introducirAlumno(tutor);
 				std::cin.ignore();
 			break;
 			case 4://Modificar datos de un alumno
-
+				modificarDatosAlumno(tutor);
 				std::cin.ignore();
 			break;
 			case 5://Borrar alumno
 
 				std::cin.ignore();
 			break;
-			case 6://Mostrar datos de un alumno
+			case 6://Mostrar numero de alumnos registrados
+				mostrarNumeroAlumnos(tutor);
+				std::cin.ignore();
+			break;
+			case 7://Mostrar datos de un alumno
 				mostrarDatosdeAlumno(tutor);
 				std::cin.ignore();
 			break;
-			case 7://Mostrar grupo
+			case 8://Mostrar grupo
 
 				std::cin.ignore();
 			break;
-			case 8://Mostrar lista de alumnos
+			case 9://Mostrar lista de alumnos
 
 				std::cin.ignore();
 			break;
-			case 9://Registrar nuevo profesor
+			case 10://Registrar nuevo profesor
 
 				std::cin.ignore();
 			break;
-			case 10://Cargar copia de seguridad
+			case 11://Cargar copia de seguridad
 
 				std::cin.ignore();
 			break;
-			case 11://Crear copia de seguridad
+			case 12://Crear copia de seguridad
 
 				std::cin.ignore();
 			break;															
