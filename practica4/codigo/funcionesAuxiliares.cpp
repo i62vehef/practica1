@@ -1,6 +1,6 @@
 #include "funcionesAuxiliares.hpp"
 
-void cargarClasedeFichero(Profesor &p)
+/*void cargarClasedeFichero(Profesor &p)
 {
 	std::ifstream fichero;
 
@@ -21,7 +21,7 @@ void cargarClasedeFichero(Profesor &p)
 
 	quicksort(0,lista.tamClase()-1,lista);
 }
-
+*/
 void mostrarDatosdeAlumno(Profesor &p)
 {
 	std::system("clear");
