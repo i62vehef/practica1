@@ -2,6 +2,8 @@
 
 void cargarClasedeFichero(Profesor &p)
 {
+	std::system("clear");
+
 	std::ifstream fichero;
 
 	fichero.open("../ficheros/clase.txt");
@@ -28,6 +30,8 @@ void cargarClasedeFichero(Profesor &p)
 
 void introducirAlumno(Profesor &p)
 {
+	std::system("clear");
+
 	if(p.getAgenda().tamClase()>=150)
 	{
 		std::cout<<BIRED<<"ERROR se ha llegado al limite de alumnos registrados"<<RESET<<std::endl;
@@ -66,9 +70,9 @@ void introducirAlumno(Profesor &p)
 	std::cout<<"Primer Apellido:";
 	std::cin>>apellido;
 	std::cout<<"Domicilio:";
-	getline(std::cin,domicilio);
-	std::cin.ignore();
-	while (getchar ( ) != '\n' );
+	std::cin>>domicilio;
+	std::cout<<"Telefono:";
+	std::cin>>telefono;
 	std::cout<<"Curso:";
 	std::cin>>curso;
 	std::cout<<"Email:";
@@ -82,6 +86,171 @@ void introducirAlumno(Profesor &p)
 	
 	std::cout << BIGREEN <<"Alumno registrado correctamente" <<RESET <<std::endl;
 	
+	std::cin.ignore();
+}
+
+void modificarDatosAlumno(Profesor &p)
+{
+	std::system("clear");
+
+	int opcion;
+
+	if(p.getAgenda().tamClase()<=0)
+	{
+		std::cout<<BIRED<<"\nERROR no hay alumnos registrados que modificar"<<RESET<<std::endl;
+		return;
+	}
+
+	std::cout<<"\n Indique como quiere identificar al alumno cuyos datos desea modificar\n";
+	std::cout<<" [1] DNI \n";
+	std::cout<<" [2] Apellido\n";
+	std::cout<<BIRED<<"\n [0] Volver\n"<<RESET;
+
+	std::cin>>opcion;
+
+	while(opcion!=0 && opcion!=1 && opcion !=2)
+	{
+		std::cout<<BIRED<<"ERROR introduzca una opcion valida"<<RESET<<std::endl<<std::endl;
+
+		std::cout<<"\n Indique como quiere identificar al alumno cuyos datos desea modificar\n";
+		std::cout<<" [1] DNI"<<std::endl;
+		std::cout<<" [2] Apellido"<<std::endl;
+		std::cout<<BIRED<<"\n [0] Volver\n"<<RESET<<std::endl;
+
+		std::cin>>opcion;
+	}
+
+	std::string dato;
+	std::vector<int> buscado;
+	int opcionapellido=0;
+	switch(opcion)
+	{
+		case 0://volver
+			return;
+		break;
+		case 1://DNI
+			//pedir DNI
+			std::cout<<"Introduzca el DNI del alumno"<<std::endl;
+			std::cin>>dato;
+
+			//comprobar DNI
+			while(strlen(dato.c_str())!=9)
+			{
+				std::cout<<BIRED<<"ERROR DNI invalido"<<RESET<<std::endl<<std::endl;
+				
+				std::cout<<"Introduzca el DNI del alumno"<<std::endl;
+				std::cin>>dato;
+			}
+
+			//buscar alumno
+			buscado=p.getAgenda().buscarAlumno(1,dato);
+
+			//comprobar resultados de la busqueda
+			if(buscado.size()!=1)//error
+			{
+				if(buscado.size()<=0)
+					std::cout<<BIRED<<"No se ha encontrado ningun alumno con DNI "<<dato<<" registrado"<<RESET<<std::endl;
+				else
+					std::cout<<BIRED<<"ERROR se han encontrado varios alumnos con el mismo DNI"<<RESET<<std::endl;
+				return;
+			}
+			//else modificar
+		break;
+		case 2://Apellidos
+			//pedir apellido
+			std::cout<<"Introduzca el apellido del alumno"<<std::endl;
+			std::cin>>dato;
+
+			//buscar alumno
+			buscado=p.getAgenda().buscarAlumno(2,dato);
+
+			//comprobar resultados busqueda
+			if(buscado.size()!=1)//se han encontrado mas de uno o ninguno
+			{
+				if(buscado.size()>1)//+1 encontrados
+				{
+					std::cout<<"Se han encontrado varios alumnos con el apellido buscado"<<std::endl<<std::endl;
+
+					std::cout<<"Indique cual es el que buscaba"<<std::endl;
+					for(int i=0;i<buscado.size();i++)
+						std::cout<<" ["<<i+1<<"] "<<p.getAgenda().getAlumno(buscado[i]).getApellido()<<","<<p.getAgenda().getAlumno(buscado[i]).getNombre()<<std::endl;
+					std::cout<<BIRED<<"\n\n [0] Volver"<<RESET<<std::endl;
+
+					std::cin>>opcionapellido;
+
+					if(opcionapellido==0) 
+						return;
+					while(opcionapellido<0 || opcionapellido>buscado.size())
+					{
+						std::cout<<BIRED<<"ERROR opcion invalida"<<std::endl<<std::endl;
+
+						std::cout<<"Indique cual es que buscaba"<<std::endl;
+						for(int i=0;i<buscado.size();i++)
+							std::cout<<" ["<<i+1<<"] "<<p.getAgenda().getAlumno(buscado[i]).getApellido()<<","<<p.getAgenda().getAlumno(buscado[i]).getNombre()<<std::endl;
+						std::cout<<BIRED<<"\n\n [0] Volver"<<RESET<<std::endl;
+
+						std::cin>>opcionapellido;
+					}
+					if(opcionapellido==0) return;
+
+					//ya sabemos el alumno buscado
+				}
+				else//0 encontrados
+				{
+					std::cout<<BIRED<<"No se ha encontrado ningun alumno con apellido '"<<dato<<"' registrado"<<RESET<<std::endl;
+					std::cin.ignore();
+					return;
+				}
+			}
+			//else modificar
+		break;
+		default:
+			std::cout<<BIRED<<"ERROR opcion invalida\n"<<RESET;
+	}
+
+	opcionapellido--;	
+	Alumno aux;
+	if(opcionapellido==0)
+		aux=p.getAgenda().getAlumno(opcionapellido);
+	else
+		aux=p.getAgenda().getAlumno(buscado.front());
+	std::string nombre="0", apellido="0", domicilio="0", correo="0";
+	int telefono=0, curso=0, grupo=0;
+
+	std::system("clear");
+	std::cout<<"\nIntroduzca los valores que desea cambiar del alumno\n";
+	std::cout<<BIYELLOW<<"(Indique un cero para los que no desee cambiar)"<<RESET<<std::endl;
+
+	//Se supone que el DNI no deberia ser cambiado
+	std::cout<<"\n Nombre: ";
+	std::cin>>nombre;
+	if(nombre.compare("0")!=0) aux.setNombre(nombre);
+	std::cout<<"\n Apellido: ";
+	std::cin>>apellido;
+	if(apellido.compare("0")!=0) aux.setApellido(apellido);
+	std::cout<<"\n Telefono: ";
+	std::cin>>telefono;
+	if(telefono!=0) aux.setTelefono(telefono);
+	std::cout<<"\n Domicilio: ";
+	std::cin>>domicilio;
+	if(domicilio.compare("0")!=0) aux.setDomicilio(domicilio);
+	std::cout<<"\n Curso: ";
+	std::cin>>curso;
+	if(curso!=0) aux.setCurso(curso);
+	std::cout<<"\n Correo: ";
+	std::cin>>correo;
+	if(correo.compare("0")!=0) aux.setEmail(correo);
+	std::cout<<"\n Grupo: ";
+	std::cin>>grupo;
+	if(grupo!=0) aux.setEquipo(grupo);
+
+	if(opcionapellido==0)
+		p.modificarAlumno(opcionapellido,aux);
+	else
+		p.modificarAlumno(buscado.front(),aux);
+
+	std::cout<<BIGREEN<<"Se han modificado los datos del alumno satisfactoriamente \n";
+
 	std::cin.ignore();
 }
 
@@ -110,11 +279,11 @@ void mostrarDatosdeAlumno(Profesor &p)
 	std::cout<<"Indique el dato por el que se identificara al alumno a mostrar"<<std::endl;
 	std::cout<<"[1] DNI"<<std::endl;
 	std::cout<<"[2] Apellido"<<std::endl;
-	std::cout<<BIRED<<"\n\n [0] Volver"<<RESET<<std::endl;
+	std::cout<<BIRED<<"\n [0] Volver"<<RESET<<std::endl;
 
 	std::cin>>opcion;
 
-	while(opcion!=1 && opcion!=2)
+	while(opcion!=0 && opcion!=1 && opcion!=2)
 	{
 		std::cout<<BIRED<<"ERROR introduzca una opcion valida"<<RESET<<std::endl<<std::endl;
 
@@ -128,6 +297,9 @@ void mostrarDatosdeAlumno(Profesor &p)
 
 	switch(opcion)
 	{
+		case 0://salir
+			return;
+		break;
 		case 1://DNI
 			//pedir DNI
 			std::cout<<"Introduzca el DNI del alumno"<<std::endl;
@@ -174,7 +346,7 @@ void mostrarDatosdeAlumno(Profesor &p)
 				{
 					std::cout<<"Se han encontrado varios alumnos con el apellido buscado"<<std::endl<<std::endl;
 
-					std::cout<<"Indique cual es que buscaba"<<std::endl;
+					std::cout<<"Indique cual es el que buscaba"<<std::endl;
 					for(int i=0;i<buscado.size();i++)
 						std::cout<<" ["<<i+1<<"] "<<p.getAgenda().getAlumno(buscado[i]).getApellido()<<","<<p.getAgenda().getAlumno(buscado[i]).getNombre()<<std::endl;
 					std::cout<<BIRED<<"\n\n [0] Volver"<<RESET<<std::endl;

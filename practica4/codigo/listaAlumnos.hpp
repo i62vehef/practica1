@@ -28,8 +28,6 @@ public:
 	//Constructor de la clase
 	inline ListaAlumnos()
 	{
-		alumnos_.resize(0);
-
 		#ifndef NDEBUG
 			assert(!tamClase());
 		#endif
@@ -68,11 +66,21 @@ public:
 			assert(tamClase()<150);
 		#endif
 		alumnos_.push_back(nAlumno);
-		std::cout<<BIRED<<"INSERTADO\n";
-		std::cout<<BIGREEN<<alumnos_.size()<<RESET<<std::endl;
-		std::cout<<BIRED<<tamClase()<<RESET<<std::endl;
 		#ifndef NDEBUG //Postcondiciones
 			assert(tamClase()>0 and tamClase()<=150 and nAlumno==getAlumno(buscarAlumno(1,nAlumno.getDNI()).front()));
+		#endif
+	}
+
+	inline void modificar(int &i, Alumno &alumno)
+	{
+		#ifndef NDEBUG //precondiciones
+			assert(tamClase()>0);
+		#endif
+
+		alumnos_[i]=alumno;
+
+		#ifndef NDEBUG //Postcondiciones
+			assert(getAlumno(i)==alumno);
 		#endif
 	}
 

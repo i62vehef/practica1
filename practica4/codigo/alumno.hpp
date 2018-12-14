@@ -56,6 +56,19 @@ public:
         #endif
 	}
 
+	//Constructor de copia
+	inline Alumno(Alumno const &alumno)
+	{
+		nombre_=alumno.getNombre();
+		apellido_=alumno.getApellido();
+		telefono_=alumno.getTelefono();
+		domicilio_=alumno.getDomicilio();
+		DNI_=alumno.getDNI();
+		curso_=alumno.getCurso();
+		email_=alumno.getEmail();
+		equipo_=alumno.getEquipo();
+	}
+
 	//Observadores
 	inline std::string getNombre() const{return nombre_;}
 	inline std::string getApellido() const{return apellido_;}

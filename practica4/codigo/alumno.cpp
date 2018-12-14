@@ -2,7 +2,7 @@
 
 void Alumno::escribir()
 {
-	std::cout<<BIYELLOW<<"Datos del alumno"<<RESET<<std::endl;
+	std::cout<<BIYELLOW<<"\nDatos del alumno"<<RESET<<std::endl;
 	std::cout<<getApellido()<<", "<<getNombre()<<std::endl;
 	std::cout<<"DNI: "<<getDNI()<<std::endl;
 	std::cout<<"Grupo: "<<getEquipo()<<std::endl;

@@ -12,7 +12,9 @@
 
 //void cargarClasedeFichero(Profesor &p);
 
-void introducirAlumno(Profesor &c);
+void introducirAlumno(Profesor &p);
+
+void modificarDatosAlumno(Profesor &p);
 
 void mostrarNumeroAlumnos(Profesor &p);
 
