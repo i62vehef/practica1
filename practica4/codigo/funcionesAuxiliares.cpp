@@ -28,15 +28,20 @@ void cargarClasedeFichero(Profesor &p)
 
 void introducirAlumno(Profesor &p)
 {
+	if(p.getAgenda().tamClase()>=150)
+	{
+		std::cout<<BIRED<<"ERROR se ha llegado al limite de alumnos registrados"<<RESET<<std::endl;
+		return;
+	}
 	std::vector<int> v;
 	std::string nombre,apellido,domicilio,DNI,email;
 	int telefono,curso,equipo=0;
 
-	std::cout<<"Introduzca los datos del nuevo alumno\n\n";
+	std::cout<<"\nIntroduzca los datos del nuevo alumno\n\n";
 
 	std::cout<<"DNI:";
 	std::cin>>DNI;
-	while(strlen(DNI.c_str())!=9 && DNI.compare("0")!=0)
+	while(strlen(DNI.c_str())!=9)
 	{
 		std::cout<<BIRED<<"ERROR DNI invalido\n"<<RESET;
 		std::cin.ignore();
@@ -44,8 +49,10 @@ void introducirAlumno(Profesor &p)
 		std::cout<<IYELLOW<<"(Si desea salir introduzca un cero)\n"<<RESET;
 		std::cout<<"DNI:";
 		std::cin>>DNI;
-	}
 	
+		if(DNI.compare("0")==0) return;
+	}
+
 	if(p.getAgenda().tamClase()>0)
 	{
 		v = p.getAgenda().buscarAlumno(1,DNI);
@@ -80,14 +87,19 @@ void introducirAlumno(Profesor &p)
 
 void mostrarNumeroAlumnos(Profesor &p)
 {
-	std::cout<<"En este momento, se encuentran registrados "<<BICYAN<<p.getAgenda().tamClase()<<RESET<<" alumnos "<<std::endl;
-	std::cout<<p.getAgenda().tamClase()<<std::endl;
+	std::system("clear");
+
+	std::cout<<"\nEn este momento, se encuentran registrados "<<BICYAN<<p.getAgenda().tamClase()<<RESET<<" alumnos "<<std::endl;
 }
 
 void mostrarDatosdeAlumno(Profesor &p)
 {
 	std::system("clear");
-	std::cout<<BIYELLOW<<p.getAgenda().tamClase()<<RESET<<std::endl;
+	if(p.getAgenda().tamClase()<=0)
+	{
+		std::cout<<BIRED<<"\nERROR no hay alumnos registrados"<<RESET<<std::endl;
+		return;
+	}
 	int opcion=0, opcionapellido;
 	std::string dato;
 
