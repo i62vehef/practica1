@@ -19,6 +19,7 @@ void introducirAlumno(Profesor &p)
 	std::vector<int> v;
 	std::string nombre,apellido,domicilio,DNI,email, equipo="0";
 	int telefono,curso;
+	Fecha fecha;
 
 	std::cout<<"\nIntroduzca los datos del nuevo alumno\n\n";
 
@@ -52,6 +53,17 @@ void introducirAlumno(Profesor &p)
 	std::cin>>apellido;
 	std::cout<<"Domicilio: ";
 	std::cin>>domicilio;
+	std::cout<<"Fecha de nacimiento: \n";
+	fecha.leerFecha();
+
+	while(!fecha.esCorrecta())
+	{
+		std::cout<<BIRED<<"ERROR fecha invalida"<<RESET<<std::endl;
+
+		std::cout<<"Fecha de nacimiento: \n";
+		fecha.leerFecha();
+	}
+
 	std::cout<<"Telefono: ";
 	std::cin>>telefono;
 	std::cout<<"Curso: ";
@@ -77,7 +89,7 @@ void introducirAlumno(Profesor &p)
 		}
 	}
 
-	Alumno aux(nombre,apellido,telefono,domicilio,DNI,curso,email,atoi(equipo.c_str()));
+	Alumno aux(nombre,apellido,telefono,domicilio,DNI,fecha,curso,email,atoi(equipo.c_str()));
 
 	if(atoi(equipo.c_str())!=0)
 	{
@@ -229,6 +241,7 @@ void modificarDatosAlumno(Profesor &p)
 		aux=p.getAgenda().getAlumno(buscado.front());
 	std::string nombre="0", apellido="0", domicilio="0", correo="0", grupo="0";
 	int telefono=0, curso=0;
+	Fecha fecha;
 
 	std::system("clear");
 	std::cout<<"\nIntroduzca los valores que desea cambiar del alumno\n";
@@ -240,6 +253,19 @@ void modificarDatosAlumno(Profesor &p)
 	if(nombre.compare("0")!=0) aux.setNombre(nombre);
 	std::cout<<"\n Apellido: ";
 	std::cin>>apellido;
+
+	std::cout<<"Fecha de nacimiento: ";
+	fecha.leerFecha();
+
+	while(!fecha.esCorrecta())
+	{
+		if(fecha.getDia()==0 || fecha.getMes()==0 || fecha.getMes()==0) return;
+		std::cout<<BIRED<<"ERROR fecha invalida"<<RESET<<std::endl;
+
+		std::cout<<"Fecha de nacimiento: ";
+		fecha.leerFecha();
+	}
+
 	if(apellido.compare("0")!=0) aux.setApellido(apellido);
 	std::cout<<"\n Telefono: ";
 	std::cin>>telefono;
@@ -475,7 +501,7 @@ void mostrarGrupo(Profesor &p)
 	for(int i=0;i<buscado.size();i++)
 	{
 		std::cout<<std::endl<<BIGREEN<<" Alumno "<<i+1<<RESET<<std::endl;
-		p.getAgenda().getAlumno(buscado[i]).escribir();
+		p.getAgenda().mostrarAlumno(buscado[i]);
 	}
 
 	std::cin.ignore();
@@ -495,7 +521,7 @@ void mostrarListaAlumnos(Profesor &p)
 
  	ListaAlumnos aux=p.getAgenda();
 
- 	fichero.open("listaClase.txt");
+ 	fichero.open("listaAlumnos.txt");
 
  	//comprobacion de apertura correcta del fichero
  	if((fichero.rdstate() & std::ofstream::failbit)!=0)
@@ -503,10 +529,6 @@ void mostrarListaAlumnos(Profesor &p)
 		std::cout<<BIRED<<"Se ha producido un error al intentar abrir el fichero"<<RESET<<std::endl;
 		return;
 	}
-
-	//se coloca el cursor al principio del fichero
-	//para sobreescribir todo lo que haya en caso de que ya exista el fichero
-	fichero.seekp((long)0);
 
 	int i=0;
 	//insertar los alumnos en el fichero
@@ -519,7 +541,9 @@ void mostrarListaAlumnos(Profesor &p)
 	fichero.close();
 
 	std::cout<<BIGREEN<<"La lista de alumnos registrados es la siguiente:"<<RESET<<std::endl;
-	std::system("cat ./listaClase.txt");
+	std::system("cat ./listaAlumnos.txt");
+
+	std::system("rm ./listaAlumnos.txt");
 
 }
 
@@ -547,7 +571,7 @@ int particion(int primero, int ultimo, ListaAlumnos &lista)
          	lista.swap(i, j);
       	}
    }
-   lista.	swap(i+1, ultimo);
+   lista.swap(i+1, ultimo);
    return i+1;
 }
 

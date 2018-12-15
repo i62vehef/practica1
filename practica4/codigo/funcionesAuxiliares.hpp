@@ -9,6 +9,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include "profesor.hpp"
+#include "Fecha.hpp"
 
 //void cargarClasedeFichero(Profesor &p);
 

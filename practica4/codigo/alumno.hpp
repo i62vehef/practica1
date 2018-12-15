@@ -5,6 +5,7 @@
 #include <cassert>
 #include <cstdlib>
 #include "macros.hpp"
+#include "Fecha.hpp"
 
 // Para la sobrecarga de los operadores de flujo: << y >>
 using std::istream;
@@ -19,6 +20,7 @@ private:
 	int telefono_; //telefono de contacto del alumno
 	std::string domicilio_; //domicilio de residencia del alumno durante el curso
 	std::string DNI_; //DNI del alumno
+	Fecha nacimiento_;//Fecha de nacimiento del alumno
 	int curso_; //curso actual del alumno
 	std::string email_; //email de contacto del alumno
 	int equipo_; //Equipo de trabajo del alumno
@@ -42,21 +44,18 @@ public:
 	}
 
 	//Constructor parametrizado
-	inline Alumno(std::string nombre,std::string apellido,int telefono,std::string domicilio,std::string DNI,int curso,std::string email,int equipo=0)
+	inline Alumno(std::string nombre,std::string apellido,int telefono,std::string domicilio,std::string DNI, Fecha fechaNacimiento, int curso,std::string email,int equipo=0)
 	{
         nombre_ = nombre;
         apellido_ = apellido;
         telefono_ = telefono;
         domicilio_ = domicilio;
         DNI_ = DNI;
+        nacimiento_=fechaNacimiento;
         curso_ = curso;
         email_ = email;
         equipo_ = equipo;
         lider_=false;
-
-        #ifndef NDEBUG
-        	assert(strcmp(nombre_.c_str(),nombre.c_str())==0 && strcmp(apellido_.c_str(),apellido.c_str())==0 && telefono_==telefono && strcmp(domicilio_.c_str(),domicilio.c_str())==0 && strcmp(DNI_.c_str(),DNI.c_str())==0 && curso_==curso && strcmp(email_.c_str(),email.c_str())==0 && equipo_==equipo);
-        #endif
 	}
 
 	//Constructor de copia
@@ -67,6 +66,7 @@ public:
 		telefono_=alumno.getTelefono();
 		domicilio_=alumno.getDomicilio();
 		DNI_=alumno.getDNI();
+		nacimiento_=alumno.getFechaNacimiento();
 		curso_=alumno.getCurso();
 		email_=alumno.getEmail();
 		equipo_=alumno.getEquipo();
@@ -79,6 +79,7 @@ public:
 	inline int getTelefono()const{return telefono_;}
 	inline std::string getDomicilio()const{return domicilio_;}
 	inline std::string getDNI()const{return DNI_;}
+	inline Fecha getFechaNacimiento()const{return nacimiento_;}
 	inline int getCurso()const{return curso_;}
 	inline std::string getEmail()const{return email_;}
 	inline int getEquipo()const{return equipo_;}
@@ -118,6 +119,13 @@ public:
 		DNI_=nDNI;
 		#ifndef NDEBUG
 			assert(strcmp(getDNI().c_str(),nDNI.c_str())==0);
+		#endif
+	}
+	inline void setFechaNacimiento(Fecha const &nFecha)
+	{
+		nacimiento_=nFecha;
+		#ifndef NDEBUG
+			assert(getFechaNacimiento()==nFecha);
 		#endif
 	}
 	inline void setCurso(int const &nCurso)
@@ -192,8 +200,11 @@ public:
 
    //Funciones externas de la clase Alumno: sobrecarga de los operadores de flujo
 
+//El formato en que se pasan los datos es
+//apellido,nombre DNI fechaNacimiento telefono domicilio curso email ¿eslider?
 ostream &operator<<(ostream &stream, Alumno const &alumno);
 
+//el formato para leer es el mismo
 istream &operator>>(istream &stream, Alumno &alumno);
 
 #endif
