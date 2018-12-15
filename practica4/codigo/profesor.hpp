@@ -71,7 +71,7 @@ public:
 	//Métodos de la clase
 	inline void nuevoAlumno(Alumno &nAlumno){agenda_.insertar(nAlumno);}
 	inline void modificarAlumno(int &i, Alumno &alumno){agenda_.modificar(i, alumno);}
-
+	inline void eliminarAlumno(int &i){agenda_.eliminar(i);}
 	void GuardaFichero();
 	void CargarFichero();
 	void GuardarCopia();

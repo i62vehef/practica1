@@ -11,6 +11,7 @@
 #include "profesor.hpp"
 
 //void cargarClasedeFichero(Profesor &p);
+void borrarAlumno(Profesor &p);
 
 void introducirAlumno(Profesor &p);
 

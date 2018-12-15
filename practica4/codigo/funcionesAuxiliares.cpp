@@ -27,7 +27,7 @@
 
 	p.setAgenda(listaAux);
 }
-
+*/
 void introducirAlumno(Profesor &p)
 {
 	std::system("clear");
@@ -70,7 +70,7 @@ void introducirAlumno(Profesor &p)
 	std::cout<<"Primer Apellido:";
 	std::cin>>apellido;
 	std::cout<<"Domicilio:";
-	std::cin>>domicilio;
+    std::cin>>domicilio;
 	std::cout<<"Telefono:";
 	std::cin>>telefono;
 	std::cout<<"Curso:";
@@ -260,7 +260,7 @@ void mostrarNumeroAlumnos(Profesor &p)
 
 	std::cout<<"\nEn este momento, se encuentran registrados "<<BICYAN<<p.getAgenda().tamClase()<<RESET<<" alumnos "<<std::endl;
 }
-*/
+
 void mostrarDatosdeAlumno(Profesor &p)
 {
 	std::system("clear");
@@ -500,7 +500,7 @@ int menu()
 	return opcion;
 }
 
-void borrarAlumno(Profesor c)
+void borrarAlumno(Profesor &c)
 {
 	int opcion=0;
 	std::string dato;
@@ -524,19 +524,30 @@ void borrarAlumno(Profesor c)
 		
 	}
 	std::system("clear");
+	std::vector<int> v;
 	switch(opcion)
 		{
 			case 1://Apellido
-				std::cout << BIYELLOW <<"Introduce el apellido:" <<RESET;
+				std::cout << BIYELLOW <<"\nIntroduce el apellido:" <<RESET;
 				std::cin>>dato;
+				v = c.getAgenda().buscarAlumno(2,dato);
+				c.eliminarAlumno(v.front());
+				std::cout << BIRED <<"\nAlumno Borrado correctamente\n" <<RESET; 
+				std::cin.ignore();
 			break;
 			case 2://DNI
-				std::cout << BIBLUE <<"Introduce el dni:" <<RESET;
+				std::cout << BIBLUE <<"\nIntroduce el dni:" <<RESET;
 				std::cin>>dato;
 				if(strlen(dato.c_str())==9)
-					c.getAgenda().buscarAlumno(1,dato);
-				else
-					std::cout<<"DNI invalido";
+				{
+				v=c.getAgenda().buscarAlumno(1,dato);
+				c.eliminarAlumno(v.front());
+				std::cout << BIRED <<"\nAlumno Borrado correctamente\n" <<RESET; 
+				std::cin.ignore();
+				}else
+					{
+						std::cout <<BIRED <<"El Alunmo con este dni no existe\n" <<RESET;
+					}
 			break;
 			default:
 				std::cout<<"opcion incorrecta\n";

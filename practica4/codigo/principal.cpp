@@ -37,7 +37,8 @@ int main(int argc, char ** argv)
 				std::cin.ignore();
 			break;
 			case 5://Borrar alumno
-
+				std::system("clear");
+				borrarAlumno(tutor);
 				std::cin.ignore();
 			break;
 			case 6://Mostrar numero de alumnos registrados
