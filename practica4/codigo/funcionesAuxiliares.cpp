@@ -474,7 +474,7 @@ void mostrarGrupo(Profesor &p)
 
 	for(int i=0;i<buscado.size();i++)
 	{
-		std::cout<<"Alumno "<<i<<std::endl;
+		std::cout<<std::endl<<BIGREEN<<" Alumno "<<i+1<<RESET<<std::endl;
 		p.getAgenda().getAlumno(buscado[i]).escribir();
 	}
 
