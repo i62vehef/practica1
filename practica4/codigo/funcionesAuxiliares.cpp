@@ -22,7 +22,7 @@ void introducirAlumno(Profesor &p)
 
 	std::cout<<"\nIntroduzca los datos del nuevo alumno\n\n";
 
-	std::cout<<"DNI:";
+	std::cout<<"DNI: ";
 	std::cin>>DNI;
 	while(strlen(DNI.c_str())!=9)
 	{
@@ -30,7 +30,7 @@ void introducirAlumno(Profesor &p)
 		std::cin.ignore();
 		
 		std::cout<<IYELLOW<<"(Si desea salir introduzca un cero)\n"<<RESET;
-		std::cout<<"DNI:";
+		std::cout<<"DNI: ";
 		std::cin>>DNI;
 	
 		if(DNI.compare("0")==0) return;
@@ -42,21 +42,23 @@ void introducirAlumno(Profesor &p)
 		if(v.size()>0)
 		{
 			std::cout<<BIRED<<"ERROR Ya existe un alumno con el DNI indicado\n"<<RESET;
+			std::cin.ignore();
+			return;
 		}
 	}
-	std::cout<<"Nombre:";
+	std::cout<<"Nombre: ";
 	std::cin>>nombre;
-	std::cout<<"Primer Apellido:";
+	std::cout<<"Primer Apellido: ";
 	std::cin>>apellido;
-	std::cout<<"Domicilio:";
+	std::cout<<"Domicilio: ";
 	std::cin>>domicilio;
-	std::cout<<"Telefono:";
+	std::cout<<"Telefono: ";
 	std::cin>>telefono;
-	std::cout<<"Curso:";
+	std::cout<<"Curso: ";
 	std::cin>>curso;
-	std::cout<<"Email:";
+	std::cout<<"Email: ";
 	std::cin>>email;
-	std::cout<<"Equipo:\n (Si no desea introducirlo indique cero)\n";
+	std::cout<<"Equipo:\n(Si no desea introducirlo indique cero)\n";
 	std::cin>>equipo;
 	
 	Alumno aux(nombre,apellido,telefono,domicilio,DNI,curso,email,equipo);
