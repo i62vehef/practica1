@@ -53,7 +53,7 @@ int main(int argc, char ** argv)
 				std::cin.ignore();
 			break;
 			case 9://Mostrar lista de alumnos
-
+				mostrarListaAlumnos(tutor);
 				std::cin.ignore();
 			break;
 			case 10://Registrar nuevo profesor

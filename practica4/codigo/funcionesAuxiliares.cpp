@@ -4,28 +4,7 @@ void cargarClasedeFichero(Profesor &p)
 {
 	std::system("clear");
 
-	std::ifstream fichero;
-
-	fichero.open("../ficheros/clase.txt");
-
-	if((fichero.rdstate() & std::ofstream::failbit)!=0)	
-      std::cout<<BIRED<<"Se ha producido un error al intentar abrir el fichero"<<RESET<<std::endl;
-	else 
-	{
-		Alumno aux;
-		while(fichero>>aux) p.getAgenda().insertar(aux);		
-		std::cout<<BIGREEN<<"Fichero cargado con exito"<<RESET<<std::endl;
-	}
-	
-	fichero.close();
-
-	ListaAlumnos listaAux;
-
-	listaAux=p.getAgenda();
-
-	quicksort(0,listaAux.tamClase()-1,listaAux);
-
-	p.setAgenda(listaAux);
+	return;
 }
 
 void introducirAlumno(Profesor &p)
@@ -93,13 +72,13 @@ void modificarDatosAlumno(Profesor &p)
 {
 	std::system("clear");
 
-	int opcion;
-
 	if(p.getAgenda().tamClase()<=0)
 	{
 		std::cout<<BIRED<<"\nERROR no hay alumnos registrados que modificar"<<RESET<<std::endl;
 		return;
 	}
+
+	int opcion;
 
 	std::cout<<"\n Indique como quiere identificar al alumno cuyos datos desea modificar\n";
 	std::cout<<" [1] DNI \n";
@@ -378,6 +357,47 @@ void mostrarDatosdeAlumno(Profesor &p)
 			std::cout<<BIRED<<"ERROR opcion invalida"<<RESET<<std::endl;
 	}
 	std::cin.ignore();
+}
+
+void mostrarListaAlumnos(Profesor &p)
+{
+	std::system("clear");
+	if(p.getAgenda().tamClase()<=0)
+	{
+		std::cout<<BIRED<<"ERROR no hay ningun alumno registrado\n"<<RESET;
+		return;
+	}
+
+ 	std::ofstream fichero;
+
+ 	ListaAlumnos aux=p.getAgenda();
+
+ 	fichero.open("listaClase.txt");
+
+ 	//comprobacion de apertura correcta del fichero
+ 	if((fichero.rdstate() & std::ofstream::failbit)!=0)
+	{
+		std::cout<<BIRED<<"Se ha producido un error al intentar abrir el fichero"<<RESET<<std::endl;
+		return;
+	}
+
+	//se coloca el cursor al principio del fichero
+	//para sobreescribir todo lo que haya en caso de que ya exista el fichero
+	fichero.seekp((long)0);
+
+	int i=0;
+	//insertar los alumnos en el fichero
+	while(aux.tamClase()>0)
+	{
+		fichero<<aux.getAlumno(i);
+		aux.eliminar(0);
+	}
+
+	fichero.close();
+
+	std::cout<<BIGREEN<<"La lista de alumnos registrados es la siguiente:"<<RESET<<std::endl;
+	std::system("cat ./listaClase.txt");
+
 }
 
 void quicksort(int primero, int ultimo, ListaAlumnos &lista)
