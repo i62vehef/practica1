@@ -20,7 +20,7 @@ void introducirAlumno(Profesor &p)
 	std::string nombre,apellido,domicilio,DNI,email;
 	int telefono,curso,equipo=0;
 
-	std::cout<<"\nIntroduzca los datos del nuevo alumno\n\n";
+	std::cout<<BIGREEN<<"\nIntroduzca los datos del nuevo alumno\n\n"<<RESET;
 
 	std::cout<<"DNI: ";
 	std::cin>>DNI;
@@ -50,15 +50,9 @@ void introducirAlumno(Profesor &p)
 	std::cin>>nombre;
 	std::cout<<"Primer Apellido: ";
 	std::cin>>apellido;
-<<<<<<< HEAD
-	std::cout<<"Domicilio:";
-    std::cin>>domicilio;
-	std::cout<<"Telefono:";
-=======
 	std::cout<<"Domicilio: ";
 	std::cin>>domicilio;
 	std::cout<<"Telefono: ";
->>>>>>> bdad26f4e775390e07fcaa5ae7ca04e5c8792659
 	std::cin>>telefono;
 	std::cout<<"Curso: ";
 	std::cin>>curso;
@@ -88,9 +82,9 @@ void modificarDatosAlumno(Profesor &p)
 
 	int opcion;
 
-	std::cout<<"\n Indique como quiere identificar al alumno cuyos datos desea modificar\n";
-	std::cout<<" [1] DNI \n";
-	std::cout<<" [2] Apellido\n";
+	std::cout<<BIGREEN<<"\n Indique como quiere identificar al alumno cuyos datos desea modificar\n";
+	std::cout<<BIPURPLE<<"\n [1] DNI \n"<<RESET;
+	std::cout<<BBLUE<<" [2] Apellido\n"<<RESET;
 	std::cout<<BIRED<<"\n [0] Volver\n"<<RESET;
 
 	std::cin>>opcion;
@@ -106,7 +100,7 @@ void modificarDatosAlumno(Profesor &p)
 
 		std::cin>>opcion;
 	}
-
+	std::system("clear");
 	std::string dato;
 	std::vector<int> buscado;
 	int opcionapellido=0;
@@ -117,7 +111,7 @@ void modificarDatosAlumno(Profesor &p)
 		break;
 		case 1://DNI
 			//pedir DNI
-			std::cout<<"Introduzca el DNI del alumno"<<std::endl;
+			std::cout<<BIGREEN<<"\nIntroduzca el DNI del alumno:"<<RESET;
 			std::cin>>dato;
 
 			//comprobar DNI
@@ -145,7 +139,7 @@ void modificarDatosAlumno(Profesor &p)
 		break;
 		case 2://Apellidos
 			//pedir apellido
-			std::cout<<"Introduzca el apellido del alumno"<<std::endl;
+			std::cout<<BIGREEN<<"\nIntroduzca el apellido del alumno:"<<RESET;
 			std::cin>>dato;
 
 			//buscar alumno
@@ -205,7 +199,7 @@ void modificarDatosAlumno(Profesor &p)
 	int telefono=0, curso=0, grupo=0;
 
 	std::system("clear");
-	std::cout<<"\nIntroduzca los valores que desea cambiar del alumno\n";
+	std::cout<<BIGREEN<<"\nIntroduzca los valores que desea cambiar del alumno\n"<<RESET;
 	std::cout<<BIYELLOW<<"(Indique un cero para los que no desee cambiar)"<<RESET<<std::endl;
 
 	//Se supone que el DNI no deberia ser cambiado
@@ -261,12 +255,12 @@ void mostrarDatosdeAlumno(Profesor &p)
 
 	std::vector<int> buscado;
 
-	std::cout<<"Se mostraran todos los datos de un alumno"<<std::endl;
+	std::cout<<BIYELLOW<<"SE MOSTRARAN TODOS LOS DATOS DEL ALUMNO"<<RESET<<std::endl;
 
-	std::cout<<"Indique el dato por el que se identificara al alumno a mostrar"<<std::endl;
-	std::cout<<"[1] DNI"<<std::endl;
-	std::cout<<"[2] Apellido"<<std::endl;
-	std::cout<<BIRED<<"\n [0] Volver"<<RESET<<std::endl;
+	std::cout<<BIGREEN<<"\nIndique el dato por el que se identificara al alumno a mostrar"<<RESET<<std::endl;
+	std::cout<<BIPURPLE<<"\n [1] DNI"<<RESET<<std::endl;
+	std::cout<<BIBLUE<<" [2] Apellido"<<RESET<<std::endl;
+	std::cout<<BIRED <<"\n [0] Volver"<<RESET<<std::endl;
 
 	std::cin>>opcion;
 
@@ -275,13 +269,14 @@ void mostrarDatosdeAlumno(Profesor &p)
 		std::cout<<BIRED<<"ERROR introduzca una opcion valida"<<RESET<<std::endl<<std::endl;
 
 		std::cout<<"Indique el dato por el que se identificara al alumno a mostrar"<<std::endl;
-		std::cout<<" [1] DNI"<<std::endl;
-		std::cout<<" [2] Apellido"<<std::endl;
+		std::cout<<BIPURPLE<<" [1] DNI"<<RESET<<std::endl;
+		std::cout<<BIBLUE<<" [2] Apellido"<<RESET<<std::endl;
 		std::cout<<BIRED<<"\n [0] Volver\n"<<RESET<<std::endl;
 
 		std::cin>>opcion;
+		
 	}
-
+std::system("clear");
 	switch(opcion)
 	{
 		case 0://salir
@@ -289,7 +284,7 @@ void mostrarDatosdeAlumno(Profesor &p)
 		break;
 		case 1://DNI
 			//pedir DNI
-			std::cout<<"Introduzca el DNI del alumno"<<std::endl;
+			std::cout<<BIGREEN<<"\nIntroduzca el DNI del alumno:"<<RESET;
 			std::cin>>dato;
 
 			//comprobar DNI
@@ -297,7 +292,7 @@ void mostrarDatosdeAlumno(Profesor &p)
 			{
 				std::cout<<BIRED<<"ERROR DNI invalido"<<RESET<<std::endl<<std::endl;
 				
-				std::cout<<"Introduzca el DNI del alumno"<<std::endl;
+				std::cout<<BIGREEN<<"Introduzca el DNI del alumno:"<<RESET;
 				std::cin>>dato;
 			}
 
@@ -318,7 +313,7 @@ void mostrarDatosdeAlumno(Profesor &p)
 		break;
 		case 2://Apellido
 			//pedir apellido
-			std::cout<<"Introduzca el apellido del alumno"<<std::endl;
+			std::cout<< BIGREEN <<"\nIntroduzca el apellido del alumno:"<< RESET;
 			std::cin>>dato;
 
 			//buscar alumno
@@ -331,7 +326,7 @@ void mostrarDatosdeAlumno(Profesor &p)
 			{
 				if(buscado.size()>1)//+1 encontrados
 				{
-					std::cout<<"Se han encontrado varios alumnos con el apellido buscado"<<std::endl<<std::endl;
+					std::cout<<BIBLUE<<"\nSe han encontrado varios alumnos con el apellido buscado"<<RESET<<std::endl<<std::endl;
 
 					std::cout<<"Indique cual es el que buscaba"<<std::endl;
 					for(int i=0;i<buscado.size();i++)
@@ -403,7 +398,7 @@ void mostrarListaAlumnos(Profesor &p)
 
 	fichero.close();
 
-	std::cout<<BIGREEN<<"La lista de alumnos registrados es la siguiente:"<<RESET<<std::endl;
+	std::cout<<BIGREEN<<"\nLa lista de alumnos registrados es la siguiente:\n"<<RESET<<std::endl;
 	std::system("cat ./listaClase.txt");
 
 }
