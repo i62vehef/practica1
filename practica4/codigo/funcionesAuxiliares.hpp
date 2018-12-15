@@ -20,6 +20,8 @@ void mostrarNumeroAlumnos(Profesor &p);
 
 void mostrarDatosdeAlumno(Profesor &p);
 
+void mostrarGrupo(Profesor &p);
+
 void mostrarListaAlumnos(Profesor &p);
 
 void quicksort(int primero, int ultimo, ListaAlumnos &lista);

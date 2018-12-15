@@ -22,6 +22,7 @@ private:
 	int curso_; //curso actual del alumno
 	std::string email_; //email de contacto del alumno
 	int equipo_; //Equipo de trabajo del alumno
+	bool lider_;
 
 public:
 
@@ -37,6 +38,7 @@ public:
 		curso_=0;
 		email_="";
 		equipo_=0;
+		lider_=false;
 	}
 
 	//Constructor parametrizado
@@ -50,6 +52,7 @@ public:
         curso_ = curso;
         email_ = email;
         equipo_ = equipo;
+        lider_=false;
 
         #ifndef NDEBUG
         	assert(strcmp(nombre_.c_str(),nombre.c_str())==0 && strcmp(apellido_.c_str(),apellido.c_str())==0 && telefono_==telefono && strcmp(domicilio_.c_str(),domicilio.c_str())==0 && strcmp(DNI_.c_str(),DNI.c_str())==0 && curso_==curso && strcmp(email_.c_str(),email.c_str())==0 && equipo_==equipo);
@@ -67,6 +70,7 @@ public:
 		curso_=alumno.getCurso();
 		email_=alumno.getEmail();
 		equipo_=alumno.getEquipo();
+		lider_=alumno.esLider();
 	}
 
 	//Observadores
@@ -78,6 +82,7 @@ public:
 	inline int getCurso()const{return curso_;}
 	inline std::string getEmail()const{return email_;}
 	inline int getEquipo()const{return equipo_;}
+	inline bool esLider()const{return lider_;}
 
 	//Modificadores
 	inline void setNombre(std::string const &nNombre)
@@ -135,6 +140,14 @@ public:
 		#ifndef NDEBUG
 			assert(getEquipo()==nEquipo);
 		#endif
+	}
+	inline void setLider()
+	{
+		#ifndef NDEBUG
+			assert(getEquipo()>0 and getEquipo()<151);
+		#endif
+
+		lider_=true;
 	}
 
 

@@ -17,8 +17,8 @@ void introducirAlumno(Profesor &p)
 		return;
 	}
 	std::vector<int> v;
-	std::string nombre,apellido,domicilio,DNI,email;
-	int telefono,curso,equipo=0;
+	std::string nombre,apellido,domicilio,DNI,email, equipo="0";
+	int telefono,curso;
 
 	std::cout<<"\nIntroduzca los datos del nuevo alumno\n\n";
 
@@ -58,10 +58,42 @@ void introducirAlumno(Profesor &p)
 	std::cin>>curso;
 	std::cout<<"Email: ";
 	std::cin>>email;
-	std::cout<<"Equipo:\n(Si no desea introducirlo indique cero)\n";
+	std::cout<<"Grupo:\n(Si no desea introducirlo indique cero)\n";
 	std::cin>>equipo;
-	
-	Alumno aux(nombre,apellido,telefono,domicilio,DNI,curso,email,equipo);
+	if(equipo.compare("0")!=0)
+	{
+		while(atoi(equipo.c_str())<1 || atoi(equipo.c_str())>150)
+		{
+			std::cout<<BIRED<<"ERROR grupo invalido"<<RESET<<std::endl;
+			
+			std::cout<<"Grupo:\n(Si no desea introducirlo indique cero)\n";
+			std::cin>>equipo;
+		}
+		
+		if(equipo.compare("0")!=0 && p.getAgenda().buscarAlumno(3,equipo).size()>=3)
+		{
+			std::cout<<BIRED<<"ERROR Este grupo ya se encuentra completo"<<RESET<<std::endl;
+			return;
+		}
+	}
+
+	Alumno aux(nombre,apellido,telefono,domicilio,DNI,curso,email,atoi(equipo.c_str()));
+
+	if(atoi(equipo.c_str())!=0)
+	{
+		int lider;
+		std::cout<<"Es el lider del grupo?[1:Si/2:No]"<<std::endl;
+		std::cin>>lider;
+
+		while(lider>2 || lider<1)
+		{
+			std::cout<<"Introduzca un valor valido"<<std::endl;
+			std::cout<<"Es el lider del grupo?[1:Si/2:No]"<<std::endl;
+			std::cin>>lider;
+		}
+
+		if(lider==1) aux.setLider();
+	}
 
 	p.nuevoAlumno(aux);
 	
@@ -195,8 +227,8 @@ void modificarDatosAlumno(Profesor &p)
 		aux=p.getAgenda().getAlumno(opcionapellido);
 	else
 		aux=p.getAgenda().getAlumno(buscado.front());
-	std::string nombre="0", apellido="0", domicilio="0", correo="0";
-	int telefono=0, curso=0, grupo=0;
+	std::string nombre="0", apellido="0", domicilio="0", correo="0", grupo="0";
+	int telefono=0, curso=0;
 
 	std::system("clear");
 	std::cout<<"\nIntroduzca los valores que desea cambiar del alumno\n";
@@ -223,7 +255,42 @@ void modificarDatosAlumno(Profesor &p)
 	if(correo.compare("0")!=0) aux.setEmail(correo);
 	std::cout<<"\n Grupo: ";
 	std::cin>>grupo;
-	if(grupo!=0) aux.setEquipo(grupo);
+	if(grupo.compare("0")!=0 && atoi(grupo.c_str())!=aux.getEquipo()) 
+	{
+		while(atoi(grupo.c_str())<1 || atoi(grupo.c_str())>150)
+		{
+			std::cout<<BIRED<<"ERROR grupo invalido"<<RESET<<std::endl;
+
+			std::cout<<"Grupo: ";
+			std::cin>>grupo;
+		}
+
+		if(p.getAgenda().buscarAlumno(3,grupo).size()>=3)
+		{
+			std::cout<<BIRED<<"ERROR Este grupo ya se encuentra completo"<<RESET<<std::endl;
+
+			return;
+		}
+
+		if(atoi(grupo.c_str())==0) return;
+
+		aux.setEquipo(atoi(grupo.c_str()));
+
+		int lider;
+		std::cout<<"Es el lider del grupo?[1:Si/2:No]"<<std::endl;
+		std::cin>>lider;
+
+		while(lider>2 || lider<1)
+		{
+			std::cout<<"Introduzca un valor valido"<<std::endl;
+			std::cout<<"Es el lider del grupo?[1:Si/2:No]"<<std::endl;
+			std::cin>>lider;
+		}
+
+		if(lider==1) aux.setLider();
+	}
+
+	if(atoi(grupo.c_str())==0) return;
 
 	if(opcionapellido==0)
 		p.modificarAlumno(opcionapellido,aux);
@@ -239,7 +306,7 @@ void mostrarNumeroAlumnos(Profesor &p)
 {
 	std::system("clear");
 
-	std::cout<<"\nEn este momento, se encuentran registrados "<<BICYAN<<p.getAgenda().tamClase()<<RESET<<" alumnos "<<std::endl;
+	std::cout<<"\nEn este momento, se encuentran registrados "<<BICYAN<<p.getAgenda().tamClase()<<RESET<<" alumnos"<<std::endl;
 }
 
 void mostrarDatosdeAlumno(Profesor &p)
@@ -359,6 +426,60 @@ void mostrarDatosdeAlumno(Profesor &p)
 			std::cout<<BIRED<<"ERROR opcion invalida"<<RESET<<std::endl;
 	}
 	std::cin.ignore();
+}
+
+void mostrarGrupo(Profesor &p)
+{
+	std::system("clear");
+	if(p.getAgenda().tamClase()<1)//precondicion
+	{
+		std::cout<<BIRED<<"ERROR no hay alumnos registrados"<<RESET<<std::endl;
+		return;
+	}
+
+	std::string grupo;
+	std::vector<int> buscado;
+	std::cout<<"Indique el numero del grupo que busca"<<std::endl;
+	std::cin>>grupo;
+
+	//Como minimo habra un grupo
+	//Como maximo habria 150 grupos, de 1 alumno cada uno
+	while(atoi(grupo.c_str())<1 || atoi(grupo.c_str())>150)
+	{
+		std::cout<<BIRED<<"ERROR grupo invalido"<<RESET<<std::endl;
+
+		std::cout<<"Indique el numero del grupo que busca"<<std::endl;
+		std::cout<<"(Introduzca un cero sin desea volver"<<std::endl;
+		std::cin>>grupo;
+
+		if(atoi(grupo.c_str())==0) return;
+	}
+
+	buscado=p.getAgenda().buscarAlumno(3,grupo);
+
+	if(buscado.size()>3)
+	{
+		std::cout<<BIRED<<"ERROR se han encontrado mas de 3 alumnos con el mismo grupo asignado"<<RESET<<std::endl;
+		std::cin.ignore();
+		return;
+	}
+
+	if(buscado.size()<1)
+	{
+		std::cout<<BIRED<<"No se han encontrado alumnos con el grupo "<<grupo<<" asignado"<<RESET<<std::endl;
+		return;
+	}
+
+	std::cout<<"Los componentes del grupo "<<BIYELLOW<<grupo<<RESET<<" son los siguientes: "<<std::endl;
+
+	for(int i=0;i<buscado.size();i++)
+	{
+		std::cout<<"Alumno "<<i<<std::endl;
+		p.getAgenda().getAlumno(buscado[i]).escribir();
+	}
+
+	std::cin.ignore();
+
 }
 
 void mostrarListaAlumnos(Profesor &p)
@@ -547,26 +668,20 @@ void borrarAlumno(Profesor c)
 	}
 	std::system("clear");
 	switch(opcion)
-		{
-			case 1://Apellido
-				std::cout << BIYELLOW <<"Introduce el apellido:" <<RESET;
-				std::cin>>dato;
-			break;
-			case 2://DNI
-				std::cout << BIBLUE <<"Introduce el dni:" <<RESET;
-				std::cin>>dato;
-				if(strlen(dato.c_str())==9)
-					c.getAgenda().buscarAlumno(1,dato);
-				else
-					std::cout<<"DNI invalido";
-			break;
-			default:
-				std::cout<<"opcion incorrecta\n";
-		}
-		
-
-
-		
-
-
+	{
+		case 1://Apellido
+			std::cout << BIYELLOW <<"Introduce el apellido:" <<RESET;
+			std::cin>>dato;
+		break;
+		case 2://DNI
+			std::cout << BIBLUE <<"Introduce el dni:" <<RESET;
+			std::cin>>dato;
+			if(strlen(dato.c_str())==9)
+				c.getAgenda().buscarAlumno(1,dato);
+			else
+				std::cout<<"DNI invalido";
+		break;
+		default:
+			std::cout<<"opcion incorrecta\n";
+	}
 }
