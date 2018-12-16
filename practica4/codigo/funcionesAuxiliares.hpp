@@ -27,6 +27,8 @@ void mostrarGrupo(Profesor &p);
 
 void mostrarListaAlumnos(Profesor &p);
 
+void registrarNuevoProfesor();
+
 void cargarCopia(Profesor &p);
 
 void crearCopia(Profesor &p);

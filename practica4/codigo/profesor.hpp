@@ -41,6 +41,7 @@ public:
 	{
 		nombre_=nombre;
 		Id_=Id;
+		rol_=false;
 
 		#ifndef NDEBUG
 			assert(strcmp(nombre_.c_str(),nombre.c_str())==0 and Id_==Id);
@@ -105,6 +106,9 @@ public:
 
 		return *this;
 	}
+
+
+	void leerProfesor();
 };
 
 #endif

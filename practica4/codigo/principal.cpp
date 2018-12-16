@@ -126,7 +126,7 @@ int main(int argc, char ** argv)
 						std::cin.ignore();
 					break;
 					case 10://Registrar nuevo profesor
-
+						registrarNuevoProfesor();
 						std::cin.ignore();
 					break;
 					case 11://Cargar copia de seguridad

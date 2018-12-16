@@ -664,6 +664,64 @@ void mostrarListaAlumnos(Profesor &p)
 
 }
 
+void registrarNuevoProfesor()
+{
+	std::system("clear");
+
+	std::cout<<"Introduzca los datos del nuevo profesor"<<std::endl;
+
+	std::vector<Profesor> profesores;
+	Profesor nuevo;
+
+	nuevo.leerProfesor();
+
+	std::ifstream fichero;
+
+	fichero.open("../profesores.bin", std::ifstream::binary);
+
+	if(!fichero.is_open())
+	{
+		std::cout<<BIRED<<"ERROR al abrir el fichero"<<RESET<<std::endl;
+		std::cin.ignore();
+		return;
+	}
+
+	Profesor aux;
+	while(!fichero.eof())
+	{		
+		fichero.read((char*)&aux,sizeof(Profesor));
+		profesores.push_back(aux);
+	}
+
+	fichero.close();
+
+	for(int i=0;i<profesores.size();i++)
+	{
+		if(profesores[i].getId()==nuevo.getId())
+		{
+			std::cout<<BIRED<<"ERROR El profesor indicado ya se encuentra registrado"<<RESET<<std::endl;
+			std::cin.ignore();
+			return;
+		}
+	}
+
+	std::ofstream fichero2;
+
+	fichero2.open("../profesores.bin", std::ofstream::binary);
+
+	if(!fichero2.is_open())
+	{
+		std::cout<<BIRED<<"ERROR al abrir el fichero"<<RESET<<std::endl;
+		std::cin.ignore();
+		return;
+	}
+
+	fichero2.seekp(0,std::ios_base::end);
+
+	fichero2.write((char*)&nuevo,sizeof(Profesor));
+
+}
+
 void cargarCopia(Profesor &p)
 {
 	std::system("clear");
