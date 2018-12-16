@@ -51,7 +51,7 @@ public:
 	inline std::string getNombre()const{return nombre_;}
 	inline int getId()const{return Id_;}
 	inline bool getRol()const{return rol_;}
-	inline ListaAlumnos getAgenda(){return agenda_;}
+	inline ListaAlumnos getAgenda()const{return agenda_;}
 	inline bool comprobarCredenciales(std::string usuario, std::string contrasena)
 	{
 		if(getNombre().compare(usuario)!=0) return false;
@@ -95,9 +95,11 @@ public:
 
 	inline Profesor operator=(Profesor const &profesor)
 	{
+		ListaAlumnos nuevaAgenda;
+		nuevaAgenda=profesor.getAgenda();
 		setNombre(profesor.getNombre());
 		setId(profesor.getId());
-		setAgenda(profesor.getAgenda());
+		setAgenda(nuevaAgenda);
 		setContrasena(profesor.getContrasena());
 		setRol(profesor.getRol());
 

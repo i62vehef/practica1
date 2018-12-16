@@ -774,16 +774,18 @@ Profesor logIn()
 	std::cout<<BIYELLOW<<"BIENVENIDO"<<RESET<<std::endl;
 
 	std::vector<Profesor> bdprofesores;
+	Profesor nuevoTutor;
 
-	std::ofstream fichero;
 
-	fichero.open("../profesores.bin", std::ofstream::binary);
+	std::ifstream fichero;
+
+	fichero.open("../profesores.bin", std::ifstream::binary);
 
 	if(!fichero.is_open())
 	{
 		std::cout<<BIRED<<"ERROR al abrir el fichero"<<RESET<<std::endl;
 		std::cin.ignore();
-		return;
+		return nuevoTutor;
 	}
 
 	Profesor aux;
@@ -797,12 +799,11 @@ Profesor logIn()
 
 	std::cout<<"Introduzca sus credenciales"<<std::endl;
 
-	std::cout<<" Usuario --> ":
+	std::cout<<" Usuario --> ";
 	std::cin>>usuario;
 	std::cout<<"\n Contrasena --> ";
 	std::cin>>contrasena;
 
-	Profesor nuevoTutor;
 	for(int i=0;i<bdprofesores.size();i++)
 	{
 		if(bdprofesores[i].comprobarCredenciales(usuario, contrasena))
@@ -843,7 +844,7 @@ int particion(int primero, int ultimo, ListaAlumnos &lista)
    return i+1;
 }
 
-int menu()
+int menu(bool &membresia)
 {
 	int opcion;
 	int posicion;
@@ -898,20 +899,23 @@ int menu()
 	PLACE(posicion++,10);
 	std::cout << BIGREEN << "[9]" << RESET << " Mostrar lista de alumnos";
 
-	//////////////////////////////////////////////////////////////////////////////
-	posicion++;
+	if(membresia)
+	{
+		//////////////////////////////////////////////////////////////////////////////
+		posicion++;
 
-	PLACE(posicion++,10);
-	std::cout << BICYAN << "[10]" << RESET << " Registrar nuevo profesor";
+		PLACE(posicion++,10);
+		std::cout << BICYAN << "[10]" << RESET << " Registrar nuevo profesor";
 
-	//////////////////////////////////////////////////////////////////////////////
-	posicion++;
+		//////////////////////////////////////////////////////////////////////////////
+		posicion++;
 
-	PLACE(posicion++,10);
-	std::cout << IGREEN << "[11]" << RESET << " Cargar copia de seguridad";
+		PLACE(posicion++,10);
+		std::cout << IGREEN << "[11]" << RESET << " Cargar copia de seguridad";
 
-	PLACE(posicion++,10);
-	std::cout << IGREEN << "[12]" << RESET << " Crear copia de seguridad";
+		PLACE(posicion++,10);
+		std::cout << IGREEN << "[12]" << RESET << " Crear copia de seguridad";
+	}
 
 	//////////////////////////////////////////////////////////////////////////////
 	posicion++;

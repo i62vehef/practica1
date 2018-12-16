@@ -37,6 +37,6 @@ void quicksort(int primero, int ultimo, ListaAlumnos &lista);
 
 int particion(int primero, int ultimo, ListaAlumnos &lista);
 
-int menu();
+int menu(bool &membresia);
 
 #endif
