@@ -737,7 +737,7 @@ void crearCopia(Profesor &p)
 	mes<<now->tm_mon+1;
 	ano<<now->tm_year+1900;
 
-	nombreFichero="clase-"+dia.str();
+	nombreFichero="../CopiasSeguridad/clase-"+dia.str();
 	nombreFichero+="-"+mes.str();
 	nombreFichero+="-"+ano.str();
 	nombreFichero+=".bin";
