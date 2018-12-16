@@ -1,12 +1,5 @@
 #include "funcionesAuxiliares.hpp"
 
-void cargarClasedeFichero(Profesor &p)
-{
-	std::system("clear");
-
-	return;
-}
-
 void introducirAlumno(Profesor &p)
 {
 	std::system("clear");
@@ -545,6 +538,65 @@ void mostrarListaAlumnos(Profesor &p)
 
 	std::system("rm ./listaAlumnos.txt");
 
+}
+
+void cargarCopia(Profesor &p)
+{
+	std::system("clear");
+
+	//crear fichero llamado clase[fechadelacopia].bin
+	std::ifstream fichero;
+
+	//nombrefichero=now->tm_mday+'-'+(now->tm_mon + 1)+'-'+(now->tm_year + 1900);
+	std::cout<<"Introduzca el dia de la copia que desea recuperar"<<std::endl;
+
+	Fecha fecha;
+	fecha.leerFecha();
+
+	std::string nombreFichero;
+	std::stringstream dia, mes, ano;
+
+	//std::time_t t = std::time(0);   // recoge el dia actual
+    //std::tm* now = std::localtime(&t);
+
+	dia<<fecha.getDia();
+	mes<<fecha.getMes();
+	ano<<fecha.getAgno();
+
+    nombreFichero="../CopiasSeguridad/clase-"+ dia.str();
+    nombreFichero+="-"+ mes.str();
+    nombreFichero+="-"+ ano.str();
+    nombreFichero+=".bin";
+
+	std::cout<<BIGREEN<<nombreFichero<<RESET<<std::endl;
+
+
+	//abrir fichero
+	fichero.open(nombreFichero.c_str(), std::ifstream::binary);
+
+	//comprobar fichero abierto
+	if(!fichero.is_open())
+	{
+		std::cout<<BIRED<<"ERROR No se ha podido abrir el fichero"<<RESET<<std::endl;
+		std::cin.ignore();
+		return;
+	}
+
+	Alumno aux;
+	//meter alumnos en el fichero
+	for(int i=0;i<p.getAgenda().tamClase();i++)
+	{
+		fichero.read((char *)&aux,sizeof(Alumno));
+
+		if(p.getAgenda().buscarAlumno(1,aux.getDNI()).size()==0) p.nuevoAlumno(aux);
+		else std::cout<<"El alumno '"<<aux.getNombre()<<" "<<aux.getApellido()<<"' ya esta guardado\nPor lo tanto no se ha registrado"<<std::endl;
+	}
+
+
+	//comprobar tamano del fichero (para saber si estan todos)
+
+
+	std::cin.ignore();
 }
 
 void quicksort(int primero, int ultimo, ListaAlumnos &lista)

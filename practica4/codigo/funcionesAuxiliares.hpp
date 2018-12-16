@@ -10,8 +10,8 @@
 #include <cstdlib>
 #include "profesor.hpp"
 #include "Fecha.hpp"
-
-//void cargarClasedeFichero(Profesor &p);
+#include <ctime>
+#include <sstream>
 
 void introducirAlumno(Profesor &p);
 
@@ -24,6 +24,8 @@ void mostrarDatosdeAlumno(Profesor &p);
 void mostrarGrupo(Profesor &p);
 
 void mostrarListaAlumnos(Profesor &p);
+
+void cargarCopia(Profesor &p);
 
 void quicksort(int primero, int ultimo, ListaAlumnos &lista);
 
