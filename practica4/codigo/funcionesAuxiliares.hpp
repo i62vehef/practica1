@@ -31,7 +31,7 @@ void cargarCopia(Profesor &p);
 
 void crearCopia(Profesor &p);
 
-void logIn();
+Profesor logIn();
 
 void quicksort(int primero, int ultimo, ListaAlumnos &lista);
 

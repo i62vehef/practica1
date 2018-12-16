@@ -6,14 +6,27 @@
 
 int main(int argc, char ** argv)
 {
+	std::system("clear");
 	int opcion;
 
 	bool logged=false;
 	bool coordinador=false;
 
-	login();
+	Profesor tutor=logIn();
 
-	Profesor tutor;
+	if(tutor.getId()==-1)
+	{
+		std::cout<<BIRED<<"ERROR Inicio de sesion invalido"<<RESET<<std::endl;
+		std::cin.ignore();
+		return;
+	}
+
+	if(!logged)
+	{
+		std::cout<<BIRED<<"Debe iniciar sesion antes de acceder a cualquier funcion del sistema"<<RESET<<std::endl;
+		std::cin.ignore();
+		return;
+	}
 
 	do
 	{

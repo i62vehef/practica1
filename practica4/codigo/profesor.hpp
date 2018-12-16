@@ -14,7 +14,19 @@ private:
 	std::string nombre_;//Nombre del profesor
 	int Id_;//Identificador del profesor
 	ListaAlumnos agenda_; //Lista de alumnos
-	bool rol_;//Rol del profesor
+
+	std::string contrasena_;//Contrasena del profesor para iniciar sesion
+	
+	//Rol del profesor
+	//rol=0/false->ayudante
+	//rol=1/true->coordinador
+	bool rol_;
+
+
+
+	std::string getContrasena()const{return contrasena_;};
+
+	void setContrasena(std::string const &ncontrasena){contrasena_=ncontrasena;}
 
 public:
 
@@ -40,6 +52,14 @@ public:
 	inline int getId()const{return Id_;}
 	inline bool getRol()const{return rol_;}
 	inline ListaAlumnos getAgenda(){return agenda_;}
+	inline bool comprobarCredenciales(std::string usuario, std::string contrasena)
+	{
+		if(getNombre().compare(usuario)!=0) return false;
+
+		if(getContrasena().compare(contrasena)!=0) return false;
+
+		return true;
+	}
 
 	//Modificadores
 	inline void setNombre(std::string const &nNombre)
@@ -72,11 +92,17 @@ public:
 	inline void nuevoAlumno(Alumno &nAlumno){agenda_.insertar(nAlumno);}
 	inline void modificarAlumno(int &i, Alumno &alumno){agenda_.modificar(i, alumno);}
 	inline void eliminarAlumno(int &i){agenda_.eliminar(i);}
-	void GuardaFichero();
-	void CargarFichero();
-	void GuardarCopia();
-	void CrearCopia();
 
+	inline Profesor operator=(Profesor const &profesor)
+	{
+		setNombre(profesor.getNombre());
+		setId(profesor.getId());
+		setAgenda(profesor.getAgenda());
+		setContrasena(profesor.getContrasena());
+		setRol(profesor.getRol());
+
+		return *this;
+	}
 };
 
 #endif
