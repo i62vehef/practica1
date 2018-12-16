@@ -1,5 +1,5 @@
 #include "funcionesAuxiliares.hpp"
-
+#include <sstream>
 /*void cargarClasedeFichero(Profesor &p)
 {
 	std::system("clear");
@@ -17,8 +17,9 @@ void introducirAlumno(Profesor &p)
 		return;
 	}
 	std::vector<int> v;
-	std::string nombre,apellido,domicilio,DNI,email;
-	int telefono,curso,equipo=0;
+	std::string nombre,apellido,domicilio,DNI,email, equipo="0";
+	int telefono,curso;
+	Fecha fecha;
 
 	std::cout<<BIGREEN<<"\nIntroduzca los datos del nuevo alumno\n\n"<<RESET;
 
@@ -52,16 +53,59 @@ void introducirAlumno(Profesor &p)
 	std::cin>>apellido;
 	std::cout<<"Domicilio: ";
 	std::cin>>domicilio;
+	std::cout<<"Fecha de nacimiento: \n";
+	fecha.leerFecha();
+
+	while(!fecha.esCorrecta())
+	{
+		std::cout<<BIRED<<"ERROR fecha invalida"<<RESET<<std::endl;
+
+		std::cout<<"Fecha de nacimiento: \n";
+		fecha.leerFecha();
+	}
+
 	std::cout<<"Telefono: ";
 	std::cin>>telefono;
 	std::cout<<"Curso: ";
 	std::cin>>curso;
 	std::cout<<"Email: ";
 	std::cin>>email;
-	std::cout<<"Equipo:\n(Si no desea introducirlo indique cero)\n";
+	std::cout<<"Grupo:\n(Si no desea introducirlo indique cero)\n";
 	std::cin>>equipo;
-	
-	Alumno aux(nombre,apellido,telefono,domicilio,DNI,curso,email,equipo);
+	if(equipo.compare("0")!=0)
+	{
+		while(atoi(equipo.c_str())<1 || atoi(equipo.c_str())>150)
+		{
+			std::cout<<BIRED<<"ERROR grupo invalido"<<RESET<<std::endl;
+			
+			std::cout<<"Grupo:\n(Si no desea introducirlo indique cero)\n";
+			std::cin>>equipo;
+		}
+		
+		if(equipo.compare("0")!=0 && p.getAgenda().buscarAlumno(3,equipo).size()>=3)
+		{
+			std::cout<<BIRED<<"ERROR Este grupo ya se encuentra completo"<<RESET<<std::endl;
+			return;
+		}
+	}
+
+	Alumno aux(nombre,apellido,telefono,domicilio,DNI,fecha,curso,email,atoi(equipo.c_str()));
+
+	if(atoi(equipo.c_str())!=0)
+	{
+		int lider;
+		std::cout<<"Es el lider del grupo?[1:Si/2:No]"<<std::endl;
+		std::cin>>lider;
+
+		while(lider>2 || lider<1)
+		{
+			std::cout<<"Introduzca un valor valido"<<std::endl;
+			std::cout<<"Es el lider del grupo?[1:Si/2:No]"<<std::endl;
+			std::cin>>lider;
+		}
+
+		if(lider==1) aux.setLider();
+	}
 
 	p.nuevoAlumno(aux);
 	
@@ -195,8 +239,9 @@ void modificarDatosAlumno(Profesor &p)
 		aux=p.getAgenda().getAlumno(opcionapellido);
 	else
 		aux=p.getAgenda().getAlumno(buscado.front());
-	std::string nombre="0", apellido="0", domicilio="0", correo="0";
-	int telefono=0, curso=0, grupo=0;
+	std::string nombre="0", apellido="0", domicilio="0", correo="0", grupo="0";
+	int telefono=0, curso=0;
+	Fecha fecha;
 
 	std::system("clear");
 	std::cout<<BIGREEN<<"\nIntroduzca los valores que desea cambiar del alumno\n"<<RESET;
@@ -208,6 +253,19 @@ void modificarDatosAlumno(Profesor &p)
 	if(nombre.compare("0")!=0) aux.setNombre(nombre);
 	std::cout<<"\n Apellido: ";
 	std::cin>>apellido;
+
+	std::cout<<"Fecha de nacimiento: ";
+	fecha.leerFecha();
+
+	while(!fecha.esCorrecta())
+	{
+		if(fecha.getDia()==0 || fecha.getMes()==0 || fecha.getMes()==0) return;
+		std::cout<<BIRED<<"ERROR fecha invalida"<<RESET<<std::endl;
+
+		std::cout<<"Fecha de nacimiento: ";
+		fecha.leerFecha();
+	}
+
 	if(apellido.compare("0")!=0) aux.setApellido(apellido);
 	std::cout<<"\n Telefono: ";
 	std::cin>>telefono;
@@ -223,7 +281,42 @@ void modificarDatosAlumno(Profesor &p)
 	if(correo.compare("0")!=0) aux.setEmail(correo);
 	std::cout<<"\n Grupo: ";
 	std::cin>>grupo;
-	if(grupo!=0) aux.setEquipo(grupo);
+	if(grupo.compare("0")!=0 && atoi(grupo.c_str())!=aux.getEquipo()) 
+	{
+		while(atoi(grupo.c_str())<1 || atoi(grupo.c_str())>150)
+		{
+			std::cout<<BIRED<<"ERROR grupo invalido"<<RESET<<std::endl;
+
+			std::cout<<"Grupo: ";
+			std::cin>>grupo;
+		}
+
+		if(p.getAgenda().buscarAlumno(3,grupo).size()>=3)
+		{
+			std::cout<<BIRED<<"ERROR Este grupo ya se encuentra completo"<<RESET<<std::endl;
+
+			return;
+		}
+
+		if(atoi(grupo.c_str())==0) return;
+
+		aux.setEquipo(atoi(grupo.c_str()));
+
+		int lider;
+		std::cout<<"Es el lider del grupo?[1:Si/2:No]"<<std::endl;
+		std::cin>>lider;
+
+		while(lider>2 || lider<1)
+		{
+			std::cout<<"Introduzca un valor valido"<<std::endl;
+			std::cout<<"Es el lider del grupo?[1:Si/2:No]"<<std::endl;
+			std::cin>>lider;
+		}
+
+		if(lider==1) aux.setLider();
+	}
+
+	if(atoi(grupo.c_str())==0) return;
 
 	if(opcionapellido==0)
 		p.modificarAlumno(opcionapellido,aux);
@@ -239,7 +332,7 @@ void mostrarNumeroAlumnos(Profesor &p)
 {
 	std::system("clear");
 
-	std::cout<<"\nEn este momento, se encuentran registrados "<<BICYAN<<p.getAgenda().tamClase()<<RESET<<" alumnos "<<std::endl;
+	std::cout<<"\nEn este momento, se encuentran registrados "<<BICYAN<<p.getAgenda().tamClase()<<RESET<<" alumnos"<<std::endl;
 }
 
 void mostrarDatosdeAlumno(Profesor &p)
@@ -362,6 +455,60 @@ std::system("clear");
 	std::cin.ignore();
 }
 
+void mostrarGrupo(Profesor &p)
+{
+	std::system("clear");
+	if(p.getAgenda().tamClase()<1)//precondicion
+	{
+		std::cout<<BIRED<<"ERROR no hay alumnos registrados"<<RESET<<std::endl;
+		return;
+	}
+
+	std::string grupo;
+	std::vector<int> buscado;
+	std::cout<<"Indique el numero del grupo que busca"<<std::endl;
+	std::cin>>grupo;
+
+	//Como minimo habra un grupo
+	//Como maximo habria 150 grupos, de 1 alumno cada uno
+	while(atoi(grupo.c_str())<1 || atoi(grupo.c_str())>150)
+	{
+		std::cout<<BIRED<<"ERROR grupo invalido"<<RESET<<std::endl;
+
+		std::cout<<"Indique el numero del grupo que busca"<<std::endl;
+		std::cout<<"(Introduzca un cero sin desea volver"<<std::endl;
+		std::cin>>grupo;
+
+		if(atoi(grupo.c_str())==0) return;
+	}
+
+	buscado=p.getAgenda().buscarAlumno(3,grupo);
+
+	if(buscado.size()>3)
+	{
+		std::cout<<BIRED<<"ERROR se han encontrado mas de 3 alumnos con el mismo grupo asignado"<<RESET<<std::endl;
+		std::cin.ignore();
+		return;
+	}
+
+	if(buscado.size()<1)
+	{
+		std::cout<<BIRED<<"No se han encontrado alumnos con el grupo "<<grupo<<" asignado"<<RESET<<std::endl;
+		return;
+	}
+
+	std::cout<<"Los componentes del grupo "<<BIYELLOW<<grupo<<RESET<<" son los siguientes: "<<std::endl;
+
+	for(int i=0;i<buscado.size();i++)
+	{
+		std::cout<<std::endl<<BIGREEN<<" Alumno "<<i+1<<RESET<<std::endl;
+		p.getAgenda().mostrarAlumno(buscado[i]);
+	}
+
+	std::cin.ignore();
+
+}
+
 void mostrarListaAlumnos(Profesor &p)
 {
 	std::system("clear");
@@ -375,7 +522,7 @@ void mostrarListaAlumnos(Profesor &p)
 
  	ListaAlumnos aux=p.getAgenda();
 
- 	fichero.open("listaClase.txt");
+ 	fichero.open("listaAlumnos.txt");
 
  	//comprobacion de apertura correcta del fichero
  	if((fichero.rdstate() & std::ofstream::failbit)!=0)
@@ -383,10 +530,6 @@ void mostrarListaAlumnos(Profesor &p)
 		std::cout<<BIRED<<"Se ha producido un error al intentar abrir el fichero"<<RESET<<std::endl;
 		return;
 	}
-
-	//se coloca el cursor al principio del fichero
-	//para sobreescribir todo lo que haya en caso de que ya exista el fichero
-	fichero.seekp((long)0);
 
 	int i=0;
 	//insertar los alumnos en el fichero
@@ -398,8 +541,10 @@ void mostrarListaAlumnos(Profesor &p)
 
 	fichero.close();
 
-	std::cout<<BIGREEN<<"\nLa lista de alumnos registrados es la siguiente:\n"<<RESET<<std::endl;
-	std::system("cat ./listaClase.txt");
+	std::cout<<BIGREEN<<"La lista de alumnos registrados es la siguiente:\n"<<RESET<<std::endl;
+	std::system("cat ./listaAlumnos.txt");
+
+	std::system("rm ./listaAlumnos.txt");
 
 }
 
@@ -427,7 +572,7 @@ int particion(int primero, int ultimo, ListaAlumnos &lista)
          	lista.swap(i, j);
       	}
    }
-   lista.	swap(i+1, ultimo);
+   lista.swap(i+1, ultimo);
    return i+1;
 }
 
@@ -581,4 +726,44 @@ void borrarAlumno(Profesor &c)
 		
 
 
+}
+
+void crearCopia()
+{
+
+Alumno c;
+
+
+std::string nombreFichero;
+std::stringstream dia,mes,ano;
+std::time_t t = std::time(0);
+std::tm* now = std::localtime(&t);
+
+dia<<now->tm_mday;
+mes<<now->tm_mon+1;
+ano<<now->tm_year+1900;
+
+nombreFichero = "clase-"+dia.str();
+nombreFichero+="-"+mes.str();
+nombreFichero+="-"+ano.str();
+nombreFichero+=".bin";
+
+
+
+std::ofstream f;
+
+f.open(nombreFichero,std::ios::out | std::ios::binary);
+
+if(f.is_open())
+{
+	f.write((char*)&c,sizeof(Alumno));
+	std::cout<<BIGREEN<<"\nLos alumnos se guardaron correctamente"<<RESET;
+}else
+
+	{
+		std::cout<<BIRED<<"Error los alumnos no se guardaron"<<RESET;
+	}
+
+
+f.close();
 }

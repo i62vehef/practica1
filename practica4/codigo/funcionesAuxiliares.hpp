@@ -9,8 +9,12 @@
 #include <cstdio>
 #include <cstdlib>
 #include "profesor.hpp"
+#include "Fecha.hpp"
+#include <ctime>
 
 //void cargarClasedeFichero(Profesor &p);
+void crearCopia();
+
 void borrarAlumno(Profesor &p);
 
 void introducirAlumno(Profesor &p);
@@ -20,6 +24,8 @@ void modificarDatosAlumno(Profesor &p);
 void mostrarNumeroAlumnos(Profesor &p);
 
 void mostrarDatosdeAlumno(Profesor &p);
+
+void mostrarGrupo(Profesor &p);
 
 void mostrarListaAlumnos(Profesor &p);
 
