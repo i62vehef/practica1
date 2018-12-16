@@ -11,6 +11,8 @@ int main(int argc, char ** argv)
 	bool logged=false;
 	bool coordinador=false;
 
+	login();
+
 	Profesor tutor;
 
 	do
