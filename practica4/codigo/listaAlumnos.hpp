@@ -96,8 +96,6 @@ public:
 	//i -> indice en la lista del alumno a imprimir
 	inline void mostrarAlumno(int i){getAlumno(i).escribir();}
 	
-	void listarAlumnos();
-
 	//busca alumnos segun su DNI, apellido o equipo
 	//DNI -> criterio=1 
 	//Apellido -> criterio=2

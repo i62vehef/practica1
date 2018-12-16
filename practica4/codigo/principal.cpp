@@ -21,12 +21,11 @@ int main(int argc, char ** argv)
 			case 0:
 			break;
 			case 1://Cargar datos de un fichero
-				//cargarClasedeFichero(tutor);
+				cargarCopia(tutor);
 				std::cin.ignore();
 			break;
 			case 2://Guardar datos en un fichero
-				std::system("clear");
-					crearCopia();
+				crearCopia(tutor);
 				std::cin.ignore();
 			break;
 			case 3://Introducir alumno
@@ -38,8 +37,7 @@ int main(int argc, char ** argv)
 				std::cin.ignore();
 			break;
 			case 5://Borrar alumno
-				std::system("clear");
-				borrarAlumno(tutor);
+				borrarDatosAlumno(tutor);
 				std::cin.ignore();
 			break;
 			case 6://Mostrar numero de alumnos registrados
@@ -63,11 +61,11 @@ int main(int argc, char ** argv)
 				std::cin.ignore();
 			break;
 			case 11://Cargar copia de seguridad
-
+				cargarCopia(tutor);
 				std::cin.ignore();
 			break;
 			case 12://Crear copia de seguridad
-
+				crearCopia(tutor);
 				std::cin.ignore();
 			break;															
 			default:
