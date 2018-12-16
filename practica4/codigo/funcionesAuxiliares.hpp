@@ -31,6 +31,8 @@ void cargarCopia(Profesor &p);
 
 void crearCopia(Profesor &p);
 
+Profesor logIn();
+
 void quicksort(int primero, int ultimo, ListaAlumnos &lista);
 
 int particion(int primero, int ultimo, ListaAlumnos &lista);

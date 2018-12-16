@@ -709,11 +709,13 @@ void cargarCopia(Profesor &p)
 	Alumno aux;
 
 	//meter alumnos en el fichero
-	for(int i=0;i<p.getAgenda().tamClase();i++)
+	while(!fichero.eof())
 	{
 		fichero.read((char *)&aux,sizeof(Alumno));
 
-		if(p.getAgenda().buscarAlumno(1,aux.getDNI()).size()==0) p.nuevoAlumno(aux);
+		if(p.getAgenda().buscarAlumno(1,aux.getDNI()).size()==0) 
+			if(aux.getFechaNacimiento().esCorrecta())
+				p.nuevoAlumno(aux);
 		else std::cout<<"El alumno '"<<aux.getNombre()<<" "<<aux.getApellido()<<"' ya esta guardado\nPor lo tanto no se ha registrado"<<std::endl;
 	}
 
@@ -765,6 +767,52 @@ void crearCopia(Profesor &p)
 	fichero.close();
 
 	std::cin.ignore();
+}
+
+Profesor logIn()
+{
+	std::cout<<BIYELLOW<<"BIENVENIDO"<<RESET<<std::endl;
+
+	std::vector<Profesor> bdprofesores;
+
+	std::ofstream fichero;
+
+	fichero.open("../profesores.bin", std::ofstream::binary);
+
+	if(!fichero.is_open())
+	{
+		std::cout<<BIRED<<"ERROR al abrir el fichero"<<RESET<<std::endl;
+		std::cin.ignore();
+		return;
+	}
+
+	Profesor aux;
+	while(!fichero.eof())
+	{
+		fichero.read((char*)&aux,sizeof(Profesor));
+		bdprofesores.push_back(aux);
+	}
+
+	std::string usuario, contrasena;
+
+	std::cout<<"Introduzca sus credenciales"<<std::endl;
+
+	std::cout<<" Usuario --> ":
+	std::cin>>usuario;
+	std::cout<<"\n Contrasena --> ";
+	std::cin>>contrasena;
+
+	Profesor nuevoTutor;
+	for(int i=0;i<bdprofesores.size();i++)
+	{
+		if(bdprofesores[i].comprobarCredenciales(usuario, contrasena))
+		{
+			nuevoTutor=bdprofesores[i];
+			break;
+		}
+	}
+
+	return nuevoTutor;
 }
 
 void quicksort(int primero, int ultimo, ListaAlumnos &lista)
