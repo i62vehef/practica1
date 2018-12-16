@@ -113,7 +113,7 @@ void modificarDatosAlumno(Profesor &p)
 
 	if(p.getAgenda().tamClase()<=0)
 	{
-		std::cout<<BIRED<<"\nERROR no hay alumnos registrados que modificar"<<RESET<<std::endl;
+		std::cout<<BIRED<<"\nERROR No hay alumnos registrados"<<RESET<<std::endl;
 		return;
 	}
 
@@ -324,6 +324,13 @@ void modificarDatosAlumno(Profesor &p)
 void borrarDatosAlumno(Profesor &p)
 {
 	std::system("clear");
+
+	if(p.getAgenda().tamClase()<=0)
+	{
+		std::cout<<BIRED<<"ERROR No hay alumnos registrado"<<RESET<<std::endl;
+		return;
+	}
+
 
 	int opcion;
 	std::string dato;
@@ -574,6 +581,7 @@ void mostrarDatosdeAlumno(Profesor &p)
 void mostrarGrupo(Profesor &p)
 {
 	std::system("clear");
+
 	if(p.getAgenda().tamClase()<1)//precondicion
 	{
 		std::cout<<BIRED<<"ERROR no hay alumnos registrados"<<RESET<<std::endl;
@@ -787,6 +795,12 @@ void crearCopia(Profesor &p)
 {
 	std::system("clear");
 
+	if(p.getAgenda().tamClase()<=0)
+	{
+		std::cout<<BIRED<<"ERROR No hay alumnos registrados"<<RESET<<std::endl;
+		return;
+	}
+
 	std::string nombreFichero;
 	std::stringstream dia,mes,ano;
 
@@ -829,7 +843,9 @@ void crearCopia(Profesor &p)
 
 Profesor logIn()
 {
-	std::cout<<BIYELLOW<<"BIENVENIDO"<<RESET<<std::endl;
+	std::cout<<BIYELLOW<<"BIENVENIDO"<<std::endl;
+	std::cout<<"Inicie sesion antes de acceder al contenido"<<RESET<<std::endl;
+
 
 	std::vector<Profesor> bdprofesores;
 	Profesor nuevoTutor;
