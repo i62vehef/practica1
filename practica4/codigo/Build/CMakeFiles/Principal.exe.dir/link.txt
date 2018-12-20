@@ -1,0 +1,1 @@
+/usr/bin/c++   -lrt -g   CMakeFiles/Principal.exe.dir/principal.cpp.o CMakeFiles/Principal.exe.dir/funcionesAuxiliares.cpp.o CMakeFiles/Principal.exe.dir/alumno.cpp.o CMakeFiles/Principal.exe.dir/listaAlumnos.cpp.o CMakeFiles/Principal.exe.dir/profesor.cpp.o CMakeFiles/Principal.exe.dir/Fecha.cpp.o  -o Principal.exe -rdynamic 
