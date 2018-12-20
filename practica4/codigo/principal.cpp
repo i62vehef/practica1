@@ -11,14 +11,21 @@ int main(int argc, char ** argv)
 
 	bool logged=false;
 	bool coordinador=false;
+	
+	Profesor tutor;
 
-	Profesor tutor=logIn();
+	tutor=logIn();
 
 	if(tutor.getId()==-1)
 	{
 		std::cout<<BIRED<<"ERROR Inicio de sesion invalido"<<RESET<<std::endl;
 		std::cin.ignore();
 		return -1;
+	}
+	else
+	{
+		logged=true;
+		coordinador=tutor.getRol();
 	}
 
 	if(!logged)
@@ -81,7 +88,7 @@ int main(int argc, char ** argv)
 			}while(opcion!=0);
 		break;
 		
-		case 1://coordinador
+		case 1://coordinador*/
 			do
 			{
 				opcion=menu(coordinador);
@@ -126,7 +133,7 @@ int main(int argc, char ** argv)
 						std::cin.ignore();
 					break;
 					case 10://Registrar nuevo profesor
-						registrarNuevoProfesor();
+						registrarNuevoProfesor(tutor);
 						std::cin.ignore();
 					break;
 					case 11://Cargar copia de seguridad

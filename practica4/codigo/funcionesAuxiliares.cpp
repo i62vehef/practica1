@@ -672,61 +672,68 @@ void mostrarListaAlumnos(Profesor &p)
 
 }
 
-void registrarNuevoProfesor()
+void registrarNuevoProfesor(Profesor &p)
 {
 	std::system("clear");
 
 	std::cout<<"Introduzca los datos del nuevo profesor"<<std::endl;
 
-	std::vector<Profesor> profesores;
+
 	Profesor nuevo;
 
 	nuevo.leerProfesor();
 
-	std::ifstream fichero;
-
-	fichero.open("../profesores.bin", std::ifstream::binary);
-
-	if(!fichero.is_open())
+	if(p.getId()!=-1)
 	{
-		std::cout<<BIRED<<"ERROR al abrir el fichero"<<RESET<<std::endl;
-		std::cin.ignore();
-		return;
-	}
+		std::vector<Profesor> profesores;
+		std::ifstream lectura;
 
-	Profesor aux;
-	while(!fichero.eof())
-	{		
-		fichero.read((char*)&aux,sizeof(Profesor));
-		profesores.push_back(aux);
-	}
+		lectura.open("../profesores.bin", std::ifstream::binary);
 
-	fichero.close();
-
-	for(int i=0;i<profesores.size();i++)
-	{
-		if(profesores[i].getId()==nuevo.getId())
+		if((lectura.rdstate() & std::ofstream::failbit)!=0)
 		{
-			std::cout<<BIRED<<"ERROR El profesor indicado ya se encuentra registrado"<<RESET<<std::endl;
+			std::cout<<BIRED<<"ERROR al abrir el fichero"<<RESET<<std::endl;
 			std::cin.ignore();
 			return;
 		}
+
+		Profesor aux;
+		while(lectura>>aux)
+			profesores.push_back(aux);
+
+		lectura.close();
+
+		for(int i=0;i<profesores.size();i++)
+		{
+			if(profesores[i].getId()==nuevo.getId())
+			{
+				std::cout<<BIRED<<"ERROR El profesor indicado ya se encuentra registrado"<<RESET<<std::endl;
+				std::cin.ignore();
+				return;
+			}
+		}
 	}
 
-	std::ofstream fichero2;
+	std::ofstream escritura;
 
-	fichero2.open("../profesores.bin", std::ofstream::binary);
+	escritura.open("../profesores.bin", std::ofstream::binary);
 
-	if(!fichero2.is_open())
+	if((escritura.rdstate() & std::ofstream::failbit)!=0)
 	{
 		std::cout<<BIRED<<"ERROR al abrir el fichero"<<RESET<<std::endl;
 		std::cin.ignore();
 		return;
 	}
 
-	fichero2.seekp(0,std::ios_base::end);
+	escritura.seekp(0,std::ios::end);
 
-	fichero2.write((char*)&nuevo,sizeof(Profesor));
+	escritura<<nuevo;
+
+	escritura.close();
+
+	std::cout<<BIGREEN<<"Se ha registrado el nuevo profesor satisfactoriamente"<<RESET<<std::endl;
+
+	std::cin.ignore();
 
 }
 
@@ -765,7 +772,7 @@ void cargarCopia(Profesor &p)
 	fichero.open(nombreFichero.c_str(), std::ifstream::binary);
 
 	//comprobar fichero abierto
-	if(!fichero.is_open())
+	if((fichero.rdstate() & std::ifstream::failbit)!=0)
 	{
 		std::cout<<BIRED<<"ERROR No se ha podido abrir el fichero"<<RESET<<std::endl;
 		std::cin.ignore();
@@ -774,11 +781,9 @@ void cargarCopia(Profesor &p)
 
 	Alumno aux;
 
-	//meter alumnos en el fichero
-	while(!fichero.eof())
+	//sacar alumnos del fichero
+	while(fichero>>aux)
 	{
-		fichero.read((char *)&aux,sizeof(Alumno));
-
 		if(p.getAgenda().buscarAlumno(1,aux.getDNI()).size()==0) 
 			if(aux.getFechaNacimiento().esCorrecta())
 				p.nuevoAlumno(aux);
@@ -822,14 +827,11 @@ void crearCopia(Profesor &p)
 
 	Alumno aux;
 
-	if(fichero.is_open())
+	if((fichero.rdstate() & std::ofstream::failbit)!=0)
 	{
 		for(int i=0;i<p.getAgenda().tamClase();i++)
-		{
-			aux=p.getAgenda().getAlumno(i);
-			fichero.write((char*)&aux,sizeof(Alumno));
-		}
-			
+			fichero<<p.getAgenda().getAlumno(i);
+					
 		std::cout<<BIGREEN<<"Los alumnos se guardaron correctamente"<<RESET<<std::endl;
 	}
 	else
@@ -855,20 +857,19 @@ Profesor logIn()
 
 	fichero.open("../profesores.bin", std::ifstream::binary);
 
-	if(!fichero.is_open())
+	if((fichero.rdstate() & std::ifstream::failbit)!=0)
 	{
 		std::cout<<BIRED<<"ERROR al abrir el fichero"<<RESET<<std::endl;
 		std::cin.ignore();
 		return nuevoTutor;
 	}
 
-	Profesor aux;
-	while(!fichero.eof())
-	{
-		fichero.read((char*)&aux,sizeof(Profesor));
-		bdprofesores.push_back(aux);
-	}
+	fichero.seekg(0,std::ios::beg);
 
+	Profesor aux;
+	while(fichero>>aux)
+		bdprofesores.push_back(aux);
+	
 	std::string usuario, contrasena;
 
 	std::cout<<"Introduzca sus credenciales"<<std::endl;

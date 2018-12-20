@@ -23,11 +23,6 @@ private:
 	bool rol_;
 
 
-
-	std::string getContrasena()const{return contrasena_;};
-
-	void setContrasena(std::string const &ncontrasena){contrasena_=ncontrasena;}
-
 public:
 
 	//Constructor de la clase Profesor
@@ -53,6 +48,8 @@ public:
 	inline int getId()const{return Id_;}
 	inline bool getRol()const{return rol_;}
 	inline ListaAlumnos getAgenda()const{return agenda_;}
+	inline std::string getContrasena()const{return contrasena_;};
+
 	inline bool comprobarCredenciales(std::string usuario, std::string contrasena)
 	{
 		if(getNombre().compare(usuario)!=0) return false;
@@ -88,6 +85,11 @@ public:
 	{
 		agenda_=nAgenda;
 	}
+	inline void setContrasena(std::string const &ncontrasena)
+	{
+		contrasena_=ncontrasena;
+	}
+
 
 	//Métodos de la clase
 	inline void nuevoAlumno(Alumno &nAlumno){agenda_.insertar(nAlumno);}
@@ -110,5 +112,15 @@ public:
 
 	void leerProfesor();
 };
+
+//Funciones externas de la clase Profesor: sobrecarga de los operadores de flujo
+
+//El formato en que se pasan los datos es
+//nombre contrasena Identificador rol
+ostream &operator<<(ostream &stream, Profesor const &profesor);
+
+//el formato para leer es el mismo
+istream &operator>>(istream &stream, Profesor &profesor);
+
 
 #endif
