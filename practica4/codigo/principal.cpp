@@ -10,11 +10,11 @@ int main(int argc, char ** argv)
 	int opcion;
 
 	bool logged=false;
-	bool coordinador=false;
+	bool coordinador=true;
 	
 	Profesor tutor;
 
-	tutor=logIn();
+	/*tutor=logIn();
 
 	if(tutor.getId()==-1)
 	{
@@ -149,7 +149,7 @@ int main(int argc, char ** argv)
 						std::cin.ignore();
 				}
 			}while(opcion!=0);
-		break;
-	}
+		//break;
+	//}
 	return 0;
 }
