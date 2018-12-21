@@ -13,14 +13,14 @@ Rafael Piqueras Espinar - 3 horas - Introducir alumno
 
 14-12-2018
 
-Francisco Vera Herencia - 8 hora - Buscar Alumno, Mostrar Alumno 
+Francisco Vera Herencia - 13 horas - Buscar Alumno, Mostrar Alumno, Introducir alumno, Listar Todos los Alumnos 
 
-Rafael Piqueras Espinar - 3 horas
+Rafael Piqueras Espinar - 8 horas - Borrar Alumno
 
 #### Tercera reunión
 
 16-12-2018
 
-Francisco Vera Herencia -
+Francisco Vera Herencia - 20 horas - Mostrar Grupo, Cargar Copia, Crear Copia, Log in
 
-Rafael Piqueras Espinar -
+Rafael Piqueras Espinar - 12  horas - Crear Copia, Registrar Profesor

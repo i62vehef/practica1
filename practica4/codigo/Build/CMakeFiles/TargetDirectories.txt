@@ -1,0 +1,3 @@
+/home/poleifor13/Documentos/IS 3/practica4/codigo/Build/CMakeFiles/edit_cache.dir
+/home/poleifor13/Documentos/IS 3/practica4/codigo/Build/CMakeFiles/rebuild_cache.dir
+/home/poleifor13/Documentos/IS 3/practica4/codigo/Build/CMakeFiles/Principal.exe.dir

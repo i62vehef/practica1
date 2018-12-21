@@ -1,0 +1,110 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/poleifor13/Documentos/IS 3/practica4/codigo/Fecha.cpp
+iostream
+-
+stdlib.h
+-
+Fecha.hpp
+/home/poleifor13/Documentos/IS 3/practica4/codigo/Fecha.hpp
+
+/home/poleifor13/Documentos/IS 3/practica4/codigo/Fecha.hpp
+iostream
+-
+cassert
+-
+
+/home/poleifor13/Documentos/IS 3/practica4/codigo/alumno.cpp
+alumno.hpp
+/home/poleifor13/Documentos/IS 3/practica4/codigo/alumno.hpp
+
+/home/poleifor13/Documentos/IS 3/practica4/codigo/alumno.hpp
+iostream
+-
+cstring
+-
+cassert
+-
+cstdlib
+-
+macros.hpp
+/home/poleifor13/Documentos/IS 3/practica4/codigo/macros.hpp
+Fecha.hpp
+/home/poleifor13/Documentos/IS 3/practica4/codigo/Fecha.hpp
+
+/home/poleifor13/Documentos/IS 3/practica4/codigo/funcionesAuxiliares.cpp
+funcionesAuxiliares.hpp
+/home/poleifor13/Documentos/IS 3/practica4/codigo/funcionesAuxiliares.hpp
+
+/home/poleifor13/Documentos/IS 3/practica4/codigo/funcionesAuxiliares.hpp
+macros.hpp
+/home/poleifor13/Documentos/IS 3/practica4/codigo/macros.hpp
+iostream
+-
+fstream
+-
+listaAlumnos.hpp
+/home/poleifor13/Documentos/IS 3/practica4/codigo/listaAlumnos.hpp
+alumno.hpp
+/home/poleifor13/Documentos/IS 3/practica4/codigo/alumno.hpp
+cstdio
+-
+cstdlib
+-
+profesor.hpp
+/home/poleifor13/Documentos/IS 3/practica4/codigo/profesor.hpp
+Fecha.hpp
+/home/poleifor13/Documentos/IS 3/practica4/codigo/Fecha.hpp
+ctime
+-
+sstream
+-
+
+/home/poleifor13/Documentos/IS 3/practica4/codigo/listaAlumnos.cpp
+listaAlumnos.hpp
+/home/poleifor13/Documentos/IS 3/practica4/codigo/listaAlumnos.hpp
+
+/home/poleifor13/Documentos/IS 3/practica4/codigo/listaAlumnos.hpp
+cstring
+-
+vector
+-
+macros.hpp
+/home/poleifor13/Documentos/IS 3/practica4/codigo/macros.hpp
+alumno.hpp
+/home/poleifor13/Documentos/IS 3/practica4/codigo/alumno.hpp
+
+/home/poleifor13/Documentos/IS 3/practica4/codigo/macros.hpp
+stdio.h
+-
+
+/home/poleifor13/Documentos/IS 3/practica4/codigo/principal.cpp
+funcionesAuxiliares.hpp
+/home/poleifor13/Documentos/IS 3/practica4/codigo/funcionesAuxiliares.hpp
+listaAlumnos.hpp
+/home/poleifor13/Documentos/IS 3/practica4/codigo/listaAlumnos.hpp
+profesor.hpp
+/home/poleifor13/Documentos/IS 3/practica4/codigo/profesor.hpp
+macros.hpp
+/home/poleifor13/Documentos/IS 3/practica4/codigo/macros.hpp
+
+/home/poleifor13/Documentos/IS 3/practica4/codigo/profesor.cpp
+profesor.hpp
+/home/poleifor13/Documentos/IS 3/practica4/codigo/profesor.hpp
+
+/home/poleifor13/Documentos/IS 3/practica4/codigo/profesor.hpp
+iostream
+-
+cstring
+-
+cassert
+-
+listaAlumnos.hpp
+/home/poleifor13/Documentos/IS 3/practica4/codigo/listaAlumnos.hpp
+
