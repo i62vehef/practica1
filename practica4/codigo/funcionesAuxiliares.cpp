@@ -818,7 +818,7 @@ void crearCopia(Profesor &p)
 
 	std::ofstream fichero;
 
-	fichero.open(nombreFichero.c_str(), std::ofstream::binary);
+	fichero.open(nombreFichero.c_str(),std::ofstream::binary);
 
 	Alumno aux;
 
@@ -841,7 +841,7 @@ void crearCopia(Profesor &p)
 	std::cin.ignore();
 }
 
-Profesor logIn()
+/*Profesor logIn()
 {
 	std::cout<<BIYELLOW<<"BIENVENIDO"<<std::endl;
 	std::cout<<"Inicie sesion antes de acceder al contenido"<<RESET<<std::endl;
@@ -889,7 +889,7 @@ Profesor logIn()
 
 	return nuevoTutor;
 }
-
+*/
 void quicksort(int primero, int ultimo, ListaAlumnos &lista)
 {
    if(primero < ultimo)

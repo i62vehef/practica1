@@ -12,9 +12,9 @@ int main(int argc, char ** argv)
 	bool logged=false;
 	bool coordinador=false;
 
-	Profesor tutor=logIn();
+	Profesor tutor;//logIn();
 
-	if(tutor.getId()==-1)
+	/*if(tutor.getId()==-1)
 	{
 		std::cout<<BIRED<<"ERROR Inicio de sesion invalido"<<RESET<<std::endl;
 		std::cin.ignore();
@@ -27,7 +27,7 @@ int main(int argc, char ** argv)
 		std::cin.ignore();
 		return -1;
 	}
-
+	*/
 	switch((int)coordinador)
 	{
 		case 0://ayudante
