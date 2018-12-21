@@ -24,7 +24,7 @@ private:
 	int curso_; //curso actual del alumno
 	std::string email_; //email de contacto del alumno
 	int equipo_; //Equipo de trabajo del alumno
-	bool lider_;
+	bool lider_; //El alumno es lider del equipo o no
 
 public:
 
@@ -44,7 +44,7 @@ public:
 	}
 
 	//Constructor parametrizado
-	inline Alumno(std::string nombre,std::string apellido,int telefono,std::string domicilio,std::string DNI, Fecha fechaNacimiento, int curso,std::string email,int equipo=0)
+	inline Alumno(std::string nombre,std::string apellido,int telefono,std::string domicilio,std::string DNI, Fecha fechaNacimiento, int curso,std::string email,int equipo=0,bool eslider=false)
 	{
         nombre_ = nombre;
         apellido_ = apellido;
@@ -55,7 +55,7 @@ public:
         curso_ = curso;
         email_ = email;
         equipo_ = equipo;
-        lider_=false;
+        lider_= eslider;
 	}
 
 	//Constructor de copia
@@ -149,13 +149,13 @@ public:
 			assert(getEquipo()==nEquipo);
 		#endif
 	}
-	inline void setLider()
+	inline void setLider(bool const &lider=true)
 	{
 		#ifndef NDEBUG
 			assert(getEquipo()>0 and getEquipo()<151);
 		#endif
 
-		lider_=true;
+		lider_=lider;
 	}
 
 

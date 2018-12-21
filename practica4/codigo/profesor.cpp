@@ -34,7 +34,7 @@ void Profesor::leerProfesor()
 ostream &operator<<(ostream &stream, Profesor const &profesor)
 {
 
-	stream<<profesor.getNombre()<<','<<profesor.getContrasena()<<','<<profesor.getId()<<','<<profesor.getRol()<<std::endl;
+	stream<<profesor.getNombre()<<','<<profesor.getContrasena()<<' '<<profesor.getId()<<' '<<profesor.getRol()<<"\n";
 
 	return stream;
 }
@@ -44,7 +44,7 @@ istream &operator>>(istream &stream, Profesor &profesor)
 
 	std::string str1;
 
-	std::getline(stream, str1, ' ');
+	std::getline(stream, str1, ',');
 	profesor.setNombre(str1);
 
 	std::getline(stream, str1, ' ');

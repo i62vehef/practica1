@@ -6,12 +6,12 @@ void introducirAlumno(Profesor &p)
 
 	if(p.getAgenda().tamClase()>=150)
 	{
-		std::cout<<BIRED<<"ERROR se ha llegado al limite de alumnos registrados"<<RESET<<std::endl;
+		std::cout<<BIRED<<"\n ERROR se ha llegado al limite de alumnos registrados"<<RESET<<std::endl;
 		return;
 	}
 	std::vector<int> v;
 	std::string nombre,apellido,domicilio,DNI,email, equipo="0";
-	int telefono,curso;
+	int telefono,curso,lider=1;
 	Fecha fecha;
 
 	std::cout<<BIGREEN<<"\nIntroduzca los datos del nuevo alumno\n\n"<<RESET;
@@ -44,9 +44,9 @@ void introducirAlumno(Profesor &p)
 	std::cin>>nombre;
 	std::cout<<"Primer Apellido: ";
 	std::cin>>apellido;
-	std::cout<<"Domicilio: ";
+	std::cout<<"Domicilio (en una palabra): ";
 	std::cin>>domicilio;
-	std::cout<<"Fecha de nacimiento: \n";
+	std::cout<<"Fecha de nacimiento \n";
 	fecha.leerFecha();
 
 	while(!fecha.esCorrecta())
@@ -67,38 +67,50 @@ void introducirAlumno(Profesor &p)
 	std::cin>>equipo;
 	if(equipo.compare("0")!=0)
 	{
-		while(atoi(equipo.c_str())<1 || atoi(equipo.c_str())>150)
+		while(atoi(equipo.c_str())<0 || atoi(equipo.c_str())>150)
 		{
 			std::cout<<BIRED<<"ERROR grupo invalido"<<RESET<<std::endl;
 			
 			std::cout<<"Grupo:\n(Si no desea introducirlo indique cero)\n";
 			std::cin>>equipo;
+
+			if(equipo.compare("0")==0)
+				return;
 		}
 		
-		if(equipo.compare("0")!=0 && p.getAgenda().buscarAlumno(3,equipo).size()>=3)
+		std::vector<int> grupo;
+		bool hayLider=false;
+		if((grupo=p.getAgenda().buscarAlumno(3,equipo)).size()>=3)
 		{
 			std::cout<<BIRED<<"ERROR Este grupo ya se encuentra completo"<<RESET<<std::endl;
 			return;
 		}
-	}
-
-	Alumno aux(nombre,apellido,telefono,domicilio,DNI,fecha,curso,email,atoi(equipo.c_str()));
-
-	if(atoi(equipo.c_str())!=0)
-	{
-		int lider;
-		std::cout<<"Es el lider del grupo?[1:Si/2:No]"<<std::endl;
-		std::cin>>lider;
-
-		while(lider>2 || lider<1)
+		
+		for(int i=0;i<grupo.size();i++)
 		{
-			std::cout<<"Introduzca un valor valido"<<std::endl;
-			std::cout<<"Es el lider del grupo?[1:Si/2:No]"<<std::endl;
-			std::cin>>lider;
+			if(p.getAgenda().getAlumno(grupo[i]).esLider())
+			{
+				hayLider=true;
+				break;
+			} 
 		}
 
-		if(lider==1) aux.setLider();
+		if(!hayLider)
+		{
+
+			std::cout<<"Es el lider del grupo?[1:No/2:Si]"<<std::endl;
+			std::cin>>lider;
+
+			while(lider>2 || lider<1)
+			{
+				std::cout<<"Introduzca un valor valido"<<std::endl;
+				std::cout<<"Es el lider del grupo?[1:No/2:Si]"<<std::endl;
+				std::cin>>lider;
+			}
+		}
 	}
+
+	Alumno aux(nombre,apellido,telefono,domicilio,DNI,fecha,curso,email,atoi(equipo.c_str()),(bool)(lider-1));
 
 	p.nuevoAlumno(aux);
 	
@@ -113,17 +125,18 @@ void modificarDatosAlumno(Profesor &p)
 
 	if(p.getAgenda().tamClase()<=0)
 	{
-		std::cout<<BIRED<<"\nERROR No hay alumnos registrados"<<RESET<<std::endl;
+		std::cout<<BIRED<<"\n ERROR No hay alumnos registrados"<<RESET<<std::endl;
 		return;
 	}
 
 	int opcion;
 
-	std::cout<<BIGREEN<<"\n Indique como quiere identificar al alumno cuyos datos desea modificar\n";
-	std::cout<<BIPURPLE<<"\n [1] DNI \n"<<RESET;
-	std::cout<<BBLUE<<" [2] Apellido\n"<<RESET;
+	std::cout<<"\n Indique como quiere identificar al alumno cuyos datos desea modificar\n";
+	std::cout<<"\n [1] DNI \n";
+	std::cout<<" [2] Apellido\n";
 	std::cout<<BIRED<<"\n [0] Volver\n"<<RESET;
 
+	std::cout<<"\n Opcion: ";
 	std::cin>>opcion;
 
 	while(opcion!=0 && opcion!=1 && opcion !=2)
@@ -135,6 +148,7 @@ void modificarDatosAlumno(Profesor &p)
 		std::cout<<" [2] Apellido"<<std::endl;
 		std::cout<<BIRED<<"\n [0] Volver\n"<<RESET<<std::endl;
 
+		std::cout<<"\n Opcion: ";
 		std::cin>>opcion;
 	}
 	std::system("clear");
@@ -148,15 +162,15 @@ void modificarDatosAlumno(Profesor &p)
 		break;
 		case 1://DNI
 			//pedir DNI
-			std::cout<<BIGREEN<<"\nIntroduzca el DNI del alumno:"<<RESET;
+			std::cout<<"\nIntroduzca el DNI del alumno: ";
 			std::cin>>dato;
 
 			//comprobar DNI
 			while(strlen(dato.c_str())!=9)
 			{
-				std::cout<<BIRED<<"ERROR DNI invalido"<<RESET<<std::endl<<std::endl;
+				std::cout<<BIRED<<"ERROR DNI invalido"<<RESET;
 				
-				std::cout<<"Introduzca el DNI del alumno"<<std::endl;
+				std::cout<<"\n\nIntroduzca el DNI del alumno: ";
 				std::cin>>dato;
 			}
 
@@ -176,7 +190,7 @@ void modificarDatosAlumno(Profesor &p)
 		break;
 		case 2://Apellidos
 			//pedir apellido
-			std::cout<<BIGREEN<<"\nIntroduzca el apellido del alumno:"<<RESET;
+			std::cout<<"\nIntroduzca el apellido del alumno: ";
 			std::cin>>dato;
 
 			//buscar alumno
@@ -194,6 +208,7 @@ void modificarDatosAlumno(Profesor &p)
 						std::cout<<" ["<<i+1<<"] "<<p.getAgenda().getAlumno(buscado[i]).getApellido()<<","<<p.getAgenda().getAlumno(buscado[i]).getNombre()<<std::endl;
 					std::cout<<BIRED<<"\n\n [0] Volver"<<RESET<<std::endl;
 
+					std::cout<<"\n Opcion: ";
 					std::cin>>opcionapellido;
 
 					if(opcionapellido==0) 
@@ -207,6 +222,7 @@ void modificarDatosAlumno(Profesor &p)
 							std::cout<<" ["<<i+1<<"] "<<p.getAgenda().getAlumno(buscado[i]).getApellido()<<","<<p.getAgenda().getAlumno(buscado[i]).getNombre()<<std::endl;
 						std::cout<<BIRED<<"\n\n [0] Volver"<<RESET<<std::endl;
 
+						std::cout<<"\n Opcion: ";
 						std::cin>>opcionapellido;
 					}
 					if(opcionapellido==0) return;
@@ -247,12 +263,12 @@ void modificarDatosAlumno(Profesor &p)
 	std::cout<<"\n Apellido: ";
 	std::cin>>apellido;
 
-	std::cout<<"Fecha de nacimiento: ";
+	std::cout<<"Fecha de nacimiento: \n";
 	fecha.leerFecha();
 
 	while(!fecha.esCorrecta())
 	{
-		if(fecha.getDia()==0 || fecha.getMes()==0 || fecha.getMes()==0) return;
+		if(fecha.getDia()==0 || fecha.getMes()==0 || fecha.getMes()==0) break;
 		std::cout<<BIRED<<"ERROR fecha invalida"<<RESET<<std::endl;
 
 		std::cout<<"Fecha de nacimiento: ";
@@ -327,7 +343,7 @@ void borrarDatosAlumno(Profesor &p)
 
 	if(p.getAgenda().tamClase()<=0)
 	{
-		std::cout<<BIRED<<"ERROR No hay alumnos registrado"<<RESET<<std::endl;
+		std::cout<<BIRED<<"\n ERROR No hay alumnos registrados"<<RESET<<std::endl;
 		return;
 	}
 
@@ -336,8 +352,10 @@ void borrarDatosAlumno(Profesor &p)
 	std::string dato;
 	
 	std::cout << BIGREEN <<"Indique el dato que aportara para identificar al alumno" <<RESET<<std::endl<<std::endl;
-	std::cout << BIYELLOW << " [1] DNI" << RESET<<std::endl;;
-	std::cout << BIBLUE << " [2] Apellido" <<RESET<<std::endl;	
+	std::cout << " [1] DNI" <<std::endl;;
+	std::cout << " [2] Apellido" <<std::endl;
+
+	std::cout<<"\n Opcion: ";	
 	std::cin>>opcion;
 	
 	while(opcion!=1 && opcion!=2)
@@ -349,6 +367,7 @@ void borrarDatosAlumno(Profesor &p)
 		std::cout<<" [1] DNI"<<std::endl;;
 		std::cout<<" [2] Apellido"<<std::endl;	
 	
+		std::cout<<"\n Opcion: ";
 		std::cin>>opcion;
 
 		if(opcion==0)
@@ -362,14 +381,14 @@ void borrarDatosAlumno(Profesor &p)
 	switch(opcion)
 	{
 		case 1://DNI
-			std::cout << BIBLUE <<"Introduzca el DNI del alumno" <<RESET<<std::endl;
+			std::cout <<"\nIntroduzca el DNI del alumno" <<std::endl;
 			std::cin>>dato;
 			
 			while(strlen(dato.c_str())!=9)
 			{
 				std::cout<<BIRED<<"ERROR DNI invalido"<<RESET<<std::endl;
 
-				std::cout << BIBLUE <<"Introduzca el DNI del alumno" <<RESET<<std::endl;
+				std::cout <<"Introduzca el DNI del alumno" <<std::endl;
 				std::cout<<BIYELLOW<<"(Si desea volver al menu introduzca un cero)"<<RESET<<std::endl;
 				std::cin>>dato;
 
@@ -404,7 +423,7 @@ void borrarDatosAlumno(Profesor &p)
 		break;
 		case 2://Apellido
 			
-			std::cout<<BIYELLOW<<"Introduzca el apellido del alumno"<<RESET<<std::endl;
+			std::cout<<"\nIntroduzca el apellido del alumno"<<std::endl;
 			std::cin>>dato;
 
 			buscado=p.getAgenda().buscarAlumno(2,dato);
@@ -419,6 +438,7 @@ void borrarDatosAlumno(Profesor &p)
 					std::cout<<" ["<<i+1<<"] "<<p.getAgenda().getAlumno(buscado[i]).getApellido()<<", "<<p.getAgenda().getAlumno(buscado[i]).getNombre()<<std::endl;
 				std::cout<<BIRED<<"\n\n [0] Volver"<<RESET<<std::endl;
 
+				std::cout<<"\n Opcion: ";
 				std::cin>>opcionapellido;
 
 				while(opcionapellido<0 || opcionapellido>buscado.size())
@@ -430,6 +450,7 @@ void borrarDatosAlumno(Profesor &p)
 						std::cout<<" ["<<i+1<<"] "<<p.getAgenda().getAlumno(buscado[i]).getApellido()<<","<<p.getAgenda().getAlumno(buscado[i]).getNombre()<<std::endl;
 					std::cout<<BIRED<<"\n\n [0] Volver"<<RESET<<std::endl;
 
+					std::cout<<"\n Opcion: ";
 					std::cin>>opcionapellido;
 				}
 				if(opcionapellido==0) 
@@ -452,7 +473,7 @@ void mostrarNumeroAlumnos(Profesor &p)
 {
 	std::system("clear");
 
-	std::cout<<"\nEn este momento, se encuentran registrados "<<BICYAN<<p.getAgenda().tamClase()<<RESET<<" alumnos"<<std::endl;
+	std::cout<<"\n En este momento, se encuentran registrados "<<BICYAN<<p.getAgenda().tamClase()<<RESET<<" alumnos"<<std::endl;
 }
 
 void mostrarDatosdeAlumno(Profesor &p)
@@ -460,7 +481,7 @@ void mostrarDatosdeAlumno(Profesor &p)
 	std::system("clear");
 	if(p.getAgenda().tamClase()<=0)
 	{
-		std::cout<<BIRED<<"\nERROR no hay alumnos registrados"<<RESET<<std::endl;
+		std::cout<<BIRED<<"\n ERROR No hay alumnos registrados"<<RESET<<std::endl;
 		return;
 	}
 	
@@ -469,13 +490,12 @@ void mostrarDatosdeAlumno(Profesor &p)
 
 	std::vector<int> buscado;
 
-	std::cout<<BIYELLOW<<"SE MOSTRARAN TODOS LOS DATOS DEL ALUMNO"<<RESET<<std::endl;
-
-	std::cout<<BIGREEN<<"\nIndique el dato por el que se identificara al alumno a mostrar"<<RESET<<std::endl;
-	std::cout<<BIPURPLE<<"\n [1] DNI"<<RESET<<std::endl;
-	std::cout<<BIBLUE<<" [2] Apellido"<<RESET<<std::endl;
+	std::cout<<"\nIndique el dato por el que se identificara al alumno a mostrar"<<std::endl;
+	std::cout<<"\n [1] DNI"<<std::endl;
+	std::cout<<" [2] Apellido"<<std::endl;
 	std::cout<<BIRED <<"\n [0] Volver"<<RESET<<std::endl;
 
+	std::cout<<"\n Opcion: ";
 	std::cin>>opcion;
 
 	while(opcion!=0 && opcion!=1 && opcion!=2)
@@ -483,10 +503,11 @@ void mostrarDatosdeAlumno(Profesor &p)
 		std::cout<<BIRED<<"ERROR introduzca una opcion valida"<<RESET<<std::endl<<std::endl;
 
 		std::cout<<"Indique el dato por el que se identificara al alumno a mostrar"<<std::endl;
-		std::cout<<BIPURPLE<<" [1] DNI"<<RESET<<std::endl;
-		std::cout<<BIBLUE<<" [2] Apellido"<<RESET<<std::endl;
+		std::cout<<" [1] DNI"<<std::endl;
+		std::cout<<" [2] Apellido"<<std::endl;
 		std::cout<<BIRED<<"\n [0] Volver\n"<<RESET<<std::endl;
 
+		std::cout<<"\n Opcion: ";
 		std::cin>>opcion;
 		
 	}
@@ -500,7 +521,7 @@ void mostrarDatosdeAlumno(Profesor &p)
 		break;
 		case 1://DNI
 			//pedir DNI
-			std::cout<<BIGREEN<<"\nIntroduzca el DNI del alumno:"<<RESET;
+			std::cout<<"\n Introduzca el DNI del alumno: ";
 			std::cin>>dato;
 
 			//comprobar DNI
@@ -508,7 +529,7 @@ void mostrarDatosdeAlumno(Profesor &p)
 			{
 				std::cout<<BIRED<<"ERROR DNI invalido"<<RESET<<std::endl<<std::endl;
 				
-				std::cout<<BIGREEN<<"Introduzca el DNI del alumno:"<<RESET;
+				std::cout<<"Introduzca el DNI del alumno: ";
 				std::cin>>dato;
 			}
 
@@ -529,7 +550,7 @@ void mostrarDatosdeAlumno(Profesor &p)
 		break;
 		case 2://Apellido
 			//pedir apellido
-			std::cout<< BIGREEN <<"\nIntroduzca el apellido del alumno:"<< RESET;
+			std::cout<<"\n Introduzca el apellido del alumno: ";
 			std::cin>>dato;
 
 			//buscar alumno
@@ -549,6 +570,7 @@ void mostrarDatosdeAlumno(Profesor &p)
 						std::cout<<" ["<<i+1<<"] "<<p.getAgenda().getAlumno(buscado[i]).getApellido()<<","<<p.getAgenda().getAlumno(buscado[i]).getNombre()<<std::endl;
 					std::cout<<BIRED<<"\n\n [0] Volver"<<RESET<<std::endl;
 
+					std::cout<<"\n Opcion: ";
 					std::cin>>opcionapellido;
 
 					if(opcionapellido==0) break;
@@ -561,6 +583,7 @@ void mostrarDatosdeAlumno(Profesor &p)
 							std::cout<<" ["<<i+1<<"] "<<p.getAgenda().getAlumno(buscado[i]).getApellido()<<","<<p.getAgenda().getAlumno(buscado[i]).getNombre()<<std::endl;
 						std::cout<<BIRED<<"\n\n [0] Volver"<<RESET<<std::endl;
 
+						std::cout<<"\n Opcion: ";
 						std::cin>>opcionapellido;
 					}
 
@@ -584,7 +607,7 @@ void mostrarGrupo(Profesor &p)
 
 	if(p.getAgenda().tamClase()<1)//precondicion
 	{
-		std::cout<<BIRED<<"ERROR no hay alumnos registrados"<<RESET<<std::endl;
+		std::cout<<BIRED<<"\n ERROR No hay alumnos registrados"<<RESET<<std::endl;
 		return;
 	}
 
@@ -600,7 +623,7 @@ void mostrarGrupo(Profesor &p)
 		std::cout<<BIRED<<"ERROR grupo invalido"<<RESET<<std::endl;
 
 		std::cout<<"Indique el numero del grupo que busca"<<std::endl;
-		std::cout<<"(Introduzca un cero sin desea volver"<<std::endl;
+		std::cout<<BIYELLOW<<"(Introduzca un cero sin desea volver)"<<RESET<<std::endl;
 		std::cin>>grupo;
 
 		if(atoi(grupo.c_str())==0) return;
@@ -625,7 +648,7 @@ void mostrarGrupo(Profesor &p)
 
 	for(int i=0;i<buscado.size();i++)
 	{
-		std::cout<<std::endl<<BIGREEN<<" Alumno "<<i+1<<RESET<<std::endl;
+		std::cout<<std::endl<<BIGREEN<<"\n Alumno "<<i+1<<RESET<<std::endl;
 		p.getAgenda().mostrarAlumno(buscado[i]);
 	}
 
@@ -638,34 +661,30 @@ void mostrarListaAlumnos(Profesor &p)
 	std::system("clear");
 	if(p.getAgenda().tamClase()<=0)
 	{
-		std::cout<<BIRED<<"ERROR no hay ningun alumno registrado\n"<<RESET;
+		std::cout<<BIRED<<"\n ERROR No hay ningun alumno registrado\n"<<RESET;
 		return;
 	}
 
- 	std::ofstream fichero;
+ 	std::fstream fichero;
 
- 	ListaAlumnos aux=p.getAgenda();
-
- 	fichero.open("listaAlumnos.txt");
+ 	fichero.open("listaAlumnos.txt", std::fstream::out | std::fstream::trunc);
 
  	//comprobacion de apertura correcta del fichero
- 	if((fichero.rdstate() & std::ofstream::failbit)!=0)
+ 	if((fichero.rdstate() & std::fstream::failbit)!=0)
 	{
 		std::cout<<BIRED<<"Se ha producido un error al intentar abrir el fichero"<<RESET<<std::endl;
 		return;
 	}
 
-	int i=0;
 	//insertar los alumnos en el fichero
-	while(aux.tamClase()>0)
-	{
-		fichero<<aux.getAlumno(i);
-		aux.eliminar(0);
-	}
+	for(int i=0;i<p.getAgenda().tamClase();i++)
+		fichero<<p.getAgenda().getAlumno(i);
+	
 
 	fichero.close();
 
 	std::cout<<BIGREEN<<"La lista de alumnos registrados es la siguiente:\n"<<RESET<<std::endl;
+
 	std::system("cat ./listaAlumnos.txt");
 
 	std::system("rm ./listaAlumnos.txt");
@@ -676,8 +695,7 @@ void registrarNuevoProfesor(Profesor &p)
 {
 	std::system("clear");
 
-	std::cout<<"Introduzca los datos del nuevo profesor"<<std::endl;
-
+	std::cout<<"\n Introduzca los datos del nuevo profesor"<<std::endl;
 
 	Profesor nuevo;
 
@@ -686,11 +704,11 @@ void registrarNuevoProfesor(Profesor &p)
 	if(p.getId()!=-1)
 	{
 		std::vector<Profesor> profesores;
-		std::ifstream lectura;
+		std::fstream lectura;
 
-		lectura.open("../profesores.bin", std::ifstream::binary);
+		lectura.open("../profesores.bin", std::fstream::in | std::fstream::binary);
 
-		if((lectura.rdstate() & std::ofstream::failbit)!=0)
+		if((lectura.rdstate() & std::fstream::failbit)!=0)
 		{
 			std::cout<<BIRED<<"ERROR al abrir el fichero"<<RESET<<std::endl;
 			std::cin.ignore();
@@ -714,18 +732,16 @@ void registrarNuevoProfesor(Profesor &p)
 		}
 	}
 
-	std::ofstream escritura;
+	std::fstream escritura;
 
-	escritura.open("../profesores.bin", std::ofstream::binary);
+	escritura.open("../profesores.bin", std::fstream::app | std::fstream::binary);
 
-	if((escritura.rdstate() & std::ofstream::failbit)!=0)
+	if((escritura.rdstate() & std::fstream::failbit)!=0)
 	{
 		std::cout<<BIRED<<"ERROR al abrir el fichero"<<RESET<<std::endl;
 		std::cin.ignore();
 		return;
 	}
-
-	escritura.seekp(0,std::ios::end);
 
 	escritura<<nuevo;
 
@@ -742,19 +758,16 @@ void cargarCopia(Profesor &p)
 	std::system("clear");
 
 	//crear fichero llamado clase[fechadelacopia].bin
-	std::ifstream fichero;
+	std::fstream fichero;
 
 	//nombrefichero=now->tm_mday+'-'+(now->tm_mon + 1)+'-'+(now->tm_year + 1900);
-	std::cout<<"Introduzca el dia de la copia que desea recuperar"<<std::endl;
+	std::cout<<"\n Introduzca el dia de la copia que desea recuperar"<<std::endl;
 
 	Fecha fecha;
 	fecha.leerFecha();
 
 	std::string nombreFichero;
 	std::stringstream dia, mes, ano;
-
-	//std::time_t t = std::time(0);   // recoge el dia actual
-    //std::tm* now = std::localtime(&t);
 
 	dia<<fecha.getDia();
 	mes<<fecha.getMes();
@@ -765,14 +778,11 @@ void cargarCopia(Profesor &p)
     nombreFichero+="-"+ ano.str();
     nombreFichero+=".bin";
 
-	std::cout<<BIGREEN<<nombreFichero<<RESET<<std::endl;
-
-
 	//abrir fichero
-	fichero.open(nombreFichero.c_str(), std::ifstream::binary);
+	fichero.open(nombreFichero.c_str(), std::fstream::in | std::fstream::binary);
 
 	//comprobar fichero abierto
-	if((fichero.rdstate() & std::ifstream::failbit)!=0)
+	if((fichero.rdstate() & std::fstream::failbit)!=0)
 	{
 		std::cout<<BIRED<<"ERROR No se ha podido abrir el fichero"<<RESET<<std::endl;
 		std::cin.ignore();
@@ -784,13 +794,15 @@ void cargarCopia(Profesor &p)
 	//sacar alumnos del fichero
 	while(fichero>>aux)
 	{
-		if(p.getAgenda().buscarAlumno(1,aux.getDNI()).size()==0) 
-			if(aux.getFechaNacimiento().esCorrecta())
-				p.nuevoAlumno(aux);
+		if(p.getAgenda().buscarAlumno(1,aux.getDNI()).size()==0)
+			p.nuevoAlumno(aux);
 		else std::cout<<"El alumno '"<<aux.getNombre()<<" "<<aux.getApellido()<<"' ya esta guardado\nPor lo tanto no se ha registrado"<<std::endl;
+		aux.setLider(false);
 	}
 
 	fichero.close();
+
+	std::cout<<BIGREEN<<"Se ha cargado el fichero satisfactoriamente"<<RESET<<std::endl;
 
 	std::cin.ignore();
 }
@@ -802,7 +814,7 @@ void crearCopia(Profesor &p)
 
 	if(p.getAgenda().tamClase()<=0)
 	{
-		std::cout<<BIRED<<"ERROR No hay alumnos registrados"<<RESET<<std::endl;
+		std::cout<<BIRED<<"\n ERROR No hay alumnos registrados"<<RESET<<std::endl;
 		return;
 	}
 
@@ -821,31 +833,29 @@ void crearCopia(Profesor &p)
 	nombreFichero+="-"+ano.str();
 	nombreFichero+=".bin";
 
-	std::ofstream fichero;
+	std::fstream fichero;
 
-	fichero.open(nombreFichero.c_str(), std::ofstream::binary);
+	fichero.open(nombreFichero.c_str(), std::fstream::out | std::fstream::binary);
 
 	Alumno aux;
 
-	if((fichero.rdstate() & std::ofstream::failbit)!=0)
+	if((fichero.rdstate() & std::fstream::failbit)!=0)
 	{
-		for(int i=0;i<p.getAgenda().tamClase();i++)
-			fichero<<p.getAgenda().getAlumno(i);
-					
-		std::cout<<BIGREEN<<"Los alumnos se guardaron correctamente"<<RESET<<std::endl;
-	}
-	else
 		std::cout<<BIRED<<"ERROR No se ha podido guardar los alumnos"<<RESET<<std::endl;
+		return;
+	}
 
+	for(int i=0;i<p.getAgenda().tamClase();i++)
+		fichero<<p.getAgenda().getAlumno(i);
+				
+	std::cout<<BIGREEN<<"Los alumnos se guardaron correctamente"<<RESET<<std::endl;
 
 	fichero.close();
-
-	std::cin.ignore();
 }
 
 Profesor logIn()
 {
-	std::cout<<BIYELLOW<<"BIENVENIDO"<<std::endl;
+	std::cout<<BIYELLOW<<"\nBIENVENIDO"<<std::endl;
 	std::cout<<"Inicie sesion antes de acceder al contenido"<<RESET<<std::endl;
 
 
@@ -853,11 +863,11 @@ Profesor logIn()
 	Profesor nuevoTutor;
 
 
-	std::ifstream fichero;
+	std::fstream fichero;
 
-	fichero.open("../profesores.bin", std::ifstream::binary);
+	fichero.open("../profesores.bin", std::fstream::in | std::fstream::binary);
 
-	if((fichero.rdstate() & std::ifstream::failbit)!=0)
+	if((fichero.rdstate() & std::fstream::failbit)!=0)
 	{
 		std::cout<<BIRED<<"ERROR al abrir el fichero"<<RESET<<std::endl;
 		std::cin.ignore();
@@ -874,7 +884,7 @@ Profesor logIn()
 
 	std::cout<<"Introduzca sus credenciales"<<std::endl;
 
-	std::cout<<" Usuario --> ";
+	std::cout<<"\n Usuario --> ";
 	std::cin>>usuario;
 	std::cout<<"\n Contrasena --> ";
 	std::cin>>contrasena;

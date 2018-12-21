@@ -28,10 +28,8 @@ ostream &operator<<(ostream &stream, Alumno const &alumno)
 
 	stream<<alumno.getApellido()<<","<<alumno.getNombre()<<" "<<alumno.getDNI()<<" "<<alumno.getFechaNacimiento()<<" "<<alumno.getTelefono()<<" "<<alumno.getDomicilio()<<" "<<alumno.getCurso()<<" "<<alumno.getEmail()<<" "<<alumno.getEquipo();
 
-	if(alumno.esLider()) stream<<" lider";
-	else stream<<" normal";
-
-	stream<<std::endl;
+	if(alumno.esLider()) stream<<" lider\n";
+	else stream<<" normal\n";
 
 	return stream;
 }
@@ -41,10 +39,10 @@ istream &operator>>(istream &stream, Alumno &alumno)
 
 	std::string str1;
 
-	std::getline(stream, str1, ' ');
+	std::getline(stream, str1, ',');
 	alumno.setApellido(str1);
 
-	std::getline(stream, str1, ',');
+	std::getline(stream, str1, ' ');
 	alumno.setNombre(str1);
 
 	std::getline(stream, str1, ' ');
@@ -81,6 +79,6 @@ istream &operator>>(istream &stream, Alumno &alumno)
 
 	std::getline(stream, str1, '\n');
 	if(str1.compare("lider")==0) alumno.setLider();
-
+	
 	return stream;
 }

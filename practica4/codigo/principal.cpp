@@ -26,6 +26,9 @@ int main(int argc, char ** argv)
 	{
 		logged=true;
 		coordinador=tutor.getRol();
+		std::cout<<BIGREEN<<"Ha iniciado sesion correctamente"<<RESET<<std::endl;
+		std::cin.ignore();
+		std::cin.ignore();
 	}
 
 	if(!logged)
